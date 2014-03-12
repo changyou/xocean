@@ -1,4 +1,4 @@
-// Generated on 2014-03-07 using generator-angular-fullstack 1.3.2
+// Generated on 2014-03-12 using generator-angular-fullstack 1.3.2
 'use strict';
 
 // # Globbing
@@ -47,20 +47,13 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all'],
-        options: {
-          livereload: true
-        }
+      coffee: {
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
+        tasks: ['newer:coffee:dist']
       },
-      mochaTest: {
-        files: ['test/server/{,*/}*.js'],
-        tasks: ['mochaTest']
-      },
-      jsTest: {
-        files: ['test/client/spec/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma']
+      coffeeTest: {
+        files: ['test/spec/{,*/}*.{coffee,litcoffee,coffee.md}'],
+        tasks: ['newer:coffee:test', 'karma']
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
@@ -107,14 +100,7 @@ module.exports = function (grunt) {
         src: [ 'lib/{,*/}*.js']
       },
       all: [
-        '<%= yeoman.app %>/scripts/{,*/}*.js'
-      ],
-      test: {
-        options: {
-          jshintrc: 'test/client/.jshintrc'
-        },
-        src: ['test/client/spec/{,*/}*.js']
-      }
+      ]
     },
 
     // Empties folders to start fresh
@@ -197,6 +183,32 @@ module.exports = function (grunt) {
       app: {
         html: '<%= yeoman.app %>/views/index.html',
         ignorePath: '<%= yeoman.app %>/'
+      }
+    },
+
+    // Compiles CoffeeScript to JavaScript
+    coffee: {
+      options: {
+        sourceMap: true,
+        sourceRoot: ''
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/scripts',
+          src: '{,*/}*.coffee',
+          dest: '.tmp/scripts',
+          ext: '.js'
+        }]
+      },
+      test: {
+        files: [{
+          expand: true,
+          cwd: 'test/client/spec',
+          src: '{,*/}*.coffee',
+          dest: '.tmp/client/spec',
+          ext: '.js'
+        }]
       }
     },
 
@@ -342,9 +354,11 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
+        'coffee:dist',
         'copy:styles'
       ],
       test: [
+        'coffee',
         'copy:styles'
       ],
       debug: {
@@ -357,6 +371,7 @@ module.exports = function (grunt) {
         }
       },
       dist: [
+        'coffee',
         'copy:styles',
         'imagemin',
         'svgmin',
