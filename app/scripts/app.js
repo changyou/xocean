@@ -25,6 +25,11 @@ angular.module('xoceanApp', [
         controller: 'SettingsCtrl',
         authenticate: true
       })
+      .when('/reports', {
+        templateUrl: 'partials/report',
+        controller: 'ReportCtrl',
+        authenticate: true
+      })
       .otherwise({
         redirectTo: '/'
       });

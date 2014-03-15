@@ -6,6 +6,9 @@ angular.module('xoceanApp')
       'title': 'Home',
       'link': '/'
     }, {
+      'title': '我的周报',
+      'link': '/reports'
+    }, {
       'title': 'Settings',
       'link': '/settings'
     }];
