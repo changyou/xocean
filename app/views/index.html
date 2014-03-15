@@ -26,7 +26,15 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="container">
+        <div ng-include="'partials/navbar.html'"></div>
+
+        <div ng-view=""></div>
+
+        <div class="footer">
+          <p>NAD FE TEAM</p>
+        </div>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
