@@ -2,16 +2,30 @@
 
 angular.module('xoceanApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }, {
-      'title': '我的周报',
-      'link': '/reports'
-    }, {
-      'title': 'Settings',
-      'link': '/settings'
-    }];
+    $scope.menu = [
+      {
+        'title': '首页',
+        'link': '/'
+      },
+      {
+        'title': '论坛',
+        'link': 'http://bb.ijser.cn'
+      },
+      {
+        'title': '周报',
+        'link': '/reports',
+        'submenu': [
+          {
+            'title': '周报列表',
+            'link': '/reports'
+          },
+          {
+            'title': '撰写周报',
+            'link': '/reports/edit'
+          }
+        ]
+      }
+    ];
     
     $scope.logout = function() {
       Auth.logout()
