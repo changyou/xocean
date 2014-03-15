@@ -13,15 +13,14 @@ angular.module('xoceanApp')
       },
       {
         'title': '周报',
-        'link': '/reports',
         'submenu': [
           {
             'title': '周报列表',
-            'link': '/reports'
+            'link': '/report'
           },
           {
             'title': '撰写周报',
-            'link': '/reports/edit'
+            'link': '/report/edit'
           }
         ]
       }
