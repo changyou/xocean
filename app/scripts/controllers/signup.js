@@ -1,8 +1,13 @@
 'use strict';
 
 angular.module('xoceanApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location) {
-    $scope.user = {};
+  .controller('SignupCtrl', function ($scope, Auth, $location, id) {
+    if(id){
+      $scope.user = {email:id};
+    }else{
+      $scope.user = {};
+    }
+    
     $scope.errors = {};
 
     $scope.register = function(form) {
@@ -12,7 +17,9 @@ angular.module('xoceanApp')
         Auth.createUser({
           name: $scope.user.name,
           email: $scope.user.email,
-          password: $scope.user.password
+          password: $scope.user.password,
+          group: $scope.user.group,
+          receivers: $scope.user.receivers
         })
         .then( function() {
           // Account created, redirect to home

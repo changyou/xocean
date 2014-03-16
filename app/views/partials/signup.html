@@ -1,29 +1,16 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <h1>Sign up</h1>
+    <h1>Hello,{{user.email}}!</h1>
   </div>
   <div class="col-sm-12">
     <form class="form" name="form" ng-submit="register(form)" novalidate>
-
-      <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                          'has-error': form.name.$invalid && submitted }">
-        <label>Name</label>
-
-        <input type="text" name="name" class="form-control" ng-model="user.name"
-               required/>
-        <p class="help-block" ng-show="form.name.$error.required && submitted">
-          A name is required
-        </p>
-      </div>   
-
+      
       <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
                                           'has-error': form.email.$invalid && submitted }">
         <label>Email</label>
 
-        <input type="email" name="email" class="form-control" ng-model="user.email"
-               required
-               mongoose-error/>
+        <input type="email" name="email" class="form-control" value="{{user.email}}" disabled="1"/>
         <p class="help-block" ng-show="form.email.$error.email && submitted">
           Doesn't look like a valid email.
         </p>
@@ -34,6 +21,16 @@
           {{ errors.email }}
         </p>
       </div>
+      <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                          'has-error': form.name.$invalid && submitted }">
+        <label>Name</label>
+
+        <input type="text" name="name" class="form-control" ng-model="user.name"
+               required/>
+        <p class="help-block" ng-show="form.name.$error.required && submitted">
+          A name is required
+        </p>
+      </div>   
 
       <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
                                           'has-error': form.password.$invalid && submitted }">
@@ -50,6 +47,28 @@
         <p class="help-block" ng-show="form.password.$error.mongoose">
           {{ errors.password }}
         </p>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-success': form.group.$valid && submitted,
+                                          'has-error': form.group.$invalid && submitted }">
+        <label>Select Group</label>
+        <select name="group" class="form-control" ng-model="user.group" ng-init="user.group='0'" required mongoose-error>
+          <option value="0">-Select One-</option>
+          <option value="1">技术-应用一组</option>
+          <option value="2">技术-应用二组</option>
+          <option value="3">技术-系统组</option>
+          <option value="4">技术-前端组</option>
+          <option value="5">技术-Android组</option>
+          <option value="6">设计-WebUI</option>
+          <option value="7">设计-FlashUI</option>
+        </select>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-success': form.receivers.$valid && submitted,
+                                          'has-error': form.receivers.$invalid && submitted }">
+        <label>Reports Receivers(separated by "," or ";")</label>
+        <textarea name="group" class="form-control" ng-model="user.receivers" required mongoose-error>
+        </textarea>
       </div>
 
       <button class="btn btn-lg btn-primary" type="submit">Sign up</button>
