@@ -1,1 +1,33 @@
-<p>This is the report view.</p>
+
+	<a href="/report/edit" class="btn btn-success pull-right">新建 </a>
+<table class="table">
+	<thead>
+		<tr>
+			<th>No</th>
+			<th>Title</th>
+			<th>Manage</th>
+		</tr>
+	</thead>
+	<tr ng-repeat="report in list">
+		<td>{{$index + 1}}</td>
+		<td>
+			<a href="/report/show/{{report._id}}">
+				{{report.title}}
+			</a>
+		</td>
+		<td>
+			<a href="/report/edit/{{report._id}}">编辑</a>
+			<a href="" ng-click="remove(report._id)">删除</a>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="3" class="well text-center" ng-if="!list.length">
+			<p>记录为空！</p>
+			<p>
+				<a href="/report/edit" class="btn btn-primary"> 创建 </a>
+			</p>
+		</td>
+	</tr>
+
+</table>

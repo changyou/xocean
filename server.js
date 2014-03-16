@@ -1,4 +1,6 @@
 'use strict';
+// Support coffee-script modules
+require('coffee-script/register');
 
 var express = require('express'),
     path = require('path'),
@@ -28,7 +30,7 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 
 // Populate empty DB with sample data
 require('./lib/config/dummydata');
-  
+
 // Passport Configuration
 var passport = require('./lib/config/passport');
 

@@ -1,4 +1,4 @@
-<div class="header" ng-controller="NavbarCtrl">
+<!-- <div class="header" ng-controller="NavbarCtrl">
   <ul class="nav nav-pills pull-right">
     <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
         <a ng-href="{{item.link}}">{{item.title}}</a>
@@ -8,4 +8,61 @@
     <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
   </ul>
   <h3 class="text-muted">xocean</h3>
+</div>
+
+
+
+ -->
+<!-- Static navbar -->
+<div class="navbar navbar-default" role="navigation" ng-controller="NavbarCtrl">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">XOcean</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li ng-repeat="item in menu" ng-class="{active: isActive(item.link), dropdown: item.submenu}">
+
+				    <a ng-href="{{item.link}}" ng-if="!item.submenu">{{item.title}}</a>
+				    <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-if="item.submenu">
+				    	{{item.title}} <b class="caret"></b>
+				    </a>
+				    <ul class="dropdown-menu" ng-if="item.submenu">
+						<li ng-repeat="subitem in item.submenu">
+							<a ng-href="{{subitem.link}}">{{subitem.title}}</a>
+						</li>
+				    </ul>
+				</li>
+
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li ng-hide="currentUser" ng-class="{active: isActive('/login')}">
+					<a href="/login">登陆</a>
+				</li>
+				<li ng-hide="currentUser" ng-class="{active: isActive('/signup')}">
+					<a href="/signup">注册</a>
+				</li>
+				<li ng-show="currentUser" class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown">
+						个人中心  <b class="caret"></b>
+					</a>
+
+					<ul class="dropdown-menu">
+						<li>
+							<a ng-href="/settings">个人设置</a>
+						</li>
+						<li>
+							<a href="" ng-click="logout()">退出</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div><!--/.nav-collapse -->
+	</div><!--/.container-fluid -->
 </div>
