@@ -67,8 +67,11 @@
       <div class="form-group" ng-class="{ 'has-success': form.receivers.$valid && submitted,
                                           'has-error': form.receivers.$invalid && submitted }">
         <label>Reports Receivers(separated by "," or ";")</label>
-        <textarea name="group" class="form-control" ng-model="user.receivers" required mongoose-error>
+        <textarea name="receivers" class="form-control" ng-model="user.receivers" ng-show="show1" ng-blur="showReceivers($event.currentTarget.value);" required mongoose-error>
         </textarea>
+        <div class="form-control" ng-show="show2" ng-click="editReceivers()">
+          <button type="button" class="btn btn-primary btn-xs" ng-repeat="receriver in showReceiversArray">{{receriver}}</button>
+        </div>
       </div>
 
       <button class="btn btn-lg btn-primary" type="submit">Sign up</button>
