@@ -1,0 +1,42 @@
+
+<ol class="breadcrumb">
+	<li><a href="/report">周报列表</a></li>
+	<li class="active">编辑</li>
+</ol>
+
+<div class="col-md-8 col-md-offset-1">
+	<form class="form-horizontal" role="form">
+		<div class="form-group">
+			<label for="to" class="col-sm-2 control-label">收件人 </label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="to" ng-model="report.to" placeholder="to">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="cc" class="col-sm-2 control-label">抄送 </label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="cc" ng-model="report.cc" placeholder="cc">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="subject" class="col-sm-2 control-label">标题 </label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="subject" ng-model="report.subject" placeholder="Subject">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="html" class="col-sm-2 control-label">正文 </label>
+			<div class="col-sm-10">
+				<textarea name="html" rows="20" class="form-control" ng-model="report.html"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10 text-right">
+				<span ng-if="report._id">上次保存：{{report.updateAt}}</span>
+				<span class="text-danger" ng-if="!report._id">未保存</span>
+				<button type="submit" class="btn btn-primary" ng-click="save()">保存</button>
+				<button type="submit" class="btn btn-danger" ng-click="send()">发送</button>
+			</div>
+		</div>
+	</form>
+</div>

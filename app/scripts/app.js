@@ -25,12 +25,33 @@ angular.module('xoceanApp', [
         controller: 'SettingsCtrl',
         authenticate: true
       })
+      .when('/report', {
+        templateUrl: 'partials/report',
+        controller: 'ReportCtrl',
+        authenticate: true
+      })
+      .when('/report/edit', {
+        templateUrl: 'partials/reporteditor',
+        controller: 'ReporteditorCtrl',
+        authenticate: true,
+        resolve: { id: function() {} }
+      })
+      .when('/report/edit/:id', {
+        templateUrl: 'partials/reporteditor',
+        controller: 'ReporteditorCtrl',
+        authenticate: true,
+        resolve: {
+          id: function($route) {
+            return $route.current.params.id;
+          }
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });
-      
+
     $locationProvider.html5Mode(true);
-      
+
     // Intercept 401s and redirect you to login
     $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
       return {

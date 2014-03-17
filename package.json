@@ -6,9 +6,12 @@
     "lodash": "~2.4.1",
     "mongoose": "~3.8.8",
     "connect-mongo": "~0.4.0",
+    "connect-livereload": "~0.3.0",
     "passport": "~0.2.0",
     "passport-local": "~0.1.6",
-    "ejs": "~0.8.4"
+    "ejs": "~0.8.4",
+    "coffee-script": "~1.7.1",
+    "nodemailer": "~0.6.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -37,7 +40,6 @@
     "time-grunt": "~0.2.1",
     "grunt-express-server": "~0.4.5",
     "grunt-open": "~0.2.0",
-    "connect-livereload": "~0.3.0",
     "karma-ng-scenario": "~0.1.0",
     "grunt-karma": "~0.6.2",
     "karma-firefox-launcher": "~0.1.3",
