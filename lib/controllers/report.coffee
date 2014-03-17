@@ -1,9 +1,11 @@
 mongoose = require 'mongoose'
 Report = mongoose.model 'Report'
+Emailer = require '../modules/sendmail'
 
 exports.create = (req, res, next)->
 	newReport = new Report(req.body)
 
+	newReport.userId = req.user._id
 	newReport.updateAt = newReport.createAt = new Date()
 
 	newReport.save (err)->
@@ -12,7 +14,9 @@ exports.create = (req, res, next)->
 
 
 exports.list = (req, res, next)->
-	Report.find {}, (err, result)->
+	uid = req.user._id
+
+	Report.find { userId: uid }, (err, result)->
 		return res.json(400, err) if err
 		res.json result
 
@@ -41,5 +45,4 @@ exports.del = (req, res, next)->
 	reportId = req.params.id
 	Report.findByIdAndRemove reportId, (err, result)->
 		return res.json(400, err) if err
-		console.log arguments
 		res.json result
