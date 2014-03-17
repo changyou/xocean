@@ -4,6 +4,7 @@ Schema = mongoose.Schema;
 
 ReportSchema = new Schema({
   userId: Schema.Types.ObjectId
+  from: String
   to: [String]
   cc: [String]
   subject: String
