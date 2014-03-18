@@ -39,6 +39,8 @@ angular.module('xoceanApp')
     $scope.editReceivers = function(){
       $scope.show1=true;
       $scope.show2=false;
+      //呵呵
+      setTimeout(function(){$("[name='receivers']").focus();},100)
     }
 
     $scope.register = function(form) {
