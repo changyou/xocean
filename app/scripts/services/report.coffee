@@ -14,4 +14,7 @@ angular.module('xoceanApp')
 			get: {
 				method: 'GET'
 			}
+			postMail: {
+				method: 'POST'
+			}
 		}
