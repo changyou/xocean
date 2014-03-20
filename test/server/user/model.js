@@ -1,5 +1,6 @@
 'use strict';
 
+require('../../../lib/init_db');
 var should = require('should'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
