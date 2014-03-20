@@ -3,7 +3,7 @@ body {
 }
 
 .footer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   background-color: #f5f5f5;
@@ -11,4 +11,33 @@ body {
 
 .footer .container {
 	padding: 20px;
+}
+
+body {
+	font-family: "Microsoft Yahei";
+}
+
+/* 适配无圆角 */
+.navbar.fix-topbar {
+	border-radius: 0;
+}
+
+/* 添加动画 */
+.navbar-brand {
+	font-weight: 400;
+	font-family: Consolas;
+	-moz-transition: color 0.3s linear;
+	-webkit-transition: color 0.3s linear;
+	-o-transition: color 0.3s linear;
+	transition: color 0.3s linear;
+}
+.navbar-brand:hover {
+	text-shadow: 0 0 1px #ccc;
+	-moz-transition: color 0.3s linear;
+	-webkit-transition: color 0.3s linear;
+	-o-transition: color 0.3s linear;
+	transition: color 0.3s linear;
+}
+.navbar-default .navbar-brand:hover {
+	color: #DC9778;
 }
