@@ -1,2 +1,2 @@
-xocean [![Build Status](https://travis-ci.org/changyou/xocean.png?branch=master)](https://travis-ci.org/changyou/xocean)
+xocean [![Build Status](https://travis-ci.org/changyou/xocean.svg)](https://travis-ci.org/changyou/xocean)
 ======
