@@ -9,16 +9,19 @@ var user;
 
 describe('User Model', function() {
   before(function(done) {
-    user = new User({
-      provider: 'local',
-      name: 'Fake User',
-      email: 'test@test.com',
-      password: 'password'
+    this.timeout(5000);
+    require('../../../lib/config/dummydata')(function() {
+      user = new User({
+        provider: 'local',
+        name: 'Fake User',
+        email: 'test@test.com',
+        password: 'password'
+      });
+      
+      // Clear users before testing
+      User.remove().exec();
+      done();
     });
-
-    // Clear users before testing
-    User.remove().exec();
-    done();
   });
 
   afterEach(function(done) {
