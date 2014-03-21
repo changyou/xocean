@@ -1,0 +1,14 @@
+html { padding:10px; }
+
+body {
+  border:0;
+  background:#fcfcfc;
+  font-family:monospace;
+  font-size:14px;
+  padding:10px;
+  line-height:1.35em;
+  margin:0;
+  padding:0;
+}
+html{font-size:62.5%;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+body{font-family: '微软雅黑','Open Sans',"Trebuchet MS",Helvetica,sans-serif;font-size:14px;line-height:1.428571429;color:#162029;background-color:#f6f7f9l;-webkit-font-smoothing: antialiased;}
