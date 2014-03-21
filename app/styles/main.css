@@ -57,9 +57,10 @@ body {
 }
 /* 表单模拟 */
 .sender-group, .copyer-group {
-	width: 603px;
+	position: relative;
+	min-height: 1px;
+	width: 100%;
 	padding: 5px 15px 0 15px;
-	margin-left: 15px;
 	border: 1px solid #cccccc;
 	border-radius: 4px;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -100,4 +101,9 @@ body {
 	background-color: #999;
 	color: #FFF;
 	text-decoration: none;
+}
+
+/* 快速收件人 */
+.quick-add {
+	margin-right: 17px;
 }

@@ -6,10 +6,14 @@ angular.module('xoceanApp')
     # 发件人列表
     $scope.senders = []
     # 抄送人列表
-    $scope.copyers = []
+    $scope.copyers = [{
+      "name": "陈宁"
+    }, {
+      "name": "石山松"
+    }]
 
     # 所有用户数据源模拟
-    $scope.allUser = [{
+    allUser = [{
       "name": "周树枫"
     }, {
       "name": "蒋志德"
@@ -43,7 +47,44 @@ angular.module('xoceanApp')
       "name": "陈点国"
     }, {
       "name": "陈大国"
+    }, {
+      "name": "陈宁"
+    }, {
+      "name": "石山松"
+    }, {
+      "name": "陈开洪"
     }]
+
+    # 各个组的快速发件人配置
+    senderConfig = {
+      "1": [{
+        "name": "白雪娇"
+      }, {
+        "name": "陈友国"
+      }, {
+        "name": "迟晓靓"
+      }, {
+        "name": "蒋志德"
+      }, {
+        "name": "李晓露"
+      }, {
+        "name": "李毅"
+      }, {
+        "name": "刘剑锋"
+      }, {
+        "name": "夏田"
+      }, {
+        "name": "周树枫"
+      }],
+
+      "2": [{
+        "name": "陈友都"
+      }],
+
+      "3": [{
+        "name": "陈友人"
+      }]
+    }
 
     # 用户当前输入发件人
     $scope.currentSender
@@ -60,7 +101,6 @@ angular.module('xoceanApp')
       else
         $scope.report.$save()
 
-
     $scope.send = ->
       if confirm('确定发送？')
         $scope.report.$postMail()
@@ -69,7 +109,7 @@ angular.module('xoceanApp')
 
     # 添加当前发件人
     $scope.addSender = (name) ->
-      for sender in $scope.allUser
+      for sender in allUser
         $scope.senders.push(sender) if name != "" && sender.name == name && !isContainUser($scope.senders, name)
       $scope.currentSender = ""
       $scope.autoComplateSender($scope.currentSender)
@@ -84,12 +124,12 @@ angular.module('xoceanApp')
     # 发件人自动提示
     $scope.autoComplateSender = (name) ->
       $scope.currentSenders = []
-      for user in $scope.allUser
+      for user in allUser
         $scope.currentSenders.push(user) if name != "" && user.name.indexOf(name) != -1
 
     # 增加当前抄送人
     $scope.addCopyer= (name) ->
-      for user in $scope.allUser
+      for user in allUser
         $scope.copyers.push(user) if name != "" && user.name == name && !isContainUser($scope.copyers, name)
       $scope.currentCopyer = ""
       $scope.autoComplateCopyer($scope.currentCopyer)
@@ -104,8 +144,13 @@ angular.module('xoceanApp')
     # 抄送人自动提示
     $scope.autoComplateCopyer = (name) ->
       $scope.currentCopyers = []
-      for user in $scope.allUser
+      for user in allUser
         $scope.currentCopyers.push(user) if name != "" && user.name.indexOf(name) != -1
+
+    # 快速添加收件人
+    $scope.switchSenders = (groupId) ->
+      arr = senderConfig[groupId]
+      $scope.senders = arr ? arr : $scope.senders;
 
     # 判断数组中是否含有当前名字的人
     isContainUser = (arr, name) ->
