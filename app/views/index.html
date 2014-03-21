@@ -26,17 +26,19 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-include="'partials/navbar.html'"></div>
-    <div class="container">
 
-        <div ng-view=""></div>
+    <div class="app">
+        <div ng-include="'partials/navbar.html'"></div>
+
+        <div class="container" ng-view=""></div>
 
     </div>
-    <div class="footer">
+    
+    <!--<div class="footer">
       <div class="container">
         <p class="text-muted">CYNadFe</p>
       </div>
-    </div>
+    </div>-->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
