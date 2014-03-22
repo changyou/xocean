@@ -1,10 +1,15 @@
 'use strict';
 
+/**
+ * markdown编辑器指令
+ * @return {[type]} [description]
+ */
 angular.module('xoceanApp').directive('mdeditor', function() {
   return {
     restrict: 'A',
     link: function postLink(scope, element, attrs) {
 
+    	//编辑器参数
     	var opt = {
     		basePath:"/styles/editorTheme",
     		container : attrs.id,
