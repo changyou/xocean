@@ -46,7 +46,7 @@ body {
 .input-name {
 	border: none;
 	outline: none;
-	width: 95px;
+	display: inline;
 	height: 22px;
 	line-height: 18px;
 	color: #777;
@@ -82,11 +82,12 @@ body {
 .input-action .fn-autoComplate {
 	position: absolute;
 	background-color: #FFF;
-	width: 93px;
+	width: 255px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	left: 0;
 	top: 25px;
+	/*font-family: menlo, Consolas, "Microsoft Yahei";*/
 	z-index: 99;
 }
 .input-action .fn-autoComplate .item {

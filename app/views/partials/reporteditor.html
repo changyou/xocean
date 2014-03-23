@@ -32,7 +32,7 @@
 						<input type="text" class="input-name" value="{{currentSender}}" ng-change="autoComplateSender(currentSender)" ng-model="currentSender" autofocus="autofocus" placeholder="添加收件人">
 					
 						<div class="fn-autoComplate" ng-if="currentSenders">
-							<a href="javascript:void(0);" class="item" ng-repeat="sender in currentSenders" ng-click="addSender(sender.name)">{{sender.name}}</a>
+							<a href="javascript:void(0);" class="item" ng-repeat="sender in currentSenders" ng-click="addSender(sender.name)">{{sender.name}}&nbsp;&nbsp;&lt;{{sender.email}}&gt;</a>
 						</div>
 					</div>
 				</div>
@@ -51,7 +51,7 @@
 						<input type="text" class="input-name" value="{{currentCopyer}}" ng-change="autoComplateCopyer(currentCopyer)" ng-model="currentCopyer" placeholder="添加抄送人">
 					
 						<div class="fn-autoComplate" ng-if="currentCopyers">
-							<a href="javascript:void(0);" class="item" ng-repeat="copyer in currentCopyers" ng-click="addCopyer(copyer.name)">{{copyer.name}}</a>
+							<a href="javascript:void(0);" class="item" ng-repeat="copyer in currentCopyers" ng-click="addCopyer(copyer.name)">{{copyer.name}}&nbsp;&nbsp;&lt;{{copyer.email}}&gt;</a>
 						</div>
 					</div>
 				</div>
