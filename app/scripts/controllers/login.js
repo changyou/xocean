@@ -9,8 +9,9 @@ angular.module('xoceanApp')
     $scope.errors = {};
 
     $scope.login = function(form) {
+      $scope.errors.other = "";
       $scope.submitted = true;
-      
+
       if(form.$valid) {
         Auth.login({
           email: $scope.user.email,

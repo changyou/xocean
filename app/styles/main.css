@@ -12,3 +12,92 @@ body {
 .footer .container {
 	padding: 20px;
 }
+
+body {
+	font-family: "Microsoft Yahei";
+}
+
+/* 适配无圆角 */
+.navbar.fix-topbar {
+	border-radius: 0;
+}
+
+/* 添加动画 */
+.navbar-brand {
+	font-weight: 400;
+	font-family: Consolas;
+	-moz-transition: color 0.3s linear;
+	-webkit-transition: color 0.3s linear;
+	-o-transition: color 0.3s linear;
+	transition: color 0.3s linear;
+}
+.navbar-brand:hover {
+	text-shadow: 0 0 1px #ccc;
+	-moz-transition: color 0.3s linear;
+	-webkit-transition: color 0.3s linear;
+	-o-transition: color 0.3s linear;
+	transition: color 0.3s linear;
+}
+.navbar-default .navbar-brand:hover {
+	color: #DC9778;
+}
+
+/* 收件人自动提示 */
+.input-name {
+	border: none;
+	outline: none;
+	width: 95px;
+	height: 22px;
+	line-height: 18px;
+	color: #777;
+	margin-left: 3px;
+	font-size: 12px;
+	margin-bottom: 5px;
+	vertical-align: middle;
+}
+/* 表单模拟 */
+.sender-group, .copyer-group {
+	width: 603px;
+	padding: 5px 15px 0 15px;
+	margin-left: 15px;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.select-item {
+	cursor: pointer;
+	margin-right: 5px;
+	font-weight: 500;
+	text-shadow: 0 -1px 3px #999;
+	padding: .4em .6em .4em;
+	display: inline-block;
+	vertical-align: middle;
+	margin-bottom: 5px;
+}
+.input-action {
+	position: relative;
+}
+.input-action .fn-autoComplate {
+	position: absolute;
+	background-color: #FFF;
+	width: 93px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	left: 0;
+	top: 25px;
+	z-index: 99;
+}
+.input-action .fn-autoComplate .item {
+	display: block;
+	color: #a5a5a5;
+	padding-left: 5px;
+	line-height: 25px;
+	font-size: 12px;
+	margin: 3px 0;
+}
+.input-action .fn-autoComplate .item:hover {
+	background-color: #999;
+	color: #FFF;
+	text-decoration: none;
+}

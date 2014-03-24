@@ -18,7 +18,17 @@ angular.module('xoceanApp', [
       })
       .when('/signup', {
         templateUrl: 'partials/signup',
-        controller: 'SignupCtrl'
+        controller: 'SignupCtrl',
+        resolve: { id: function() {} }
+      })
+      .when('/signup/:id', {
+        templateUrl: 'partials/signup',
+        controller: 'SignupCtrl',
+        resolve: {
+          id: function($route) {
+            return $route.current.params.id;
+          }
+        }
       })
       .when('/settings', {
         templateUrl: 'partials/settings',
