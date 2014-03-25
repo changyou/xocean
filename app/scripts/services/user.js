@@ -14,6 +14,12 @@ angular.module('xoceanApp')
         params: {
           id:'me'
         }
+      },
+      activate:{
+        method: 'POST',
+        params: {
+          id:'1'
+        }
       }
 	  });
   });
