@@ -17,9 +17,7 @@ angular.module('xoceanApp')
       },
       activate:{
         method: 'POST',
-        params: {
-          id:'1'
-        }
+        url:"/api/users/activate"
       }
 	  });
   });
