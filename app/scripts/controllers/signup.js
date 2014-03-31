@@ -3,7 +3,7 @@
 angular.module('xoceanApp')
   .controller('SignupCtrl', function ($scope, Auth, $location, id, $timeout) {
     if(id){
-      $scope.user = {email:id};
+      $scope.user = Auth.preActivateUser({"code":id});
     }else{
       $scope.user = {};
     }

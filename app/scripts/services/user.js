@@ -18,6 +18,10 @@ angular.module('xoceanApp')
       activate:{
         method: 'POST',
         url:"/api/users/activate"
+      },
+      findByCode:{
+        method: 'GET',
+        url:"/api/user/findByCode"
       }
 	  });
   });

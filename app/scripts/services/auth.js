@@ -124,6 +124,24 @@ angular.module('xoceanApp')
           function(err) {
             return cb(err);
           }).$promise;
-      }
+      },
+      /**
+       * check code before Activate a user
+       * 
+       * @param  {String}   code     - unique code
+       * @param  {Function} callback - optional
+       * @return {Promise}
+       */
+      preActivateUser: function(code, callback) {
+        var cb = callback || angular.noop;
+        return User.findByCode(code,
+          function(user) {
+            // $rootScope.currentUser = user;
+            return (user);
+          },
+          function(err) {
+            return cb(err);
+          });
+      },
     };
   });
