@@ -1,3 +1,4 @@
+<!--
 <ul>
 	<li>添加用户-批量添加</li>
 	<li>修改用户信息</li>
@@ -6,4 +7,39 @@
 	<li>用户列表</li>
 	<li>发送用户邮件（重新发送）</li>
 </ul>
+ -->
+<a href="/user/new" class="btn btn-purple pull-right">Send</a>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>No</th>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Status</th>
+			<th>Manage</th>
+		</tr>
+	</thead>
 
+	<tr ng-repeat="user in list">
+		<td>{{$index + 1}}</td>
+		<td>
+			{{user.name}}
+		</td>
+		<td>
+			{{user.email}}
+		</td>
+		<td ng-switch on="user.status">
+			<span class="label label-default" ng-switch-when="0">未注册</span>
+			<span class="label label-success" ng-switch-when="1">已注册</span>
+		</td>
+		<td>
+			<a href="send">重新发送</a>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="4" class="well text-center" ng-if="!list.length">
+			<p>记录为空！</p>
+		</td>
+	</tr>
+</table>

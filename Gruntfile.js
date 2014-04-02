@@ -48,11 +48,11 @@ module.exports = function (grunt) {
     },
     watch: {
       coffee: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
+        files: ['<%= yeoman.app %>/scripts/{,**/}*.{coffee,litcoffee,coffee.md}'],
         tasks: ['newer:coffee:dist']
       },
       coffeeTest: {
-        files: ['test/spec/{,*/}*.{coffee,litcoffee,coffee.md}'],
+        files: ['test/spec/{,**/}*.{coffee,litcoffee,coffee.md}'],
         tasks: ['newer:coffee:test', 'karma']
       },
       styles: {
@@ -205,7 +205,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: 'test/client/spec',
-          src: '{,*/}*.coffee',
+          src: '{,**/}*.coffee',
           dest: '.tmp/client/spec',
           ext: '.js'
         }]

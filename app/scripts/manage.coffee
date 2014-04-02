@@ -11,6 +11,6 @@ angular.module('xoceanManage', [
 	$routeProvider
 	.when '/',
 		templateUrl: 'manage/user'
-		controller: 'ManageMainCtrl'
+		controller: 'ManageUserCtrl'
 	.otherwise
 		redirectTo: '/'

@@ -17,7 +17,7 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/manage.css">
     <!-- endbuild -->
   </head>
   <body ng-app="xoceanManage">
@@ -29,7 +29,7 @@
     <div>
         <div ng-include="'manage/navbar.html'"></div>
 
-        <div class="col-md-9" ng-view=""></div>
+        <div class="col-md-10 col-md-offset-1" ng-view=""></div>
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -62,8 +62,9 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/manage.js"></script>
-        <script src="scripts/controllers/manage/manageMain.js"></script>
+        <script src="scripts/controllers/manage/manageUser.js"></script>
         <script src="scripts/controllers/manage/navbar.js"></script>
+        <script src="scripts/services/manage/user.js"></script>
         <!-- endbuild -->
 </body>
 </html>
