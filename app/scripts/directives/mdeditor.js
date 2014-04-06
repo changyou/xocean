@@ -7,37 +7,28 @@
 angular.module('xoceanApp').directive('mdeditor', function() {
   return {
     restrict: 'A',
+    scope:{
+    	ngHTML : "="
+    },
     link: function postLink(scope, element, attrs) {
-
-    	//编辑器参数
+    	console.log(scope)
     	var opt = {
-    		basePath:"/styles/editorTheme",
-    		container : attrs.id,
-    		clientSideStorage: true,
-			localStorageName: 'epiceditor',
-			useNativeFullscreen: true,
-			parser:markdown.toHTML,
-			autogrow:{
-				minHeight:400,
-				maxHeight:580
-			},
-			button: {
-			    preview: true,
-			    fullscreen: true,
-			    bar: true
-			},
-			theme: {
-			    base: '/base/epiceditor.css',
-			    preview: '/preview/stackedit.css',
-			    editor: '/editor/epic-light.css'
-			},
-			string: {
-			   togglePreview: '预览模式',
-			   toggleFullscreen: '禅模式'
-			}
-    	};
+            toolbar:[
+	            'source | undo redo | bold italic underline strikethrough | forecolor backcolor   ',
+	            'insertorderedlist insertunorderedlist  paragraph | fontfamily fontsize' ,
+	            '| justifyleft justifycenter justifyright justifyjustify |',
+	            'link unlink image removeformat',
+	            '| horizontal preview fullscreen' 
+	        ]
+        };
 
-    	var ed = new EpicEditor(opt).load();
+        if(window.um) um.destroy();
+ 		window.um = UM.getEditor(attrs.name, opt);
+ 		if(scope.report.html) um.setContent(scope.html);
+        um.addListener('contentChange',function(){
+        	scope.report.html = um.getContent();
+        });
+
     }
   };
 });
