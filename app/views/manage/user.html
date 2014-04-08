@@ -32,8 +32,8 @@
 			<span class="label label-default" ng-switch-when="0">未注册</span>
 			<span class="label label-success" ng-switch-when="1">已注册</span>
 		</td>
-		<td>
-			<a href="send">重新发送</a>
+		<td ng-switch on="user.status">
+			<a href="javascript:void(0)" ng-click="send(user._id)" ng-switch-when="0">重新发送</a>
 		</td>
 	</tr>
 

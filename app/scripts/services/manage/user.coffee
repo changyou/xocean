@@ -10,5 +10,8 @@ angular.module('xoceanManage')
 					params: {
 						id:'me'
 					}
+				},
+				postMail: {
+					method: 'POST'
 				}
 			})
