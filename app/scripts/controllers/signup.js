@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('xoceanApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location, id) {
+  .controller('SignupCtrl', function ($scope, Auth, $location, id, $timeout) {
     if(id){
-      $scope.user = {email:id};
+      $scope.user = Auth.preActivateUser({"code":id});
     }else{
       $scope.user = {};
     }
@@ -39,15 +39,14 @@ angular.module('xoceanApp')
     $scope.editReceivers = function(){
       $scope.show1=true;
       $scope.show2=false;
-      //呵呵
-      setTimeout(function(){$("[name='receivers']").focus();},100)
+      $timeout(function(){$("[name='receivers']").focus();},100)
     }
 
     $scope.register = function(form) {
       $scope.submitted = true;
   
       if(form.$valid) {
-        Auth.createUser({
+        Auth.activateUser({
           name: $scope.user.name,
           email: $scope.user.email,
           password: $scope.user.password,

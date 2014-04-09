@@ -107,5 +107,41 @@ angular.module('xoceanApp')
         var user = $rootScope.currentUser;
         return !!user;
       },
+      /**
+       * Activate a user
+       * 
+       * @param  {Object}   user     - user info
+       * @param  {Function} callback - optional
+       * @return {Promise}
+       */
+      activateUser: function(user, callback) {
+        var cb = callback || angular.noop;
+        return User.activate(user,
+          function(user) {
+            $rootScope.currentUser = user;
+            return cb(user);
+          },
+          function(err) {
+            return cb(err);
+          }).$promise;
+      },
+      /**
+       * check code before Activate a user
+       * 
+       * @param  {String}   code     - unique code
+       * @param  {Function} callback - optional
+       * @return {Promise}
+       */
+      preActivateUser: function(code, callback) {
+        var cb = callback || angular.noop;
+        return User.findByCode(code,
+          function(user) {
+            // $rootScope.currentUser = user;
+            return (user);
+          },
+          function(err) {
+            return cb(err);
+          });
+      },
     };
   });

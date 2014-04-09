@@ -14,6 +14,14 @@ angular.module('xoceanApp')
         params: {
           id:'me'
         }
+      },
+      activate:{
+        method: 'POST',
+        url:"/api/users/activate"
+      },
+      findByCode:{
+        method: 'GET',
+        url:"/api/user/findByCode"
       }
 	  });
   });
