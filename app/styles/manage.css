@@ -1,0 +1,16 @@
+/* base */
+a, a:hover, a:active { color: #563D7C;}
+/* btn */
+.btn-purple { background-color: #563D7C; border: 1px solid #463265; color: #CDBFE3; }
+.btn-purple:hover { color: #FFF; }
+.btn-purple:active { background-color: #463265; color: #FFF; }
+
+/* nav left */
+.navbar-header { float: left; }
+.navbar-left { padding: 5px; }
+.bs-sidenav a { color: #563D7C; }
+.navbar-left .bs-sidenav > li { display: inline-block;}
+@media (min-width: 992px) {
+	.navbar-left { top: 52px; left:0; height: 100%; background-color: #F8F8F8;	border-right: 1px solid #e7e7e7; padding: 0;}
+	.navbar-left .bs-sidenav > li {display: block;}
+}

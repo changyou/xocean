@@ -44,3 +44,18 @@ exports.sendReport = (report, callback)->
 			report.status = 1
 			report.sendAt = new Date()
 			callback(null, response)
+
+exports.sendRegistEmail = (user, callback)->
+	mailOptions = {
+		from: "xocean <xocean@cyou-inc.com>"
+		to: user.email
+		subject: "XOcean注册邮件"
+		html: "请点击下面链接进行注册<br/> <a href='http://localhost:9000/signup/"+user.id+"'>点此注册</a><br/> 此邮件为系统邮件，请勿直接回复。"
+		forceEmbeddedImages: true
+	}
+
+	smtpTransport.sendMail mailOptions, (err, response)->
+		if err
+			callback(err)
+		else
+			callback(null, response)
