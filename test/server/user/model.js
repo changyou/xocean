@@ -15,7 +15,8 @@ describe('User Model', function() {
         provider: 'local',
         name: 'Fake User',
         email: 'test@test.com',
-        password: 'password'
+        password: 'password',
+        status: '0'
       });
       
       // Clear users before testing

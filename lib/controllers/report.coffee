@@ -55,7 +55,6 @@ exports.sendEmail = (req, res, next)->
 	Report.findById reportId, (err, report)->
 		Emailer.sendReport report, (err, response)->
 			return res.json(500, err) if err
-			console.log response
 			report.save ->
 				res.json {
 					success: true
