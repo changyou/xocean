@@ -51,7 +51,8 @@ angular.module('xoceanApp')
           email: $scope.user.email,
           password: $scope.user.password,
           group: $scope.user.group,
-          receivers: $scope.stringToArray($scope.user.receivers)
+          receivers: $scope.stringToArray($scope.user.receivers),
+          code: $scope.user.code
         })
         .then( function() {
           // Account created, redirect to home

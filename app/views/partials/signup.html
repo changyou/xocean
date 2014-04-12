@@ -1,7 +1,8 @@
 
-<div class="row" ng-if="user.email">
+<div class="row" ng-if="user.email && user.status==0">
   <div class="col-sm-12">
     <h1>Hello,{{user.email}}!</h1>
+    <h3>请完善您的信息。</h3>
   </div>
   <div class="col-sm-12">
     <form class="form" name="form" ng-submit="register(form)" novalidate>
@@ -52,8 +53,8 @@
       <div class="form-group" ng-class="{ 'has-success': form.group.$valid && submitted,
                                           'has-error': form.group.$invalid && submitted }">
         <label>Select Group</label>
-        <select name="group" class="form-control" ng-model="user.group" ng-init="user.group='0'" required mongoose-error>
-          <option value="0">-Select One-</option>
+        <select name="group" class="form-control" ng-model="user.group" ng-init="user.group=''" required mongoose-error>
+          <option value="">-Select One-</option>
           <option value="1">技术-应用一组</option>
           <option value="2">技术-应用二组</option>
           <option value="3">技术-系统组</option>
@@ -77,10 +78,11 @@
     </form>
   </div>
 </div>
-<div ng-if="user.err">
-  <div class="col-sm-12">
-    <h1>Sorry,{{user.err}}!</h1>
-  </div>
+<div ng-if="user.err || !user.email">
+  <h1>Sorry,激活链接无效，请联系管理员!</h1>
+</div>
+<div ng-if="user.status==1">
+  <h1>Sorry,{{user.email}},您已经注册了!</h1>
 </div>
 
 <div class="row">
