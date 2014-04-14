@@ -7,11 +7,8 @@
 angular.module('xoceanApp').directive('mdeditor', function() {
   return {
     restrict: 'A',
-    scope:{
-    	ngHTML : "="
-    },
+    scope:true,
     link: function postLink(scope, element, attrs) {
-    	console.log(scope)
     	var opt = {
             toolbar:[
 	            'source | undo redo | bold italic underline strikethrough | forecolor backcolor   ',
@@ -24,7 +21,11 @@ angular.module('xoceanApp').directive('mdeditor', function() {
 
         if(window.um) um.destroy();
  		window.um = UM.getEditor(attrs.name, opt);
- 		if(scope.report.html) um.setContent(scope.html);
+       
+        scope.$watch("report", function(report){ 
+            if(scope.report.html) um.setContent(scope.report.html);
+        },true);
+  
         um.addListener('contentChange',function(){
         	scope.report.html = um.getContent();
         });

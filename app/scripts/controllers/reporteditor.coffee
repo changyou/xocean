@@ -2,8 +2,7 @@ angular.module('xoceanApp')
   .controller 'ReporteditorCtrl', ($scope, $location, Report, id) ->
 
     $scope.report = if not id then {} else Report.get { id: id }
-    #内容
-    $scope.html = null;
+  
     # 发件人列表
     $scope.senders = []
     # 抄送人列表
