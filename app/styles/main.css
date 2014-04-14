@@ -102,6 +102,7 @@ body {
 	text-decoration: none;
 }
 
+ 
 .page-line{
 	height: 1px;
 	border-top:1px solid #EBEBEB;
@@ -122,7 +123,9 @@ body {
 .thisWeek-item .thisWeek-add:hover,.nextWeek-item .nextWeek-add:hover{
 	color:black;
 }
-
+.nextWeek-item .input-group{
+	width: 100%;
+}
 .thisWeek-item .thisWeek-ok{
 	color:#CACACA;
 }
@@ -135,3 +138,22 @@ body {
 	color:#76B429;
 	background-color:white;
 }
+ 
+/* login page */
+.square-gradient-bar {
+	height: 15px;
+	border-radius: 4px 4px 0 0;
+	font-size: 0;
+	line-height: 0;
+	background-color: #3bbfee;
+	background: linear-gradient(90deg, #d8225e,#d8225e 16.6%,#b73794 16.6%,#b73794 33.2%,#7254b6 33.2%,
+		#7254b6 49.8%,#5951ca 49.8%, #5951ca 66.4%,#3981d1 66.4%,#3981d1 83%,#3bbfee 83%,#3bbfee);
+}
+.login-field .panel-body{
+	background: rgba(187, 187, 187, 0.5);
+}
+.login-field .form-group{
+	margin-bottom: 30px;
+	margin-top: 10px;
+}
+ 

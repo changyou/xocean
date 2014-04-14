@@ -48,11 +48,11 @@ module.exports = function (grunt) {
     },
     watch: {
       coffee: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
+        files: ['<%= yeoman.app %>/scripts/{,**/}*.{coffee,litcoffee,coffee.md}'],
         tasks: ['newer:coffee:dist']
       },
       coffeeTest: {
-        files: ['test/spec/{,*/}*.{coffee,litcoffee,coffee.md}'],
+        files: ['test/spec/{,**/}*.{coffee,litcoffee,coffee.md}'],
         tasks: ['newer:coffee:test', 'karma']
       },
       styles: {
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
           '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
           '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
         ],
-      
+
         options: {
           livereload: true
         }
@@ -171,7 +171,7 @@ module.exports = function (grunt) {
             nodemon.on('config:update', function () {
               setTimeout(function () {
                 require('open')('http://localhost:8080/debug?port=5858');
-              }, 500);              
+              }, 500);
             });
           }
         }
@@ -196,7 +196,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/scripts',
-          src: '{,*/}*.coffee',
+          src: '{,**/}*.coffee',
           dest: '.tmp/scripts',
           ext: '.js'
         }]
@@ -205,7 +205,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: 'test/client/spec',
-          src: '{,*/}*.coffee',
+          src: '{,**/}*.coffee',
           dest: '.tmp/client/spec',
           ext: '.js'
         }]
@@ -499,7 +499,7 @@ module.exports = function (grunt) {
       'autoprefixer',
       'karma'
     ]);
-  });  
+  });
 
   grunt.registerTask('build', [
     'clean:dist',
