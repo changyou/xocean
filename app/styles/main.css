@@ -101,3 +101,37 @@ body {
 	color: #FFF;
 	text-decoration: none;
 }
+
+.page-line{
+	height: 1px;
+	border-top:1px solid #EBEBEB;
+	margin: 25px 0;
+}
+
+.thisWeek-item,.nextWeek-item{
+	position: relative;
+}
+.thisWeek-item .thisWeek-add,.nextWeek-item .nextWeek-add{
+	position: absolute;
+	right: 10px;
+	top: 7px;	
+	color:#DFDFDF;
+	cursor: pointer;
+	-webkit-transition:all .2s ease;
+}
+.thisWeek-item .thisWeek-add:hover,.nextWeek-item .nextWeek-add:hover{
+	color:black;
+}
+
+.thisWeek-item .thisWeek-ok{
+	color:#CACACA;
+}
+.thisWeek-item .thisWeek-ok:hover{
+	color:#76B429;
+	background-color:white;
+}
+
+.thisWeek-item .thisWeek-isok{
+	color:#76B429;
+	background-color:white;
+}
