@@ -10,6 +10,14 @@ ReportSchema = new Schema({
   subject: String
   html: String
 
+  curWeek:[{
+    done: Boolean
+    content: String
+    }]
+
+  nextWeek:[{
+    content:String
+    }]
   # 0 - draft
   # 1 - send success
   # 3 - send error

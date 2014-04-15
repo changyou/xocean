@@ -56,8 +56,8 @@
 			     <span class="input-group-btn" title="勾选表示已完成">
 			        <button class="btn btn-default thisWeek-ok" type="button"><i class="glyphicon  glyphicon-ok"></i></button>
 			      </span>
-			      <input type="text" class="form-control">
-			      <span class="thisWeek-add" title="添加一条工作总结。
+			      <input type="text" class="form-control" ng-focus="isFocus=true" ng-blur="isFocus=false">
+			      <span class="thisWeek-add" ng-show="isFocus" title="添加一条工作总结。
 快捷键：回车">
 			       <i class="glyphicon  glyphicon-plus"></i>
 			      </span>
@@ -70,7 +70,7 @@
 			<div class="col-sm-10 nextWeek-item	">
 				<div class="input-group">
 					<input type="text" class="form-control">
-					<span class="nextWeek-add" title="添加一条工作计划。
+					<span class="nextWeek-add"  ng-show="isFocus" title="添加一条工作计划。
 	快捷键：回车">
 				       <i class="glyphicon  glyphicon-plus"></i>
 				     </span>

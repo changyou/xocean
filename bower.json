@@ -10,10 +10,7 @@
     "angular-resource": "1.2.11",
     "angular-cookies": "1.2.11",
     "angular-sanitize": "1.2.11",
-    "angular-route": "1.2.11",
-    "epiceditor": "~0.2.2",
-    "markdown": "~0.5.0",
-    "SyntaxHighlighter": "~3.0.83"
+    "angular-route": "1.2.11"
   },
   "devDependencies": {
     "angular-mocks": "1.2.11",

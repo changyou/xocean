@@ -53,6 +53,7 @@ angular.module('xoceanApp')
     $scope.currentCopyer
     $scope.currentCopyers = []
 
+  
     $scope.save = ->
       if not $scope.report._id
         $scope.report = new Report $scope.report
@@ -112,3 +113,6 @@ angular.module('xoceanApp')
       for sender in arr
         return true if name != "" && sender.name == name
       return false
+
+    $scope.showAddBtn = () -> 
+      console.log 
