@@ -4,11 +4,9 @@ Emailer = require '../modules/sendmail'
 
 exports.create = (req, res, next)->
 	newReport = new Report(req.body)
-
 	newReport.userId = req.user._id
 	newReport.from = req.user.email
 	newReport.updateAt = newReport.createAt = new Date()
-
 	newReport.save (err)->
 		return res.json(400, err) if err
 		res.json newReport.toObject()
