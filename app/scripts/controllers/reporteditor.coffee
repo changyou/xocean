@@ -55,6 +55,10 @@ angular.module('xoceanApp')
 
     if not $scope.report.curWeek then $scope.report.curWeek = [ { done: false, content: ""} ]
 
+    if not $scope.report.nextWeek then $scope.report.nextWeek = [{content: ""}]
+
+
+
     $scope.save = ->
       if not $scope.report._id
         $scope.report = new Report $scope.report
@@ -128,3 +132,32 @@ angular.module('xoceanApp')
     $scope.removeCurWeek = (index) ->
       if $scope.report.curWeek[index] then $scope.report.curWeek.splice(index,1)
       return  
+
+     # 增加一条本周工作记录
+    $scope.addNextWeek = () -> 
+      $scope.report.nextWeek.push({content: ""})
+      return
+
+    $scope.removeNextWeek = (index) ->
+      if $scope.report.nextWeek[index] then $scope.report.nextWeek.splice(index,1)
+      return
+
+    $scope.curAddHK = (e) ->
+     
+      if e.keyCode == 13  
+        e.preventDefault()
+        $scope.addCurWeek()
+       
+      return 
+
+    $scope.nextAddHK = (e) ->
+     
+      if e.keyCode == 13 
+        e.preventDefault()
+        $scope.addNextWeek()
+       
+      return 
+
+    return 
+
+ 

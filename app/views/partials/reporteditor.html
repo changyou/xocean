@@ -54,16 +54,39 @@
 			<div class="col-sm-10">
 				<div class="thisWeek-item" ng-repeat="cwItem in report.curWeek">
 					 <div class="input-group">
-					     <span class="input-group-btn" ng-click="cwToggleDone($index)" title="勾选表示已完成" >
-					        <button ng-class="{true:'btn btn-default thisWeek-isok',false:'btn btn-default thisWeek-ok'}[cwItem.done]" type="button">
+					     <span 
+					     	class="input-group-btn" 
+					     	ng-click="cwToggleDone($index)" 
+					     	title="勾选表示已完成" >
+
+					        <button 
+					        	ng-class="{true:'btn btn-default thisWeek-isok',false:'btn btn-default thisWeek-ok'}[cwItem.done]" 
+					        	type="button">
 					        	<i class="glyphicon  glyphicon-ok"></i>
 					        </button>
 					      </span>
-					      <input type="text" class="form-control" ng-focus="isFocus=true" ng-blur="isFocus=false" ng-bind="cwItem.content" ng-model="cwItem.content">
-					      <span class="thisWeek-remove" ng-show="isFocus&&!$first" ng-click="removeCurWeek($index)" title="删除一条工作总结">
-					       <i class="glyphicon  glyphicon-minus"></i>
+					      <input 
+						      type="text" 
+						      class="form-control" 
+						      ng-focus="isFocus=true" 
+						      ng-blur="isFocus=false" 
+						      ng-bind="cwItem.content" 
+						      ng-model="cwItem.content"
+						      ng-curFocus="$last&&!$first"
+							  ng-keydown="curAddHK($event)">
+					      <span 
+						      class="thisWeek-remove" 
+						      ng-show="isFocus&&!$first"  
+						      ng-click="removeCurWeek($index)" 
+						      title="删除一条工作总结">
+					       	<i class="glyphicon  glyphicon-minus"></i>
 					      </span>
-					      <span class="thisWeek-add" ng-show="isFocus" ng-click="addCurWeek()" title="添加一条工作总结 快捷键：回车">
+
+					      <span 
+						      class="thisWeek-add" 
+						      ng-show="isFocus" 
+						      ng-click="addCurWeek()" 
+						      title="添加一条工作总结 快捷键：回车">
 					       <i class="glyphicon  glyphicon-plus"></i>
 					      </span>
 				    </div>
@@ -72,16 +95,35 @@
 		</div>
 		<div class="page-line"></div>
 		<div class="form-group">
-			<label for="subject" class="col-sm-2 control-label">下周工作计划 </label>
-			<div class="col-sm-10 nextWeek-item	">
-				<div class="input-group">
-					<input type="text" class="form-control">
-					<span class="nextWeek-add"  ng-show="isFocus" title="添加一条工作计划。
-	快捷键：回车">
-				       <i class="glyphicon  glyphicon-plus"></i>
-				     </span>
+			<label for="subject" class="col-sm-2 control-label">下周工作计划</label>
+			<div class="col-sm-10">
+				<div class="nextWeek-item" ng-repeat="nxItem in report.nextWeek">
+					<div class="input-group">
+						<input 
+							type="text" 
+							class="form-control" 
+							ng-init="isNextFocus=false" 
+							ng-focus="isNextFocus=true" 
+							ng-blur="isNextFocus=false" 
+							ng-model="nxItem.content" 
+							ng-bind="nxItem.content" 	
+							ng-curFocus="$last&&!$first"
+							ng-keydown="nextAddHK($event)">
+
+						<span 
+							class="nextWeek-remove" 
+							ng-show="isNextFocus&&!$first" 
+							ng-click="removeNextWeek($index)" 
+							title="删除一条工作计划">
+
+					       <i class="glyphicon  glyphicon-minus"></i>
+					    </span>
+						<span class="nextWeek-add"  ng-hide="!isNextFocus" title="添加一条工作计划。 快捷键：回车" ng-click="addNextWeek()">
+					       <i class="glyphicon  glyphicon-plus"></i>
+					    </span>
+					</div>
 				</div>
-			</div>
+			</div> 
 		</div>
 		<div class="page-line"></div>
 		<div class="form-group">
