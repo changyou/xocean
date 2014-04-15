@@ -10,14 +10,9 @@ ReportSchema = new Schema({
   subject: String
   html: String
 
-  curWeek:[{
-    done: Boolean
-    content: String
-    }]
+  curWeek:[Schema.Types.Mixed]
 
-  nextWeek:[{
-    content:String
-    }]
+  nextWeek:[Schema.Types.Mixed]
   # 0 - draft
   # 1 - send success
   # 3 - send error
