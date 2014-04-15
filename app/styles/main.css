@@ -111,6 +111,7 @@ body {
 
 .thisWeek-item,.nextWeek-item{
 	position: relative;
+	margin-bottom: 15px;
 }
 .thisWeek-item .thisWeek-add,.nextWeek-item .nextWeek-add{
 	position: absolute;
@@ -119,6 +120,17 @@ body {
 	color:#DFDFDF;
 	cursor: pointer;
 	-webkit-transition:all .2s ease;
+}
+.thisWeek-item .thisWeek-remove,.nextWeek-item .nextWeek-remove{
+	position: absolute;
+	right: 30px;
+	top: 7px;	
+	color:#DFDFDF;
+	cursor: pointer;
+	-webkit-transition:all .2s ease;
+}
+.thisWeek-item .thisWeek-remove:hover,.nextWeek-item .nextWeek-remove:hover{
+	color:black;
 }
 .thisWeek-item .thisWeek-add:hover,.nextWeek-item .nextWeek-add:hover{
 	color:black;
@@ -138,6 +150,7 @@ body {
 	color:#76B429;
 	background-color:white;
 }
+
  
 /* login page */
 .square-gradient-bar {

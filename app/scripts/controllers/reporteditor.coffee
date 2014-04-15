@@ -53,7 +53,8 @@ angular.module('xoceanApp')
     $scope.currentCopyer
     $scope.currentCopyers = []
 
-  
+    if not $scope.report.curWeek then $scope.report.curWeek = [ { done: false, content: ""} ]
+
     $scope.save = ->
       if not $scope.report._id
         $scope.report = new Report $scope.report
@@ -114,5 +115,16 @@ angular.module('xoceanApp')
         return true if name != "" && sender.name == name
       return false
 
-    $scope.showAddBtn = () -> 
-      console.log 
+    # 增加一条本周工作记录
+    $scope.addCurWeek = () -> 
+      $scope.report.curWeek.push({ done: false, content: ""})
+      return
+
+    # 改变工作记录的状态
+    $scope.cwToggleDone = (index) ->
+      $scope.report.curWeek[index].done = $scope.report.curWeek[index].done == false ? true : false;
+
+    # 删除一条本周工作记录
+    $scope.removeCurWeek = (index) ->
+      if $scope.report.curWeek[index] then $scope.report.curWeek.splice(index,1)
+      return  
