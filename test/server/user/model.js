@@ -9,16 +9,20 @@ var user;
 
 describe('User Model', function() {
   before(function(done) {
-    user = new User({
-      provider: 'local',
-      name: 'Fake User',
-      email: 'test@test.com',
-      password: 'password'
+    this.timeout(5000);
+    require('../../../lib/config/dummydata')(function() {
+      user = new User({
+        provider: 'local',
+        name: 'Fake User',
+        email: 'test@test.com',
+        password: 'password',
+        status: '0'
+      });
+      
+      // Clear users before testing
+      User.remove().exec();
+      done();
     });
-
-    // Clear users before testing
-    User.remove().exec();
-    done();
   });
 
   afterEach(function(done) {
@@ -34,11 +38,12 @@ describe('User Model', function() {
   });
 
   it('should fail when saving a duplicate user', function(done) {
-    user.save();
-    var userDup = new User(user);
-    userDup.save(function(err) {
-      should.exist(err);
-      done();
+    user.save(function() {
+      var userDup = new User(user);
+      userDup.save(function(err) {
+        should.exist(err);
+        done();
+      });
     });
   });
 

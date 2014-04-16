@@ -31,7 +31,7 @@
 					<div class="input-action pull-left">
 						<input type="text" class="input-name" value="{{currentSender}}" ng-change="autoComplateSender(currentSender)" ng-model="currentSender" autofocus="autofocus" placeholder="添加收件人">
 					
-						<div class="fn-autoComplate" ng-if="currentSenders">
+						<div class="fn-autoComplate" ng-if="currentSenders" typeahead>
 							<a href="javascript:void(0);" class="item" ng-repeat="sender in currentSenders" ng-click="addSender(sender.name)">{{sender.name}}&nbsp;&nbsp;&lt;{{sender.email}}&gt;</a>
 						</div>
 					</div>
