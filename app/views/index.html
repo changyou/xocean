@@ -18,6 +18,7 @@
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="vendor/editor/themes/default/css/umeditor.css" />
     <!-- endbuild -->
   </head>
   <body ng-app="xoceanApp">
@@ -32,7 +33,7 @@
         <div class="container" ng-view=""></div>
 
     </div>
-    
+
     <!--<div class="footer">
       <div class="container">
         <p class="text-muted">CYNadFe</p>
@@ -67,6 +68,10 @@
     <!-- endbower -->
     <!-- endbuild -->
 
+    <script type="text/javascript" src="vendor/editor/umeditor.config.js"></script>
+    <script type="text/javascript" src="vendor/editor/umeditor.js"></script>
+    <script type="text/javascript" src="vendor/editor/lang/zh-cn/zh-cn.js"></script>
+
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
@@ -78,10 +83,11 @@
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/user.js"></script>
         <script src="scripts/directives/mongooseError.js"></script>
-        <script src="scripts/controllers/Report.js"></script>
+        <script src="scripts/directives/mdeditor.js"></script>
         <script src="scripts/controllers/report.js"></script>
         <script src="scripts/services/report.js"></script>
         <script src="scripts/controllers/reportEditor.js"></script>
         <!-- endbuild -->
+
 </body>
 </html>

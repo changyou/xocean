@@ -1,5 +1,5 @@
 
-<div class="row">
+<div class="row" ng-if="user.email">
   <div class="col-sm-12">
     <h1>Hello,{{user.email}}!</h1>
   </div>
@@ -75,6 +75,11 @@
 
       <button class="btn btn-lg btn-primary" type="submit">Sign up</button>
     </form>
+  </div>
+</div>
+<div ng-if="user.err">
+  <div class="col-sm-12">
+    <h1>Sorry,{{user.err}}!</h1>
   </div>
 </div>
 
