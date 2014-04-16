@@ -60,6 +60,7 @@ angular.module('xoceanApp')
 
 
     $scope.save = ->
+
       if not $scope.report._id
         $scope.report = new Report $scope.report
         $scope.report.$create()
@@ -120,44 +121,40 @@ angular.module('xoceanApp')
       return false
 
     # 增加一条本周工作记录
-    $scope.addCurWeek = () -> 
-      $scope.report.curWeek.push({ done: false, content: ""})
+    $scope.addCurWeek = (e) ->
+      if e&&e.keyCode == 13 
+        e.preventDefault() 
+        $scope.report.curWeek.push({ done: false, content: ""})
+      else if e.type=="click"
+        $scope.report.curWeek.push({ done: false, content: ""})
       return
 
     # 改变工作记录的状态
     $scope.cwToggleDone = (index) ->
       $scope.report.curWeek[index].done = $scope.report.curWeek[index].done == false ? true : false;
+      return 
 
     # 删除一条本周工作记录
     $scope.removeCurWeek = (index) ->
       if $scope.report.curWeek[index] then $scope.report.curWeek.splice(index,1)
       return  
 
-     # 增加一条本周工作记录
-    $scope.addNextWeek = () -> 
-      $scope.report.nextWeek.push({content: ""})
+     # 增加一条下周工作记录
+    $scope.addNextWeek = (e) ->
+      
+      if e&&e.keyCode == 13 
+        e.preventDefault()
+        $scope.report.nextWeek.push({content: ""})
+      else if e.type=="click"
+        $scope.report.nextWeek.push({content: ""})
       return
 
+    # 删除一条下周工作
     $scope.removeNextWeek = (index) ->
       if $scope.report.nextWeek[index] then $scope.report.nextWeek.splice(index,1)
       return
 
-    $scope.curAddHK = (e) ->
+  
      
-      if e.keyCode == 13  
-        e.preventDefault()
-        $scope.addCurWeek()
-       
-      return 
-
-    $scope.nextAddHK = (e) ->
      
-      if e.keyCode == 13 
-        e.preventDefault()
-        $scope.addNextWeek()
-       
-      return 
-
-    return 
-
  
