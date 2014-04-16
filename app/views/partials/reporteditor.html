@@ -14,11 +14,11 @@
 			<div class="col-sm-10 sender-group clearfix">
 				<span ng-repeat="sender in senders" title="点击删除" ng-click="removeSender(sender.name)" class="label label-success select-item pull-left">{{sender.name}}</span>
 				
-				<div class="input-action pull-left">
-					<input type="text" class="input-name" value="{{currentSender}}" ng-change="autoComplateSender(currentSender)" ng-model="currentSender" autofocus="autofocus" placeholder="添加收件人">
+				<div class="input-action pull-left" ng-actips="currentSenders">
+					<input type="text" class="input-name" value="{{currentSender}}" ng-change="autoComplateSender(currentSender)" ng-model="currentSender" autofocus="autofocus" placeholder="添加收件人" ng-keydown="chooseSender($event)">
 				
 					<div class="fn-autoComplate" ng-if="currentSenders">
-						<a href="javascript:void(0);" class="item" ng-repeat="sender in currentSenders" ng-click="addSender(sender.name)">{{sender.name}}</a>
+						<a href="javascript:void(0);" ng-class="{true:'item item-active',false:'item'}[$index==curindex]" ng-repeat="sender in currentSenders" ng-click="addSender(sender.name)"  >{{sender.name}}</a>
 					</div>
 				</div>
 			</div>
@@ -31,11 +31,11 @@
 			<div class="col-sm-10 copyer-group clearfix">
 				<span ng-repeat="copyer in copyers" title="点击删除" ng-click="removeCopyer(copyer.name)" class="label label-primary select-item pull-left">{{copyer.name}}</span>
 				
-				<div class="input-action pull-left">
-					<input type="text" class="input-name" value="{{currentCopyer}}" ng-change="autoComplateCopyer(currentCopyer)" ng-model="currentCopyer" placeholder="添加抄送人">
+				<div class="input-action pull-left" ng-actips="currentCopyers">
+					<input type="text" class="input-name" value="{{currentCopyer}}" ng-change="autoComplateCopyer(currentCopyer)" ng-model="currentCopyer" placeholder="添加抄送人"  ng-keydown="chooseSender($event)">
 				
 					<div class="fn-autoComplate" ng-if="currentCopyers">
-						<a href="javascript:void(0);" class="item" ng-repeat="copyer in currentCopyers" ng-click="addCopyer(copyer.name)">{{copyer.name}}</a>
+						<a href="javascript:void(0);" ng-class="{true:'item item-active',false:'item'}[$index==curindex]" ng-repeat="copyer in currentCopyers" ng-click="addCopyer(copyer.name)">{{copyer.name}}</a>
 					</div>
 				</div>
 			</div>

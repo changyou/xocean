@@ -102,6 +102,12 @@ body {
 	text-decoration: none;
 }
 
+.input-action .fn-autoComplate .item-active {
+	background-color: #999;
+	color: #FFF;
+	text-decoration: none;
+}
+
  
 .page-line{
 	height: 1px;
