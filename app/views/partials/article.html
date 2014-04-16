@@ -1,0 +1,33 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>No</th>
+			<th>Subject</th>
+			<th>Content</th>
+			<th>CreateTime</th>
+		</tr>
+	</thead>
+	<tr ng-repeat="article in list">
+		<td>{{$index + 1}}</td>
+		
+		<td>
+			{{article.subject}}
+		</td>
+		<td>
+			{{article.content}}
+		</td>
+		<td>
+			{{article.createAt}}
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="4" class="well text-center" ng-if="!list.length">
+			<p>记录为空！</p>
+			<p>
+				<a href="/article/edit" class="btn btn-primary"> 创建 </a>
+			</p>
+		</td>
+	</tr>
+
+</table>
