@@ -60,12 +60,10 @@ angular.module('xoceanApp')
 
 
     $scope.save = ->
-
       if not $scope.report._id
         $scope.report = new Report $scope.report
         $scope.report.$create()
       else
-
         $scope.report.$save()
 
 

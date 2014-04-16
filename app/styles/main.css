@@ -112,6 +112,7 @@ body {
 .thisWeek-item,.nextWeek-item{
 	position: relative;
 	margin-bottom: 15px;
+
 }
 .thisWeek-item .thisWeek-add,.nextWeek-item .nextWeek-add{
 	position: absolute;
@@ -139,6 +140,7 @@ body {
 	width: 100%;
 }
 .thisWeek-item .thisWeek-ok{
+	outline:none;
 	color:#CACACA;
 }
 .thisWeek-item .thisWeek-ok:hover{
@@ -147,8 +149,9 @@ body {
 }
 
 .thisWeek-item .thisWeek-isok{
-	color:#76B429;
-	background-color:white;
+	outline:none;
+	color: #FFFFFF;
+	background-color: #76B429;
 }
 
  
