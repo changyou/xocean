@@ -65,6 +65,7 @@ angular.module('xoceanApp')
         $scope.report = new Report $scope.report
         $scope.report.$create()
       else
+
         $scope.report.$save()
 
 
@@ -141,7 +142,6 @@ angular.module('xoceanApp')
 
      # 增加一条下周工作记录
     $scope.addNextWeek = (e) ->
-      
       if e&&e.keyCode == 13 
         e.preventDefault()
         $scope.report.nextWeek.push({content: ""})

@@ -30,7 +30,8 @@ exports.update = (req, res, next)->
 		report.to = req.body.to
 		report.cc = req.body.cc
 		report.updateAt = new Date()
-
+		report.curWeek = req.body.curWeek
+		report.nextWeek = req.body.nextWeek
 		report.save (err)->
 			return res.json(400, err) if err
 
