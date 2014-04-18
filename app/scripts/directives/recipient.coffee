@@ -16,20 +16,20 @@ angular.module('xoceanApp')
             return
 
         scope.chooseSender = (e)->
-           if e.keyCode == 13        #enter
-               e.preventDefault()
-               scope.addSender scope.currentSenders[scope.curindex].name if scope.currentSenders.length>0
-               scope.currentSender=""
-           else if e.keyCode == 38 #up
-               e.preventDefault()
-               if scope.curindex > 0 then --scope.curindex
-           else if e.keyCode == 40 #down
-               e.preventDefault()
-               if scope.curindex < sendersLength-1 then ++scope.curindex
-           else if e.keyCode == 8
-               if (scope.senderArrTemp.length > 0 && !scope.currentSender)
-                 scope.senderArrTemp.pop()
-           return
+          if e.keyCode == 13        #enter
+             e.preventDefault()
+             scope.addSender scope.currentSenders[scope.curindex].name if scope.currentSenders.length>0
+             scope.currentSender=""
+          else if e.keyCode == 38 #up
+             e.preventDefault()
+             if scope.curindex > 0 then --scope.curindex
+          else if e.keyCode == 40 #down
+             e.preventDefault()
+             if scope.curindex < sendersLength-1 then ++scope.curindex
+          else if e.keyCode == 8
+             if (scope.senderArrTemp.length > 0 && !scope.currentSender)
+               scope.senderArrTemp.pop()
+          return
 
     controller: ($scope,User) ->
 
@@ -85,7 +85,6 @@ angular.module('xoceanApp')
           return false
 
         queryUserByEmail = (emails) ->
-
           arr = []
           for email in emails
             for user in allUser

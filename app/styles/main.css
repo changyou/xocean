@@ -187,4 +187,6 @@ body {
 	margin-right: 17px;
 }
  
- 
+.editor-wrap {
+	width: 100%;
+}

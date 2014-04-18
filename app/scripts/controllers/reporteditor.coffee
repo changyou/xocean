@@ -28,17 +28,20 @@ angular.module('xoceanApp')
       if not reports then return
       $scope.report.cc = reports
 
-
+    $scope.errorFlag = false
     $scope.save = ->
-      if not $scope.report._id
-        $scope.report = new Report $scope.report
-        $scope.report.$create()
+      if $scope.reportForm.$valid
+        if not $scope.report._id
+          $scope.report = new Report $scope.report
+          $scope.report.$create()
+        else
+          $scope.report.$save()
       else
-        $scope.report.$save()
+        $scope.errorFlag = true
 
     $scope.send = ->
-      if confirm('确定发送？')
-        $scope.report.$postMail()
+      $scope.save()
+      $scope.report.$postMail()
           # .success ->
           #   $location.url("/report")
 
@@ -74,4 +77,4 @@ angular.module('xoceanApp')
     $scope.removeNextWeek = (index) ->
       if $scope.report.nextWeek[index] then $scope.report.nextWeek.splice(index,1)
       return
-
+ 
