@@ -5,6 +5,12 @@ angular.module('xoceanManage')
 		return $resource('/api/manage/users/:id', {
 				id: "@id"
 			}, {
+				create: {
+					method: 'POST'
+				}
+				save: {
+					method: 'PUT'
+				}
 				get: {
 					method: 'GET'
 				}

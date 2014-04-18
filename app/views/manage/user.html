@@ -6,26 +6,26 @@
 </div>
 
 <div ng-class="{true:'form-wrap mtb20 clearfix', false:'hidden'}[isAdd]">
-<form class="pull-right form-inline" name="addUserForm">
-	<div class="form-group">
-		<input type="text" class="form-control" placeholder="username" required
-			ng-model="newUser.username"
-			>
-	</div>
-	<div class="form-group">
-		<input type="email" class="form-control" placeholder="email" required
-			ng-model="newUser.email"
-			>
-	</div>
-	<button class="btn btn-default thisWeek-ok"><i class="glyphicon  glyphicon-ok"></i></button>
-</form>
+	<form class="pull-right form-inline">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="name" required
+				ng-model="newUser.name"
+				>
+		</div>
+		<div class="form-group">
+			<input type="email" class="form-control" placeholder="email" required
+				ng-model="newUser.email"
+				>
+		</div>
+		<button class="btn btn-default thisWeek-ok" ng-click="addUserTem(event)"><i class="glyphicon  glyphicon-ok"></i></button>
+	</form>
 </div>
 
 <table class="table table-hover">
 	<thead>
 		<tr>
 			<th>Id</th>
-			<th>Username</th>
+			<th>name</th>
 			<th>Email</th>
 			<th>Status</th>
 			<th>role</th>
@@ -34,7 +34,7 @@
 	</thead>
 	<tr ng-repeat="user in list">
 		<td><input type="checkbox" name="userId" value="{{user._id}}"/></td>
-		<td>
+		<td contentEditable="true">
 			{{user.name}}
 		</td>
 		<td>
@@ -54,7 +54,7 @@
 
 	<tr ng-if="isAdd">
 		<td></td>
-		<td>{{newUser.username}}</td>
+		<td>{{newUser.name}}</td>
 		<td>{{newUser.email}}</td>
 		<td></td><td></td><td></td>
 	</tr>
