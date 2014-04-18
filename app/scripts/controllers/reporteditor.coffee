@@ -77,4 +77,7 @@ angular.module('xoceanApp')
     $scope.removeNextWeek = (index) ->
       if $scope.report.nextWeek[index] then $scope.report.nextWeek.splice(index,1)
       return
- 
+
+    $scope.showTip= (e)->
+      $(e.currentTarget).tooltip('show')
+      return

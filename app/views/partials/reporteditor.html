@@ -29,18 +29,18 @@
                 <div class="thisWeek-item" ng-repeat="cwItem in report.curWeek">
                      <div class="input-group">
                          <span 
-
-                            class="input-group-btn" 
+                            data-placement="left" 
+                            ng-mouseover="showTip($event)"
+                            class="input-group-btn doneBtn" 
                             ng-click="cwToggleDone($index)" 
                             title="勾选表示已完成" >
 
                             <button 
-                                id="doneBtn"
+
                                 ng-class="{true:'btn btn-default thisWeek-isok',false:'btn btn-default thisWeek-ok'}[cwItem.done]" 
                                 type="button">
                                 <i class="glyphicon  glyphicon-ok"></i>
                             </button>
-                          
                           </span>
 
                           <input 
@@ -59,6 +59,8 @@
                               class="thisWeek-remove" 
                               ng-show="isFocus&&!$first"  
                               ng-click="removeCurWeek($index)" 
+                              data-placement="left" 
+                              ng-mouseover="showTip($event)"
                               title="删除一条工作总结">
                             <i class="glyphicon  glyphicon-minus"></i>
                           </span> 
@@ -67,6 +69,8 @@
                               class="thisWeek-add" 
                               ng-show="isFocus" 
                               ng-click="addCurWeek($event)" 
+                              data-placement="left" 
+                              ng-mouseover="showTip($event)"
                               title="添加一条工作总结 快捷键：回车">
                            <i class="glyphicon  glyphicon-plus"></i>
                           </span>
@@ -97,11 +101,15 @@
                             class="nextWeek-remove" 
                             ng-show="isNextFocus&&!$first" 
                             ng-click="removeNextWeek($index)" 
+                            data-placement="left" 
+                            ng-mouseover="showTip($event)"
                             title="删除一条工作计划">
 
                            <i class="glyphicon  glyphicon-minus"></i>
                         </span>
-                        <span class="nextWeek-add"  ng-hide="!isNextFocus" title="添加一条工作计划。 快捷键：回车" ng-click="addNextWeek($event)">
+                        <span class="nextWeek-add"  ng-hide="!isNextFocus" data-placement="left" 
+                              ng-mouseover="showTip($event)"
+                              title="添加一条工作计划 快捷键：回车" ng-click="addNextWeek($event)">
                            <i class="glyphicon  glyphicon-plus"></i>
                         </span>
                     </div>
