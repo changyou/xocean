@@ -1,12 +1,12 @@
 <div class="sender-group clearfix" >
-	<span ng-repeat="sender in senders" title="点击删除" ng-click="removeSender(sender.name)" class="label label-success select-item pull-left">{{sender.name}}</span>
-	
-	<div class="input-action pull-left">
-		<input type="text" class="input-name" value="{{currentSender}}" ng-change="autoComplateSender(currentSender)" ng-model="currentSender" autofocus="autofocus" placeholder="添加收件人" ng-keydown="chooseSender($event)">
-	
-		<div class="fn-autoComplate" ng-if="currentSenders">
-			<a href="javascript:void(0);" ng-class="{true:'item item-active',false:'item'}[$index==curindex]" ng-repeat="sender in currentSenders" ng-click="addSender(sender.name)"  >{{sender.name}}&nbsp;&nbsp;&lt;{{sender.email}}&gt;</a>
+    <span ng-repeat="sender in senderArrTemp" title="点击删除" ng-click="removeSender(sender.name)" class="label {{curClass}} select-item pull-left">{{sender.name}}</span>
+    
+    <div class="input-action pull-left">
+        <input type="text" class="input-name" value="{{currentSender}}" ng-change="autoComplateSender(currentSender)" ng-model="currentSender" autofocus="autofocus" placeholder="添加收件人" ng-keydown="chooseSender($event)">
+    
+        <div class="fn-autoComplate" ng-if="currentSenders">
+            <a href="javascript:void(0);" ng-class="{true:'item item-active',false:'item'}[$index==curindex]" ng-repeat="sender in currentSenders" ng-click="addSender(sender.name)"  >{{sender.name}}&nbsp;&nbsp;&lt;{{sender.email}}&gt;</a>
 
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
