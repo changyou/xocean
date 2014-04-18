@@ -104,10 +104,60 @@ body {
 	text-decoration: none;
 }
 
-
 /* 快速收件人 */
 .quick-add {
 	margin-right: 17px;
+}
+
+.page-line{
+	height: 1px;
+	border-top:1px solid #EBEBEB;
+	margin: 25px 0;
+}
+
+.thisWeek-item,.nextWeek-item{
+	position: relative;
+	margin-bottom: 15px;
+
+}
+.thisWeek-item .thisWeek-add,.nextWeek-item .nextWeek-add{
+	position: absolute;
+	right: 10px;
+	top: 7px;	
+	color:#DFDFDF;
+	cursor: pointer;
+	-webkit-transition:all .2s ease;
+}
+.thisWeek-item .thisWeek-remove,.nextWeek-item .nextWeek-remove{
+	position: absolute;
+	right: 30px;
+	top: 7px;	
+	color:#DFDFDF;
+	cursor: pointer;
+	-webkit-transition:all .2s ease;
+}
+.thisWeek-item .thisWeek-remove:hover,.nextWeek-item .nextWeek-remove:hover{
+	color:black;
+}
+.thisWeek-item .thisWeek-add:hover,.nextWeek-item .nextWeek-add:hover{
+	color:black;
+}
+.nextWeek-item .input-group{
+	width: 100%;
+}
+.thisWeek-item .thisWeek-ok{
+	outline:none;
+	color:#CACACA;
+}
+.thisWeek-item .thisWeek-ok:hover{
+	color:#76B429;
+	background-color:white;
+}
+
+.thisWeek-item .thisWeek-isok{
+	outline:none;
+	color: #FFFFFF;
+	background-color: #76B429;
 }
 
 /* login page */
@@ -127,3 +177,4 @@ body {
 	margin-bottom: 30px;
 	margin-top: 10px;
 }
+ 

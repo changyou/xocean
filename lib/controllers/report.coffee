@@ -4,11 +4,9 @@ Emailer = require '../modules/sendmail'
 
 exports.create = (req, res, next)->
 	newReport = new Report(req.body)
-
 	newReport.userId = req.user._id
 	newReport.from = req.user.email
 	newReport.updateAt = newReport.createAt = new Date()
-
 	newReport.save (err)->
 		return res.json(400, err) if err
 		res.json newReport.toObject()
@@ -32,7 +30,8 @@ exports.update = (req, res, next)->
 		report.to = req.body.to
 		report.cc = req.body.cc
 		report.updateAt = new Date()
-
+		report.curWeek = req.body.curWeek
+		report.nextWeek = req.body.nextWeek
 		report.save (err)->
 			return res.json(400, err) if err
 

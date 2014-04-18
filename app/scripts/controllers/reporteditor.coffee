@@ -1,26 +1,14 @@
 angular.module('xoceanApp')
   .controller 'ReporteditorCtrl', ($scope, $location, Report, User, id) ->
 
-    $scope.report = if not id then {} else Report.get { id: id }
-
-    initContacts = (report) ->
-      
-      return
-
-    # 发件人列表
-    $scope.senders = if not id then [] else initContacts(Report.get {id: id}, )
-
-    # 抄送人列表
-    $scope.copyers = [{
+    # 默认抄送
+    defaultCopyer = [{
       "name": "陈宁"
       "email": "chenning@cyou-inc.com"
     }, {
       "name": "石山松"
       "email": "shishansong@cyou-inc.com"
     }]
-
-    # 所有用户数据源模拟
-    allUser = User.query()
 
     # 各个组的快速发件人配置
     senderConfig = {
@@ -53,6 +41,40 @@ angular.module('xoceanApp')
       }]
     }
 
+    # 判断数组中是否含有当前名字的人
+    isContainUser = (arr, name) ->
+      for user in arr
+        return true if name != "" && user.name == name
+      return false
+
+    # 获取所有联系人
+    getContacts = (users) ->
+      if users == undefined
+        return
+      emailArr = []
+      for user in users
+        emailArr.push(user.email)
+      return emailArr.join(',');
+
+    $scope.report = if not id then {} else Report.get({id: id})
+
+    if not $scope.report.to then $scope.report.to = "zhoushufeng@cyou-inc.com,zhoushufeng@cyou-inc.com"
+
+    if not $scope.report.cc then $scope.report.cc = ""
+
+    if not $scope.report.curWeek then $scope.report.curWeek = [{ done: false, content: ""}]
+
+    if not $scope.report.nextWeek then $scope.report.nextWeek = [{content: ""}]
+
+    # 发件人列表
+    $scope.senders = []
+
+    # 抄送人列表
+    $scope.copyers = []
+
+    # 所有用户数据源模拟
+    allUser = User.query()
+
     # 用户当前输入发件人
     $scope.currentSender = ""
     $scope.currentSenders = []
@@ -60,6 +82,12 @@ angular.module('xoceanApp')
     # 用户当前输入发件人
     $scope.currentCopyer = ""
     $scope.currentCopyers = []
+
+    $scope.$watch "report", ()->
+      $scope.senders = $scope.report.to.split(',')
+      $scope.copyers = $scope.report.cc.split(',')
+      console.log $scope.report.to
+      console.log $scope.senders
 
     $scope.save = ->
       if not $scope.report._id
@@ -123,20 +151,35 @@ angular.module('xoceanApp')
       arr = senderConfig[groupId]
       $scope.senders = arr if arr
 
-    # 判断数组中是否含有当前名字的人
-    isContainUser = (arr, name) ->
-      for user in arr
-        return true if name != "" && user.name == name
-      return false
+    # 增加一条本周工作记录
+    $scope.addCurWeek = (e) ->
+      if e&&e.keyCode == 13 
+        e.preventDefault() 
+        $scope.report.curWeek.push({ done: false, content: ""})
+      else if e.type=="click"
+        $scope.report.curWeek.push({ done: false, content: ""})
+      return
 
-    # 获取所有联系人
-    getContacts = (users) ->
-      if users == undefined
-        return
-      emailArr = []
-      for user in users
-        emailArr.push(user.email)
-      console.log(emailArr.join(','))
-      return emailArr.join(',');
-      
-    return
+    # 改变工作记录的状态
+    $scope.cwToggleDone = (index) ->
+      $scope.report.curWeek[index].done = $scope.report.curWeek[index].done == false ? true : false;
+      return 
+
+    # 删除一条本周工作记录
+    $scope.removeCurWeek = (index) ->
+      if $scope.report.curWeek[index] then $scope.report.curWeek.splice(index,1)
+      return  
+
+     # 增加一条下周工作记录
+    $scope.addNextWeek = (e) ->
+      if e&&e.keyCode == 13 
+        e.preventDefault()
+        $scope.report.nextWeek.push({content: ""})
+      else if e.type=="click"
+        $scope.report.nextWeek.push({content: ""})
+      return
+
+    # 删除一条下周工作
+    $scope.removeNextWeek = (index) ->
+      if $scope.report.nextWeek[index] then $scope.report.nextWeek.splice(index,1)
+      return
