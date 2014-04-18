@@ -1,27 +1,39 @@
-<!--
-<ul>
-	<li>添加用户-批量添加</li>
-	<li>修改用户信息</li>
-	<li>修改用户权限</li>
-	<li>excel导入</li>
-	<li>用户列表</li>
-	<li>发送用户邮件（重新发送）</li>
-</ul>
- -->
-<a href="/user/new" class="btn btn-purple pull-right">Send</a>
+
+<div class="btn-wrap mtb20 clearfix" ng-init="isAdd=false">
+	<button class="btn btn-purple glyphicon glyphicon-envelope pull-right">Send</button>
+	<button ng-class="{true:'btn btn-primary glyphicon glyphicon-floppy-disk pull-right', false:'hidden'}[isAdd]" ng-click="isAdd=false">Save</button>
+	<button ng-class="{true:'hidden', false:'btn btn-success glyphicon glyphicon-plus pull-right'}[isAdd]" class="" ng-click="isAdd=true" >Add</button>
+</div>
+
+<div ng-class="{true:'form-wrap mtb20 clearfix', false:'hidden'}[isAdd]">
+<form class="pull-right form-inline" name="addUserForm">
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="username" required
+			ng-model="newUser.username"
+			>
+	</div>
+	<div class="form-group">
+		<input type="email" class="form-control" placeholder="email" required
+			ng-model="newUser.email"
+			>
+	</div>
+	<button class="btn btn-default thisWeek-ok"><i class="glyphicon  glyphicon-ok"></i></button>
+</form>
+</div>
+
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<th>No</th>
+			<th>Id</th>
 			<th>Username</th>
 			<th>Email</th>
 			<th>Status</th>
+			<th>role</th>
 			<th>Manage</th>
 		</tr>
 	</thead>
-
 	<tr ng-repeat="user in list">
-		<td>{{$index + 1}}</td>
+		<td><input type="checkbox" name="userId" value="{{user._id}}"/></td>
 		<td>
 			{{user.name}}
 		</td>
@@ -32,9 +44,19 @@
 			<span class="label label-default" ng-switch-when="0">未注册</span>
 			<span class="label label-success" ng-switch-when="1">已注册</span>
 		</td>
-		<td ng-switch on="user.status">
-			<a href="javascript:void(0)" ng-click="send(user._id)" ng-switch-when="0">重新发送</a>
+		<td>
+			{{user.role}}
 		</td>
+		<td ng-switch on="user.status">
+			<a href="javascript:void(0)" ng-click="send(user._id)" ng-switch-when="0">Resend</a>
+		</td>
+	</tr>
+
+	<tr ng-if="isAdd">
+		<td></td>
+		<td>{{newUser.username}}</td>
+		<td>{{newUser.email}}</td>
+		<td></td><td></td><td></td>
 	</tr>
 
 	<tr>

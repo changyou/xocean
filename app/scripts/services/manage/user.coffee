@@ -2,15 +2,12 @@
 
 angular.module('xoceanManage')
 	.factory 'UserManage', ($resource)->
-		return $resource('/api/users/:id', {
+		return $resource('/api/manage/users/:id', {
 				id: "@id"
 			}, {
 				get: {
-					method: 'GET',
-					params: {
-						id:'me'
-					}
-				},
+					method: 'GET'
+				}
 				postMail: {
 					method: 'POST'
 				}
