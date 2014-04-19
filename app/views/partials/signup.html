@@ -52,7 +52,7 @@
 
       <div class="form-group" ng-class="{ 'has-success': form.group.$valid && submitted,
                                           'has-error': form.group.$invalid && submitted }">
-        <label>Select Group</label>
+        <label>职能组</label>
         <select name="group" class="form-control" ng-model="user.group" ng-init="user.group=''" required mongoose-error>
           <option value="">-Select One-</option>
           <option value="1">技术-应用一组</option>
@@ -67,7 +67,7 @@
 
       <div class="form-group" ng-class="{ 'has-success': form.receivers.$valid && submitted,
                                           'has-error': form.receivers.$invalid && submitted }">
-        <label>Reports Receivers(separated by "," or ";")</label>
+        <label>默认周报收件人(用","或";"分隔)</label>
         <input name="receivers" class="form-control" ng-model="user.receivers" ng-show="show1" ng-blur="showReceivers($event.currentTarget.value);" required mongoose-error/>
         <div class="form-control" ng-show="show2" ng-click="editReceivers($element)">
           <button type="button" class="btn btn-primary btn-xs" ng-repeat="receriver in showReceiversArray">{{receriver}}</button>
