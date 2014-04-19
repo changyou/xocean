@@ -57,9 +57,10 @@ body {
 }
 /* 表单模拟 */
 .sender-group, .copyer-group {
-	width: 603px;
-	padding: 5px 15px 0 15px;
-	margin-left: 15px;
+	position: relative;
+	min-height: 1px;
+	width: 100%;
+	padding: 5px 0 0 15px;
 	border: 1px solid #cccccc;
 	border-radius: 4px;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -81,11 +82,12 @@ body {
 .input-action .fn-autoComplate {
 	position: absolute;
 	background-color: #FFF;
-	width: 93px;
+	width: 255px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	left: 0;
 	top: 25px;
+	/*font-family: menlo, Consolas, "Microsoft Yahei";*/
 	z-index: 99;
 }
 .input-action .fn-autoComplate .item {
@@ -100,6 +102,65 @@ body {
 	background-color: #999;
 	color: #FFF;
 	text-decoration: none;
+}
+
+ 
+.input-action .fn-autoComplate .item-active {
+	background-color: #999;
+	color: #FFF;
+	text-decoration: none;
+}
+
+ 
+.page-line{
+	height: 1px;
+	border-top:1px solid #EBEBEB;
+	margin: 25px 0;
+}
+
+.thisWeek-item,.nextWeek-item{
+	position: relative;
+	margin-bottom: 15px;
+
+}
+.thisWeek-item .thisWeek-add,.nextWeek-item .nextWeek-add{
+	position: absolute;
+	right: 10px;
+	top: 7px;	
+	color:#DFDFDF;
+	cursor: pointer;
+	-webkit-transition:all .2s ease;
+}
+.thisWeek-item .thisWeek-remove,.nextWeek-item .nextWeek-remove{
+	position: absolute;
+	right: 30px;
+	top: 7px;	
+	color:#DFDFDF;
+	cursor: pointer;
+	-webkit-transition:all .2s ease;
+}
+.thisWeek-item .thisWeek-remove:hover,.nextWeek-item .nextWeek-remove:hover{
+	color:black;
+}
+.thisWeek-item .thisWeek-add:hover,.nextWeek-item .nextWeek-add:hover{
+	color:black;
+}
+.nextWeek-item .input-group{
+	width: 100%;
+}
+.thisWeek-item .thisWeek-ok{
+	outline:none;
+	color:#CACACA;
+}
+.thisWeek-item .thisWeek-ok:hover{
+	color:#76B429;
+	background-color:white;
+}
+
+.thisWeek-item .thisWeek-isok{
+	outline:none;
+	color: #FFFFFF;
+	background-color: #76B429;
 }
 
 /* login page */
@@ -118,4 +179,14 @@ body {
 .login-field .form-group{
 	margin-bottom: 30px;
 	margin-top: 10px;
+}
+ 
+ 
+/* 快速收件人 */
+.quick-add {
+	margin-right: 17px;
+}
+ 
+.editor-wrap {
+	width: 100%;
 }
