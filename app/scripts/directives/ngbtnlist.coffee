@@ -14,11 +14,11 @@ angular.module('xoceanApp')
         console.log scope.status 
         scope.curShow = scope.status 
         scope.cwToggleDone = (status,index) ->
-          if scope.status == status then scope.status = "none" else scope.status = status
+          scope.status = status
           scope.showlist = false
           scope.curShow = scope.status 
           return 
-          
+
     controller: ($scope) ->
         
         $scope.showlist=false
