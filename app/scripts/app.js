@@ -35,6 +35,11 @@ angular.module('xoceanApp', [
         controller: 'SettingsCtrl',
         authenticate: true
       })
+      .when('/article/list', {
+        templateUrl: 'partials/article',
+        controller: 'ArticleCtrl',
+        authenticate: true
+      })
       .when('/report', {
         templateUrl: 'partials/report',
         controller: 'ReportCtrl',

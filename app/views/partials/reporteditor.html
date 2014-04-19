@@ -1,150 +1,152 @@
 
 <ol class="breadcrumb">
-	<li><a href="/report">周报列表</a></li>
-	<li class="active">编辑</li>
+    <li><a href="/report">周报列表</a></li>
+    <li class="active">编辑</li>
 </ol>
 
 <div class="col-md-8 col-md-offset-1">
-	<form class="form-horizontal" role="form">
-		<div class="form-group">
-			<label for="to" class="col-sm-2 control-label">收件人 </label>
-			<!-- <div class="col-sm-10">
-				<input type="text" class="form-control" name="to" ng-model="report.to" placeholder="to">
-			</div> -->
-			<div class="col-sm-10 sender-group clearfix">
-				<span ng-repeat="sender in senders" title="点击删除" ng-click="removeSender(sender.name)" class="label label-success select-item pull-left">{{sender.name}}</span>
-				
-				<div class="input-action pull-left">
-					<input type="text" class="input-name" value="{{currentSender}}" ng-change="autoComplateSender(currentSender)" ng-model="currentSender" autofocus="autofocus" placeholder="添加收件人">
-				
-					<div class="fn-autoComplate" ng-if="currentSenders">
-						<a href="javascript:void(0);" class="item" ng-repeat="sender in currentSenders" ng-click="addSender(sender.name)">{{sender.name}}</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="cc" class="col-sm-2 control-label">抄送 </label>
-			<!-- <div class="col-sm-10">
-				<input type="text" class="form-control" name="cc" ng-model="report.cc" placeholder="cc">
-			</div> -->
-			<div class="col-sm-10 copyer-group clearfix">
-				<span ng-repeat="copyer in copyers" title="点击删除" ng-click="removeCopyer(copyer.name)" class="label label-primary select-item pull-left">{{copyer.name}}</span>
-				
-				<div class="input-action pull-left">
-					<input type="text" class="input-name" value="{{currentCopyer}}" ng-change="autoComplateCopyer(currentCopyer)" ng-model="currentCopyer" placeholder="添加抄送人">
-				
-					<div class="fn-autoComplate" ng-if="currentCopyers">
-						<a href="javascript:void(0);" class="item" ng-repeat="copyer in currentCopyers" ng-click="addCopyer(copyer.name)">{{copyer.name}}</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="subject" class="col-sm-2 control-label">标题 </label>
+    <form class="form-horizontal" role="form" name="reportForm" novalidate>
+        <div class="form-group">
+            <label for="to" class="col-sm-2 control-label">收件人 </label>
+            <div class="col-sm-10" recipient ng-recp-data="report.to" ng-recp-style="label-success"></div>
+        </div>
+        <div class="form-group">
+            <label for="cc" class="col-sm-2 control-label">抄送 </label>
+            <div class="col-sm-10" recipient ng-recp-data="report.cc" ng-recp-style="label-primary"></div>
+        </div>
+        <div ng-class="{true:'form-group',false:'form-group has-error'}[!reportForm.subject.$valid||!errorFlag]">
+            <label for="subject" class="col-sm-2 control-label">标题 </label>
 
-			<div class="col-sm-10">
-				<input type="text" class="form-control" name="subject" ng-model="report.subject" placeholder="Subject">
-			</div>
-		</div>
-		<!-- 本周工作总结Start -->
-		<div class="page-line"></div>
-		<div class="form-group thisWeek">
-		
-			<label for="subject" class="col-sm-2 control-label">本周工作总结 </label>
-			<div class="col-sm-10">
-				<div class="thisWeek-item" ng-repeat="cwItem in report.curWeek">
-					 <div class="input-group">
-					     <span 
-					     	class="input-group-btn" 
-					     	ng-click="cwToggleDone($index)" 
-					     	title="勾选表示已完成" >
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="subject" ng-model="report.subject" placeholder="邮件主题" required ng-required="true">
+            </div>
+        </div>
+        <!-- 本周工作总结Start -->
+        <div class="page-line"></div>
+        <div ng-class="{true:'form-group thisWeek',false:'form-group thisWeek has-error'}[!reportForm.curWeek.$valid||!errorFlag]">
+            <label for="subject" class="col-sm-2 control-label">本周工作总结 </label>
+            <div class="col-sm-10">
+                <div class="thisWeek-item" ng-repeat="cwItem in report.curWeek">
+                     <div class="input-group">
+                         <span 
+                            data-placement="left" 
+                            ng-mouseover="showTip($event)"
+                            class="input-group-btn doneBtn" 
+                            ng-click="cwToggleDone($index)" 
+                            title="勾选表示已完成" >
 
-					        <button 
-					        	ng-class="{true:'btn btn-default thisWeek-isok',false:'btn btn-default thisWeek-ok'}[cwItem.done]" 
-					        	type="button">
-					        	<i class="glyphicon  glyphicon-ok"></i>
-					        </button>
-					      </span>
+                            <button 
 
-					      <input 
-						      type="text" 
-						      class="form-control" 
-						      ng-init="isFocus=false"
-						      ng-focus="isFocus=true" 
-						      ng-blur="isFocus=false" 
-						      ng-bind="cwItem.content" 
-						      ng-model="cwItem.content"
-							  ng-keydown="addCurWeek($event)">
-					      <span 
-						      class="thisWeek-remove" 
-						      ng-show="isFocus&&!$first"  
-						      ng-click="removeCurWeek($index)" 
-						      title="删除一条工作总结">
-					       	<i class="glyphicon  glyphicon-minus"></i>
-					      </span>   
+                                ng-class="{true:'btn btn-default thisWeek-isok',false:'btn btn-default thisWeek-ok'}[cwItem.done]" 
+                                type="button">
+                                <i class="glyphicon  glyphicon-ok"></i>
+                            </button>
+                          </span>
 
-					      <span 
-						      class="thisWeek-add" 
-						      ng-show="isFocus" 
-						      ng-click="addCurWeek($event)" 
-						      title="添加一条工作总结 快捷键：回车">
-					       <i class="glyphicon  glyphicon-plus"></i>
-					      </span>
-				    </div>
-				</div>
-			</div>
-		</div>
-		<div class="page-line"></div>
-		<!-- 本周工作总结End -->
-		<!-- 下周工作计划Start -->
-		<div class="form-group">
-			<label for="subject" class="col-sm-2 control-label">下周工作计划</label>
-			<div class="col-sm-10">
-				<div class="nextWeek-item" ng-repeat="nxItem in report.nextWeek">
-					<div class="input-group">
-						<input 
-							type="text" 
-							class="form-control" 
-							ng-init="isNextFocus=false" 
-							ng-focus="isNextFocus=true" 
-							ng-blur="isNextFocus=false" 
-							ng-model="nxItem.content" 
-							ng-bind="nxItem.content" 	
-							ng-keydown="addNextWeek($event)">
+                          <input 
+                              type="text" 
+                              class="form-control" 
+                              name="curWeek"
+                              required
+                              ng-required="true"
+                              ng-init="isFocus=false"
+                              ng-focus="isFocus=true" 
+                              ng-blur="isFocus=false" 
+                              ng-bind="cwItem.content" 
+                              ng-model="cwItem.content"
+                              ng-keydown="addCurWeek($event)">
+                          <span 
+                              class="thisWeek-remove" 
+                              ng-show="isFocus&&!$first"  
+                              ng-click="removeCurWeek($index)" 
+                              data-placement="left" 
+                              ng-mouseover="showTip($event)"
+                              title="删除一条工作总结">
+                            <i class="glyphicon  glyphicon-minus"></i>
+                          </span> 
+                           
+                          <span 
+                              class="thisWeek-add" 
+                              ng-show="isFocus" 
+                              ng-click="addCurWeek($event)" 
+                              data-placement="left" 
+                              ng-mouseover="showTip($event)"
+                              title="添加一条工作总结 快捷键：回车">
+                           <i class="glyphicon  glyphicon-plus"></i>
+                          </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-line"></div>
+        <!-- 本周工作总结End -->
+        <!-- 下周工作计划Start -->
+        <div ng-class="{true:'form-group',false:'form-group has-error'}[!reportForm.nextweek.$valid||!errorFlag]" >
+            <label for="subject" class="col-sm-2 control-label">下周工作计划</label>
+            <div class="col-sm-10">
+                <div class="nextWeek-item" ng-repeat="nxItem in report.nextWeek">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            name="nextweek"
+                            class="form-control" 
+                            ng-required="true"
+                            ng-init="isNextFocus=false" 
+                            ng-focus="isNextFocus=true" 
+                            ng-blur="isNextFocus=false" 
+                            ng-model="nxItem.content" 
+                            ng-bind="nxItem.content"    
+                            ng-keydown="addNextWeek($event)">
+                        <span 
+                            class="nextWeek-remove" 
+                            ng-show="isNextFocus&&!$first" 
+                            ng-click="removeNextWeek($index)" 
+                            data-placement="left" 
+                            ng-mouseover="showTip($event)"
+                            title="删除一条工作计划">
 
-						<span 
-							class="nextWeek-remove" 
-							ng-show="isNextFocus&&!$first" 
-							ng-click="removeNextWeek($index)" 
-							title="删除一条工作计划">
-
-					       <i class="glyphicon  glyphicon-minus"></i>
-					    </span>
-						<span class="nextWeek-add"  ng-hide="!isNextFocus" title="添加一条工作计划。 快捷键：回车" ng-click="addNextWeek($event)">
-					       <i class="glyphicon  glyphicon-plus"></i>
-					    </span>
-					</div>
-				</div>
-			</div> 
-		</div>
-		<!-- 下周工作计划End -->
-		<div class="page-line"></div>
-		<div class="form-group">
-			<label for="html" class="col-sm-2 control-label">分享 </label>
-
-			<div class="col-sm-10">
-			
-			<script id="mdeditor" name="mdeditor" mdeditor type="text/plain" meHtml="report.html"  style="width:600px;height:200px;"></script>
-			</div>
-		</div>
-		<div class="form-group">	
-			<div class="col-sm-offset-2 col-sm-10 text-right">
-				<span ng-if="report._id">上次保存：{{report.updateAt}}</span>
-				<span class="text-danger" ng-if="!report._id">未保存</span>
-				<button type="submit" class="btn btn-primary" ng-click="save()">保存</button>
-				<button type="submit" class="btn btn-danger" ng-click="send()">发送</button>
-			</div>
-		</div>
-	</form>
+                           <i class="glyphicon  glyphicon-minus"></i>
+                        </span>
+                        <span class="nextWeek-add"  ng-hide="!isNextFocus" data-placement="left" 
+                              ng-mouseover="showTip($event)"
+                              title="添加一条工作计划 快捷键：回车" ng-click="addNextWeek($event)">
+                           <i class="glyphicon  glyphicon-plus"></i>
+                        </span>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <!-- 下周工作计划End -->
+        <div class="page-line"></div>
+        <div class="form-group">
+            <label for="html" class="col-sm-2 control-label">分享 </label>
+            <div class="col-sm-10">
+              <div class="editor-wrap">
+                <script id="mdeditor" name="mdeditor" mdeditor type="text/plain" meHtml="report.html"  style="width:100%;height:200px;"></script>
+              </div>
+            </div>
+        </div>
+        <div class="form-group">    
+            <div class="col-sm-offset-2 col-sm-10 text-right">
+                <span ng-if="report._id">上次保存：{{report.updateAt}}</span>
+                <span class="text-danger" ng-if="!report._id">未保存</span>
+                <button type="submit" class="btn btn-primary" ng-disabled="reportForm.$invalid" ng-click="save()">保存</button>
+                <button type="submit" class="btn btn-danger" ng-disabled="reportForm.$invalid"  data-toggle="modal" data-target="#myModal" >发送</button>
+            </div>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    确认发送周报？
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="send()">确认发送</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </div>
+    </form>
 </div>
+

@@ -12,6 +12,10 @@ angular.module('xoceanApp')
         'link': 'http://bb.ijser.cn'
       },
       {
+        'title': '技术分享',
+        'link': '/article/list'
+      },
+      {
         'title': '周报',
         'submenu': [
           {

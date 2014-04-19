@@ -57,9 +57,10 @@ body {
 }
 /* 表单模拟 */
 .sender-group, .copyer-group {
-	width: 603px;
-	padding: 5px 15px 0 15px;
-	margin-left: 15px;
+	position: relative;
+	min-height: 1px;
+	width: 100%;
+	padding: 5px 0 0 15px;
 	border: 1px solid #cccccc;
 	border-radius: 4px;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -81,11 +82,12 @@ body {
 .input-action .fn-autoComplate {
 	position: absolute;
 	background-color: #FFF;
-	width: 93px;
+	width: 255px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	left: 0;
 	top: 25px;
+	/*font-family: menlo, Consolas, "Microsoft Yahei";*/
 	z-index: 99;
 }
 .input-action .fn-autoComplate .item {
@@ -97,6 +99,13 @@ body {
 	margin: 3px 0;
 }
 .input-action .fn-autoComplate .item:hover {
+	background-color: #999;
+	color: #FFF;
+	text-decoration: none;
+}
+
+ 
+.input-action .fn-autoComplate .item-active {
 	background-color: #999;
 	color: #FFF;
 	text-decoration: none;
@@ -154,7 +163,6 @@ body {
 	background-color: #76B429;
 }
 
- 
 /* login page */
 .square-gradient-bar {
 	height: 15px;
@@ -173,3 +181,12 @@ body {
 	margin-top: 10px;
 }
  
+ 
+/* 快速收件人 */
+.quick-add {
+	margin-right: 17px;
+}
+ 
+.editor-wrap {
+	width: 100%;
+}
