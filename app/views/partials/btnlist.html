@@ -1,0 +1,16 @@
+<span ng-mouseenter="showlist=true">
+   <button  
+    ng-class="{true:'btn btn-default thisWeek-btn thisWeek-isok',false:'btn btn-default thisWeek-btn thisWeek-ok'}[curShow=='done']" type="button" 
+    ng-click="cwToggleDone('done',0)" 
+    ng-show="showlist||curShow=='done'||curShow=='none'">已完成</button>
+  <button 
+    type="button" 
+    ng-class="{true:'btn btn-default thisWeek-btn thisWeek-nearDone',false:'btn btn-default thisWeek-btn thisWeek-near'}[curShow=='nearDone']" 
+    ng-click="cwToggleDone('nearDone',1)" 
+    ng-show="showlist||curShow=='nearDone'">80%</button>
+  <button 
+    type="button" 
+    ng-class="{true:'btn btn-default thisWeek-btn thisWeek-halfDone',false:'btn btn-default thisWeek-btn thisWeek-half'}[curShow=='halfDone']"
+    ng-click="cwToggleDone('halfDone',2)" 
+    ng-show="showlist||curShow=='halfDone'">50%</button>
+</span>

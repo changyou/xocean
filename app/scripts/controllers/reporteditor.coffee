@@ -3,7 +3,7 @@ angular.module('xoceanApp')
 
     $scope.report = if not id then {} else Report.get({id: id})
 
-    if not $scope.report.curWeek then $scope.report.curWeek = [{ done: false, content: ""}]
+    if not $scope.report.curWeek then $scope.report.curWeek = [{ status: "none", content: ""}]
     if not $scope.report.nextWeek then $scope.report.nextWeek = [{content: ""}]
     if not $scope.report.to then $scope.report.to = ""
     if not $scope.report.cc then $scope.report.cc = ""
@@ -49,15 +49,10 @@ angular.module('xoceanApp')
     $scope.addCurWeek = (e) ->
       if e&&e.keyCode == 13 
         e.preventDefault() 
-        $scope.report.curWeek.push({ done: false, content: ""})
+        $scope.report.curWeek.push({ status: "none", content: ""})
       else if e.type=="click"
-        $scope.report.curWeek.push({ done: false, content: ""})
+        $scope.report.curWeek.push({ status: "none", content: ""})
       return
-
-    # 改变工作记录的状态
-    $scope.cwToggleDone = (index) ->
-      $scope.report.curWeek[index].done = $scope.report.curWeek[index].done == false ? true : false;
-      return 
 
     # 删除一条本周工作记录
     $scope.removeCurWeek = (index) ->
