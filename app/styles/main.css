@@ -182,7 +182,6 @@ body {
  
 .thisWeek-item .thisWeek-near{
     border-radius: 0;
-    color:#A7AD15;
 }
 .thisWeek-item .thisWeek-nearDone{
     border-radius: 0;
@@ -265,4 +264,24 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.report-btn{
+    margin-top: 10px;
+}
+
+.report-btn .btn{
+   
+    -moz-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.report-btn .text-danger{
+    margin-right: 15px;
+}
+
+.save-info{
+    color:#2b542c;
 }

@@ -56,7 +56,6 @@
                                   title="删除一条工作总结">
                                 <i class="glyphicon  glyphicon-minus"></i>
                               </span> 
-                               
                               <span 
                                   class="thisWeek-add" 
                                   ng-show="isFocus" 
@@ -87,7 +86,7 @@
                                 ng-focus="isNextFocus=true" 
                                 ng-blur="isNextFocus=false" 
                                 ng-model="nxItem.content" 
-                                ng-bind="nxItem.content"    
+                                ng-bind="nxItem.content"
                                 ng-keydown="addNextWeek($event)">
                             <span 
                                 class="nextWeek-remove" 
@@ -122,11 +121,11 @@
             </div>
         </div>
         <div class="form-group">    
-            <div class="col-sm-offset-2 col-sm-10 text-right">
-                <span ng-if="report._id">上次保存：{{report.updateAt}}</span>
+            <div class="col-sm-offset-2 col-sm-10 text-right report-btn">
+                <span ng-if="report._id" class="save-info">于 <strong>{{report.updateAt | date:'MM月dd日 HH:mm'}}</strong> 保存成功！</span>
                 <span class="text-danger" ng-if="!report._id">未保存</span>
-                <button type="submit" class="btn btn-primary" ng-disabled="reportForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-floppy-disk"></span> 保存</button>
-                <button type="submit" class="btn btn-danger" ng-disabled="reportForm.$invalid"  data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-send"></span> 发送</button>
+                <button type="submit" class="btn btn-info" ng-disabled="reportForm.$invalid || !report.to" ng-click="save()"><span class="glyphicon glyphicon-floppy-disk"></span> 保存</button>
+                <button type="submit" class="btn btn-success" ng-disabled="reportForm.$invalid || !report.to"  data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-send"></span> 保存并发送</button>
             </div>
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">

@@ -11,7 +11,6 @@ angular.module('xoceanApp')
     restrict: 'A'
     link: (scope, element, attrs) ->
          # 改变工作记录的状态
-        console.log scope.status 
         scope.curShow = scope.status 
         scope.cwToggleDone = (status,index) ->
           scope.status = status

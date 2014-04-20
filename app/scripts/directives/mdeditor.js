@@ -10,6 +10,7 @@ angular.module('xoceanApp').directive('mdeditor', function() {
     scope:true,
     link: function postLink(scope, element, attrs) {
     	var opt = {
+            initialFrameWidth:"100%",
             toolbar:[
 	            'source | undo redo | bold italic underline strikethrough | forecolor backcolor   ',
 	            'insertorderedlist insertunorderedlist  paragraph | fontfamily fontsize' ,
