@@ -219,6 +219,9 @@ body {
 }
 
 /* login page */
+.login-container{
+	margin-top: 30px;
+}
 .square-gradient-bar {
     height: 15px;
     border-radius: 4px 4px 0 0;
@@ -236,6 +239,19 @@ body {
     margin-top: 10px;
 }
 
+.login-aside{
+	background: url(../images/login-aside2.png) center bottom no-repeat;
+	height: 444px;
+	background-size: contain;
+}
+@media (max-width: 767px) {
+  .login-aside {
+    display: none !important;
+  }
+}
+ 
+ 
+ 
 /* 快速收件人 */
 .quick-add {
     margin-right: 17px;
