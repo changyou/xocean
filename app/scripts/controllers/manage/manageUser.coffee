@@ -1,26 +1,32 @@
 'use strict'
 
 angular.module('xoceanManage')
-	.controller 'ManageUserCtrl', ($scope, $http, UserManage)->
+	.controller 'ManageUserCtrl', ($scope, $location, UserManage, userManService)->
 		$scope.list = UserManage.query()
-		$scope.updateUser = [];
+		$scope.updateUser = []
+		$scope.volumeUser = ""
+		$scope.emailSuffix = "@cyou-inc.com"
 
 		$scope.send = (id)->
 			UserManage.postMail {id: id}, (result)->
-				if result.success is true
-					alert "发送邮件成功"
+				if result.msg is "error"
+					alert "发送邮件失败"
+			alert "发送邮件完成"
 
 
 		$scope.addUserTem = ()->
-			#$scope.updateUser.push($scope.newUser);
-			# $scope.user = $scope.newUser
 			console.log $scope.newUser
-			UserManage.create $scope.newUser, (result)->
-				console.log 124
+			return false
 
-			$scope.newUser = null
-				# else
-		# 		$scope.report.$save()
+		$scope.addAllUser = ()->
+			UserManage.addAllUser {nameList: $scope.volumeUser, emailSuffix: $scope.emailSuffix}, (result)->
+				if result.msg is "success"
+					$location.url("/index")
 
+		$scope.addGroupUser = (userStr)->
+			$scope.volumeUser += userStr + ","
+
+		userManService.getUserGroup (data)->
+			$scope.userGroup = data
 
 		return

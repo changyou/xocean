@@ -1,12 +1,12 @@
 
 <div class="btn-wrap mtb20 clearfix" ng-init="isAdd=false">
-	<button class="btn btn-purple glyphicon glyphicon-envelope pull-right">Send</button>
-	<button ng-class="{true:'btn btn-primary glyphicon glyphicon-floppy-disk pull-right', false:'hidden'}[isAdd]" ng-click="isAdd=false">Save</button>
-	<button ng-class="{true:'hidden', false:'btn btn-success glyphicon glyphicon-plus pull-right'}[isAdd]" class="" ng-click="isAdd=true" >Add</button>
+	<button class="ml-10 btn btn-purple glyphicon glyphicon-send pull-right"> Send</button>
+	<button ng-class="{true:'ml-10 btn btn-primary glyphicon glyphicon-floppy-disk pull-right', false:'hidden'}[isAdd]" ng-click="isAdd=false">Save</button>
+	<button ng-class="{true:'hidden', false:'ml-10 btn btn-success glyphicon glyphicon-plus pull-right'}[isAdd]" class="" ng-click="isAdd=true" > Add</button>
 </div>
 
-<div ng-class="{true:'form-wrap mtb20 clearfix', false:'hidden'}[isAdd]">
-	<form class="pull-right form-inline">
+<div ng-class="{true:'form-wrap mtb20 clearfix', false:'hidden'}[isAdd]" style="text-align: right;">
+	<form class="form-inline">
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="name" required
 				ng-model="newUser.name"
@@ -19,6 +19,29 @@
 		</div>
 		<button class="btn btn-default thisWeek-ok" ng-click="addUserTem(event)"><i class="glyphicon  glyphicon-ok"></i></button>
 	</form>
+
+	<div class="input-group col-lg-6 mtb20 pull-right">
+		<input type="text" class="form-control" name="addMoreUser" placeholder="批量添加用户，以逗号分隔，默认为邮箱后缀为cyou-inc.com" ng-model="volumeUser" >
+		<div class="input-group-btn">
+			<input type="hidden" class="form-control" name="emailSuffix" ng-model="emailSuffix" >
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			{{emailSuffix}}<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="email-suffix">
+			<li><a href="javascript:void(0)" ng-click="emailSuffix='@cyou-inc.com'">@cyou-inc.com</a></li>
+			<li><a href="javascript:void(0)" ng-click="emailSuffix='@126.com'">@126.com</a></li>
+			</ul>
+		</div>
+		<div class="input-group-btn">
+			<button type="button" class="btn btn-default" ng-click="addAllUser()">批量添加</button>
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu pull-right" role="user-group">
+				<li ng-repeat="group in userGroup"><a href="javascript:void(0)" ng-click="addGroupUser(group.users)">{{group.name}}</a></li>
+			</ul>
+		</div>
+	</div>
 </div>
 
 <table class="table table-hover">
@@ -37,7 +60,7 @@
 		<td contentEditable="true">
 			{{user.name}}
 		</td>
-		<td>
+		<td contentEditable="true">
 			{{user.email}}
 		</td>
 		<td ng-switch on="user.status">

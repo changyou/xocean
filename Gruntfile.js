@@ -48,7 +48,7 @@ module.exports = function (grunt) {
     },
     watch: {
       coffee: {
-        files: ['<%= yeoman.app %>/scripts/{,**/}*.{coffee,litcoffee,coffee.md}', 'lib/**/{,**/}*.coffee'],
+        files: ['<%= yeoman.app %>/scripts/{,**/}*.{coffee,litcoffee,coffee.md}', 'lib/{,**/}*.coffee'],
         tasks: ['newer:coffee:dist']
       },
       coffeeTest: {
@@ -67,6 +67,7 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/views/{,*//*}*.{html,jade}',
           '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
           '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
+          'lib/{,**/*}*.js',
           '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
         ],
 
