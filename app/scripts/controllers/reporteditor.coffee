@@ -1,137 +1,80 @@
 angular.module('xoceanApp')
-  .controller 'ReporteditorCtrl', ($scope, $location, Report, id) ->
+  .controller 'ReporteditorCtrl', ($scope, $location, Report, User, id, $rootScope) ->
 
-    $scope.report = if not id then {} else Report.get { id: id }
-  
-    # 发件人列表
-    $scope.senders = []
-    # 抄送人列表
-    $scope.copyers = []
+    $scope.report = if not id then {} else Report.get({id: id})
+
+    if not $scope.report.curWeek then $scope.report.curWeek = [{ status: "none", content: ""}]
+    if not $scope.report.nextWeek then $scope.report.nextWeek = [{content: ""}]
+    if not $scope.report.to then $scope.report.to = ""
+    if not $scope.report.cc then $scope.report.cc = ""
+
+    #自动生成邮件主题
+    #
+    getSubject = () ->
+      subjectStr = "【个人周报】"
+      curDate = new Date() 
+      #周五之前写的周报，工作周期都是上一周的工作
+      if curDate.getDay() < 5 and curDate.getDay() != 0 
+        startOffset = (curDate.getDay()+ 2 + 4) * 60 * 60 * 24 * 1000
+        endOffset = (curDate.getDay()+ 2) * 60 * 60 * 24 * 1000
+      else
+        if curDate.getDay() == 0 then isSunday = 7 else isSunday = curDate.getDay()
+        startOffset = (isSunday - 1) * 60 * 60 * 24 * 1000
+        endOffset = (isSunday - 5)* 60 * 60 * 24 * 1000
+
+      startDate = new Date((+curDate) - startOffset)
+      endDate = new Date((+curDate) - endOffset)
+      subjectStr += "-" + $rootScope.currentUser.name
+      subjectStr += "-" +startDate.getFullYear() + "." + (startDate.getMonth()+1) + "." + startDate.getDate()
+      subjectStr += "-" +endDate.getFullYear() + "." + (endDate.getMonth()+1) + "." + endDate.getDate()
+      return subjectStr
+
+    if not $scope.report.subject then $scope.report.subject = getSubject()
 
     # 所有用户数据源模拟
-    $scope.allUser = [{
-      "name": "周树枫"
-    }, {
-      "name": "蒋志德"
-    }, {
-      "name": "白雪娇"
-    }, {
-      "name": "周地方"
-    }, {
-      "name": "周耳朵"
-    }, {
-      "name": "迟晓靓"
-    }, {
-      "name": "李晓露"
-    }, {
-      "name": "李毅"
-    }, {
-      "name": "夏田"
-    }, {
-      "name": "刘剑锋"
-    }, {
-      "name": "陈友国"
-    }, {
-      "name": "陈友发"
-    }, {
-      "name": "陈友人"
-    }, {
-      "name": "陈友俄"
-    }, {
-      "name": "陈友都"
-    }, {
-      "name": "陈点国"
-    }, {
-      "name": "陈大国"
-    }]
+    allUser = User.query()
 
     # 用户当前输入发件人
-    $scope.currentSender
+    $scope.currentSender = ""
     $scope.currentSenders = []
 
     # 用户当前输入发件人
-    $scope.currentCopyer
+    $scope.currentCopyer = ""
     $scope.currentCopyers = []
 
-    if not $scope.report.curWeek then $scope.report.curWeek = [ { done: false, content: ""} ]
+    $scope.$watch "report.to", (reports)->
+      if not reports then return
+      $scope.report.to = reports
 
-    if not $scope.report.nextWeek then $scope.report.nextWeek = [{content: ""}]
+    $scope.$watch "report.cc", (reports)->
+      if not reports then return
+      $scope.report.cc = reports
 
-
-
+    $scope.errorFlag = false
     $scope.save = ->
-      if not $scope.report._id
-        $scope.report = new Report $scope.report
-        $scope.report.$create()
+      if $scope.reportForm.$valid
+        if not $scope.report._id
+          $scope.report = new Report $scope.report
+          $scope.report.$create()
+        else
+          $scope.report.$save()
       else
-        $scope.report.$save()
-
+        $scope.errorFlag = true
 
     $scope.send = ->
-      if confirm('确定发送？')
-        $scope.report.$postMail()
-          .success ->
-            $location.url("/report")
-
-    # 添加当前发件人
-    $scope.addSender = (name) ->
-      for sender in $scope.allUser
-        $scope.senders.push(sender) if name != "" && sender.name == name && !isContainUser($scope.senders, name)
-      $scope.currentSender = ""
-      $scope.autoComplateSender($scope.currentSender)
-
-    # 删除当前发件人
-    $scope.removeSender = (name) ->
-      arr = []
-      for sender in $scope.senders
-        arr.push(sender) if sender.name != name
-      $scope.senders = arr
-
-    # 发件人自动提示
-    $scope.autoComplateSender = (name) ->
-      $scope.currentSenders = []
-      for user in $scope.allUser
-        $scope.currentSenders.push(user) if name != "" && user.name.indexOf(name) != -1
-
-    # 增加当前抄送人
-    $scope.addCopyer= (name) ->
-      for user in $scope.allUser
-        $scope.copyers.push(user) if name != "" && user.name == name && !isContainUser($scope.copyers, name)
-      $scope.currentCopyer = ""
-      $scope.autoComplateCopyer($scope.currentCopyer)
-
-    # 删除当前抄送人
-    $scope.removeCopyer = (name) ->
-      arr = []
-      for copyer in $scope.copyers
-        arr.push(copyer) if copyer.name != name
-      $scope.copyers = arr
-
-    # 抄送人自动提示
-    $scope.autoComplateCopyer = (name) ->
-      $scope.currentCopyers = []
-      for user in $scope.allUser
-        $scope.currentCopyers.push(user) if name != "" && user.name.indexOf(name) != -1
-
-    # 判断数组中是否含有当前名字的人
-    isContainUser = (arr, name) ->
-      for sender in arr
-        return true if name != "" && sender.name == name
-      return false
+      $scope.save()
+      $scope.report.$postMail()
+          # .success ->
+          #   $location.url("/report")
 
     # 增加一条本周工作记录
     $scope.addCurWeek = (e) ->
       if e&&e.keyCode == 13 
         e.preventDefault() 
-        $scope.report.curWeek.push({ done: false, content: ""})
+        $scope.report.curWeek.push({ status: "none", content: ""})
       else if e.type=="click"
-        $scope.report.curWeek.push({ done: false, content: ""})
+        $scope.report.curWeek.push({ status: "none", content: ""})
       return
-
-    # 改变工作记录的状态
-    $scope.cwToggleDone = (index) ->
-      $scope.report.curWeek[index].done = $scope.report.curWeek[index].done == false ? true : false;
-      return 
 
     # 删除一条本周工作记录
     $scope.removeCurWeek = (index) ->
@@ -152,7 +95,9 @@ angular.module('xoceanApp')
       if $scope.report.nextWeek[index] then $scope.report.nextWeek.splice(index,1)
       return
 
-  
-     
-     
- 
+    $scope.showTip= (e)->
+      $(e.currentTarget).tooltip('show')
+      return
+
+
+    return
