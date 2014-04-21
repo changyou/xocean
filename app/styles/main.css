@@ -126,7 +126,6 @@ body {
     text-decoration: none;
 }
 
- 
 .input-action .fn-autoComplate .item-active {
     background-color: #999;
     color: #FFF;
@@ -219,6 +218,9 @@ body {
 }
 
 /* login page */
+.login-container{
+	margin-top: 30px;
+}
 .square-gradient-bar {
     height: 15px;
     border-radius: 4px 4px 0 0;
@@ -234,6 +236,17 @@ body {
 .login-field .form-group{
     margin-bottom: 30px;
     margin-top: 10px;
+}
+
+.login-aside{
+	background: url(../images/login-aside2.png) center bottom no-repeat;
+	height: 444px;
+	background-size: contain;
+}
+@media (max-width: 767px) {
+  .login-aside {
+    display: none !important;
+  }
 }
 
 /* 快速收件人 */
@@ -271,7 +284,6 @@ body {
 }
 
 .report-btn .btn{
-   
     -moz-transition: all 0.2s linear;
     -webkit-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;

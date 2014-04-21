@@ -13,13 +13,13 @@ angular.module('xoceanApp')
     $scope.show2=false;
 
     $scope.showReceivers = function (value) {
-      $scope.showReceiversArray = $scope.stringToArray(value);
+      $scope.showReceiversArray = stringToArray(value);
       if($scope.showReceiversArray.length){
         $scope.show2=true;
         $scope.show1=false;
       }
     }
-    $scope.stringToArray = function(string){
+    var stringToArray = function(string){
       string = (string+"").replace(/，|;|；/g,",").replace(/\s/g,",").replace(/,+/g,",").replace(/^,|,$/g,"");
       if(!string){
         return [];
@@ -51,7 +51,8 @@ angular.module('xoceanApp')
           email: $scope.user.email,
           password: $scope.user.password,
           group: $scope.user.group,
-          receivers: $scope.stringToArray($scope.user.receivers)
+          receivers: stringToArray($scope.user.receivers),
+          code: $scope.user.code
         })
         .then( function() {
           // Account created, redirect to home
