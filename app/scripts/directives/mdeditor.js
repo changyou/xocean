@@ -22,11 +22,11 @@ angular.module('xoceanApp').directive('mdeditor', function() {
 
         if(window.um) um.destroy();
  		window.um = UM.getEditor(attrs.name, opt);
-       
+
         scope.$watch("report", function(report){ 
             if(scope.report.html) um.setContent(scope.report.html);
         },true);
-  
+
         um.addListener('contentChange',function(){
         	scope.report.html = um.getContent();
         });
