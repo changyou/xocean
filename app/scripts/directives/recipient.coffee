@@ -36,7 +36,7 @@ angular.module('xoceanApp')
         $scope.senderArrTemp = []
 
         # 所有用户数据源模拟
-        allUser = []
+        allUser = [] 
         User.query (user) ->
           allUser = user
           $scope.$watch "data", (data) ->

@@ -10,183 +10,278 @@ body {
 }
 
 .footer .container {
-	padding: 20px;
+    padding: 20px;
 }
 
 body {
-	font-family: "Microsoft Yahei";
+    font-family: "Microsoft Yahei";
+    background: #f5f5f5;
+}
+.form-block {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    border-top:3px solid #E7E6E6;
+    border-bottom: 1px solid #E7E6E6;
+    border-right: 1px solid #E7E6E6;
+    border-left: 1px solid #E7E6E6;
+    -moz-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
 }
 
+.form-block:hover{
+    border-top:3px solid #428bca;
+}
 /* 适配无圆角 */
 .navbar.fix-topbar {
-	border-radius: 0;
+    border-radius: 0;
 }
 
 /* 添加动画 */
 .navbar-brand {
-	font-weight: 400;
-	font-family: Consolas;
-	-moz-transition: color 0.3s linear;
-	-webkit-transition: color 0.3s linear;
-	-o-transition: color 0.3s linear;
-	transition: color 0.3s linear;
+    font-weight: 400;
+    font-family: Consolas;
+    -moz-transition: color 0.3s linear;
+    -webkit-transition: color 0.3s linear;
+    -o-transition: color 0.3s linear;
+    transition: color 0.3s linear;
 }
 .navbar-brand:hover {
-	text-shadow: 0 0 1px #ccc;
-	-moz-transition: color 0.3s linear;
-	-webkit-transition: color 0.3s linear;
-	-o-transition: color 0.3s linear;
-	transition: color 0.3s linear;
+    text-shadow: 0 0 1px #ccc;
+    -moz-transition: color 0.3s linear;
+    -webkit-transition: color 0.3s linear;
+    -o-transition: color 0.3s linear;
+    transition: color 0.3s linear;
 }
 .navbar-default .navbar-brand:hover {
-	color: #DC9778;
+    color: #DC9778;
 }
 
 /* 收件人自动提示 */
 .input-name {
-	border: none;
-	outline: none;
-	width: 95px;
-	height: 22px;
-	line-height: 18px;
-	color: #777;
-	margin-left: 3px;
-	font-size: 12px;
-	margin-bottom: 5px;
-	vertical-align: middle;
+    border: none;
+    outline: none;
+    width: 95px;
+    height: 22px;
+    line-height: 18px;
+    color: #777;
+    margin-left: 3px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    vertical-align: middle;
+}
+.report-subject{
+    font-size: 12px;
+    text-indent: 5px;
+    color:#777;
 }
 /* 表单模拟 */
 .sender-group, .copyer-group {
-	position: relative;
-	min-height: 1px;
-	width: 100%;
-	padding: 5px 0 0 15px;
-	border: 1px solid #cccccc;
-	border-radius: 4px;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+    padding: 5px 0 0 15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .select-item {
-	cursor: pointer;
-	margin-right: 5px;
-	font-weight: 500;
-	text-shadow: 0 -1px 3px #999;
-	padding: .4em .6em .4em;
-	display: inline-block;
-	vertical-align: middle;
-	margin-bottom: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+    font-weight: 500;
+    text-shadow: 0 -1px 3px #999;
+    padding: .4em .6em .4em;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 5px;
 }
 .input-action {
-	position: relative;
+    position: relative;
 }
 .input-action .fn-autoComplate {
-	position: absolute;
-	background-color: #FFF;
-	width: 255px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	left: 0;
-	top: 25px;
-	/*font-family: menlo, Consolas, "Microsoft Yahei";*/
-	z-index: 99;
+    position: absolute;
+    background-color: #FFF;
+    width: 255px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    left: 0;
+    top: 25px;
+    /*font-family: menlo, Consolas, "Microsoft Yahei";*/
+    z-index: 99;
 }
 .input-action .fn-autoComplate .item {
-	display: block;
-	color: #a5a5a5;
-	padding-left: 5px;
-	line-height: 25px;
-	font-size: 12px;
-	margin: 3px 0;
+    display: block;
+    color: #a5a5a5;
+    padding-left: 5px;
+    line-height: 25px;
+    font-size: 12px;
+    margin: 3px 0;
 }
 .input-action .fn-autoComplate .item:hover {
-	background-color: #999;
-	color: #FFF;
-	text-decoration: none;
+    background-color: #999;
+    color: #FFF;
+    text-decoration: none;
 }
 
  
 .input-action .fn-autoComplate .item-active {
-	background-color: #999;
-	color: #FFF;
-	text-decoration: none;
+    background-color: #999;
+    color: #FFF;
+    text-decoration: none;
 }
 
  
 .page-line{
-	height: 1px;
-	border-top:1px solid #EBEBEB;
-	margin: 25px 0;
+    height: 1px;
+    border-top:1px dotted #CFCECE;
+    margin: 15px 0;
 }
 
 .thisWeek-item,.nextWeek-item{
-	position: relative;
-	margin-bottom: 15px;
+    position: relative;
+    margin-bottom: 15px;
 
+}
+.thisWeek-item .input-group{
+    width: 100%;
 }
 .thisWeek-item .thisWeek-add,.nextWeek-item .nextWeek-add{
-	position: absolute;
-	right: 10px;
-	top: 7px;	
-	color:#DFDFDF;
-	cursor: pointer;
-	-webkit-transition:all .2s ease;
+    position: absolute;
+    right: 10px;
+    top: 7px;   
+    color:#DFDFDF;
+    cursor: pointer;
+    -webkit-transition:all .2s ease;
 }
 .thisWeek-item .thisWeek-remove,.nextWeek-item .nextWeek-remove{
-	position: absolute;
-	right: 30px;
-	top: 7px;	
-	color:#DFDFDF;
-	cursor: pointer;
-	-webkit-transition:all .2s ease;
+    position: absolute;
+    right: 30px;
+    top: 7px;   
+    color:#DFDFDF;
+    cursor: pointer;
+    -webkit-transition:all .2s ease;
 }
 .thisWeek-item .thisWeek-remove:hover,.nextWeek-item .nextWeek-remove:hover{
-	color:black;
+    color:black;
 }
 .thisWeek-item .thisWeek-add:hover,.nextWeek-item .nextWeek-add:hover{
-	color:black;
+    color:black;
 }
 .nextWeek-item .input-group{
-	width: 100%;
+    width: 100%;
+}
+.thisWeek-item .thisWeek-btn{
+    width: 75px;
+    outline:none;
+    color:#CACACA;
+    margin:0 -3px;
+}
+ 
+.thisWeek-item .thisWeek-near{
+    border-radius: 0;
+}
+.thisWeek-item .thisWeek-nearDone{
+    border-radius: 0;
+    outline:none;
+    color: #FFFFFF;
+    background-color: #A7AD15;
+    border: 1px solid #A7AD15;
+    border-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.thisWeek-item .thisWeek-half{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.thisWeek-item .thisWeek-halfDone{
+
+    outline:none;
+    color: #FFFFFF;
+    background-color: #85582E;
+    border: 1px solid #85582E;
+    border-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 .thisWeek-item .thisWeek-ok{
-	outline:none;
-	color:#CACACA;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
-.thisWeek-item .thisWeek-ok:hover{
-	color:#76B429;
-	background-color:white;
-}
-
 .thisWeek-item .thisWeek-isok{
-	outline:none;
-	color: #FFFFFF;
-	background-color: #76B429;
+    outline:none;
+    color: #FFFFFF;
+    background-color: #76B429;
+    border: 1px solid #76B429;
 }
 
 /* login page */
 .square-gradient-bar {
-	height: 15px;
-	border-radius: 4px 4px 0 0;
-	font-size: 0;
-	line-height: 0;
-	background-color: #3bbfee;
-	background: linear-gradient(90deg, #d8225e,#d8225e 16.6%,#b73794 16.6%,#b73794 33.2%,#7254b6 33.2%,
-		#7254b6 49.8%,#5951ca 49.8%, #5951ca 66.4%,#3981d1 66.4%,#3981d1 83%,#3bbfee 83%,#3bbfee);
+    height: 15px;
+    border-radius: 4px 4px 0 0;
+    font-size: 0;
+    line-height: 0;
+    background-color: #3bbfee;
+    background: linear-gradient(90deg, #d8225e,#d8225e 16.6%,#b73794 16.6%,#b73794 33.2%,#7254b6 33.2%,
+        #7254b6 49.8%,#5951ca 49.8%, #5951ca 66.4%,#3981d1 66.4%,#3981d1 83%,#3bbfee 83%,#3bbfee);
 }
 .login-field .panel-body{
-	background: rgba(187, 187, 187, 0.5);
+    background: rgba(187, 187, 187, 0.5);
 }
 .login-field .form-group{
-	margin-bottom: 30px;
-	margin-top: 10px;
+    margin-bottom: 30px;
+    margin-top: 10px;
 }
- 
- 
+
 /* 快速收件人 */
 .quick-add {
-	margin-right: 17px;
+    margin-right: 17px;
 }
- 
+
 .editor-wrap {
-	width: 100%;
+    width: 100%;
+}
+
+.label-tip{
+    font-weight: normal;
+    color:#AFAFAF;
+}
+.control-label{
+    color:#1F5675;
+}
+
+.doneBtn{
+    display: table-cell;
+    width: 63px;
+    height: 34px;
+    position: relative;
+}
+
+.doneBtnList{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.report-btn{
+    margin-top: 10px;
+}
+
+.report-btn .btn{
+   
+    -moz-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.report-btn .text-danger{
+    margin-right: 15px;
+}
+
+.save-info{
+    color:#2b542c;
 }
