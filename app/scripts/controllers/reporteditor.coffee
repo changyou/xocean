@@ -7,9 +7,9 @@ angular.module('xoceanApp')
     if not $scope.report.nextWeek then $scope.report.nextWeek = [{content: ""}]
     if not $scope.report.to then $scope.report.to = ""
     if not $scope.report.cc then $scope.report.cc = ""
+    if not $scope.report.name then $scope.report.name = $rootScope.currentUser.name
 
     #自动生成邮件主题
-    #
     getSubject = () ->
       subjectStr = "【个人周报】"
       curDate = new Date() 
@@ -30,7 +30,6 @@ angular.module('xoceanApp')
       return subjectStr
 
     if not $scope.report.subject then $scope.report.subject = getSubject()
-
     # 所有用户数据源模拟
     allUser = User.query()
 
@@ -63,9 +62,9 @@ angular.module('xoceanApp')
 
     $scope.send = ->
       $scope.save()
-      $scope.report.$postMail()
-          # .success ->
-          #   $location.url("/report")
+      $scope.report.$postMail null, ->
+        $location.url("/report")
+            
 
     # 增加一条本周工作记录
     $scope.addCurWeek = (e) ->

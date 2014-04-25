@@ -9,9 +9,8 @@ ReportSchema = new Schema({
   cc: String
   subject: String
   html: String
-
+  name: String
   curWeek:[Schema.Types.Mixed]
-
   nextWeek:[Schema.Types.Mixed]
   # 0 - draft
   # 1 - send success

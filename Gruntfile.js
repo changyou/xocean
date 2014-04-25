@@ -39,6 +39,12 @@ module.exports = function (grunt) {
           script: 'dist/server.js',
           node_env: 'production'
         }
+      },
+      test: {
+        options: {
+          script: 'server.js',
+          node_env: 'test'
+        }
       }
     },
     open: {
@@ -51,10 +57,10 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/scripts/{,**/}*.{coffee,litcoffee,coffee.md}', 'lib/{,**/}*.coffee'],
         tasks: ['newer:coffee:dist']
       },
-      coffeeTest: {
-        files: ['test/spec/{,**/}*.{coffee,litcoffee,coffee.md}'],
-        tasks: ['newer:coffee:test', 'karma']
-      },
+      // coffeeTest: {
+      //   files: ['test/spec/{,**/}*.{coffee,litcoffee,coffee.md}'],
+      //   tasks: ['newer:coffee:test', 'karma']
+      // },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -80,7 +86,7 @@ module.exports = function (grunt) {
           'server.js',
           'lib/**/*.{js,json}'
         ],
-        tasks: ['newer:jshint:server', 'express:dev', 'wait'],
+        tasks: ['newer:jshint:server', 'express:test', 'wait'],
         options: {
           livereload: true,
           nospawn: true //Without this option specified express won't be reloaded
@@ -464,7 +470,7 @@ module.exports = function (grunt) {
       'bower-install',
       'concurrent:server',
       'autoprefixer',
-      'express:dev',
+      'express:test',
       'open',
       'watch'
     ]);
