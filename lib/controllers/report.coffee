@@ -40,7 +40,6 @@ exports.get = (req, res, next)->
 	reportId = req.params.id
 	Report.findById reportId, (err, result)->
 		return res.json(400, err) if err
-		console.log result
 		res.json result.toObject()
 
 exports.del = (req, res, next)->

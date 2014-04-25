@@ -49,14 +49,14 @@ exports.sendReport = (report, callback)->
 	html = convertDataToMail report 
 	mailHtml =  ejs.render(str, html)
 	mailOptions = {
-		from: html.name
+		from: report.from
 		to: report.to
 		cc: report.cc
 		subject: report.subject
 		forceEmbeddedImages: true
 		html: mailHtml
 	}
-	console.log mailOptions
+
 	smtpTransport.sendMail mailOptions, (err, response)->
 		if err
 			report.status = 3

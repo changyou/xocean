@@ -65,12 +65,16 @@ angular.module('xoceanApp')
 
     $scope.send = ->
       NProgress.start()
-      $scope.save ->
+      $scope.report.$save ->
         NProgress.set(0.6)  
         $scope.report.$postMail null, ->
-          NProgress.done()
-          $location.url("/report")
-          return
+            NProgress.done()
+            $location.url("/report")
+            return
+          , ->
+            NProgress.done()
+            alert("Send Email error!")
+
       return
 
     # 增加一条本周工作记录
