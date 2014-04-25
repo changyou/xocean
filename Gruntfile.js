@@ -54,13 +54,13 @@ module.exports = function (grunt) {
     },
     watch: {
       coffee: {
-        files: ['<%= yeoman.app %>/scripts/{,**/}*.{coffee,litcoffee,coffee.md}', 'lib/{,**/}*.coffee'],
+        files: ['<%= yeoman.app %>/scripts/{,**/}*.{coffee,litcoffee,coffee.md}', 'lib/**/{,**/}*.coffee'],
         tasks: ['newer:coffee:dist']
       },
-      // coffeeTest: {
-      //   files: ['test/spec/{,**/}*.{coffee,litcoffee,coffee.md}'],
-      //   tasks: ['newer:coffee:test', 'karma']
-      // },
+      coffeeTest: {
+        files: ['test/spec/{,**/}*.{coffee,litcoffee,coffee.md}'],
+        tasks: ['newer:coffee:test', 'karma']
+      },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']

@@ -17,6 +17,10 @@ convertDataToMail = (data) ->
 				key.status = "未完成"
 			when "done" 
 				key.status = "已完成"
+			when "halfDone" 
+				key.status = "50%"
+			when "nearDone" 
+				key.status = "80%"
 		 
 	temp.submiteDate = new Date().getFullYear().toString() + "." + (new Date().getMonth()+1) + "." + (new Date().getDate())
 	temp.workDate = temp.subject.replace /^.*(\d{4}.*-.*\.\d{2}).*/,"$1"
@@ -42,17 +46,17 @@ mailOptions = {
 # 	console.log response.message
 
 exports.sendReport = (report, callback)->
-	html = convertDataToMail report
+	html = convertDataToMail report 
 	mailHtml =  ejs.render(str, html)
-	console.log mailHtml
 	mailOptions = {
-		from: report.from
+		from: html.name
 		to: report.to
 		cc: report.cc
 		subject: report.subject
 		forceEmbeddedImages: true
 		html: mailHtml
 	}
+	console.log mailOptions
 	smtpTransport.sendMail mailOptions, (err, response)->
 		if err
 			report.status = 3

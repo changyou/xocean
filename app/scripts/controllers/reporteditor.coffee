@@ -54,17 +54,24 @@ angular.module('xoceanApp')
       if $scope.reportForm.$valid
         if not $scope.report._id
           $scope.report = new Report $scope.report
-          $scope.report.$create()
+          $scope.report.$create ->
+            NProgress.set(0.4)
         else
-          $scope.report.$save()
+          $scope.report.$save ->
+            NProgress.set(0.4) 
       else
         $scope.errorFlag = true
 
+
     $scope.send = ->
-      $scope.save()
-      $scope.report.$postMail null, ->
-        $location.url("/report")
-            
+      NProgress.start()
+      $scope.save ->
+        NProgress.set(0.6)  
+        $scope.report.$postMail null, ->
+          NProgress.done()
+          $location.url("/report")
+          return
+      return
 
     # 增加一条本周工作记录
     $scope.addCurWeek = (e) ->

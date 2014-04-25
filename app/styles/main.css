@@ -238,7 +238,6 @@ body {
     margin-bottom: 30px;
     margin-top: 10px;
 }
-
 .login-aside{
 	background: url(../images/login-aside2.png) center bottom no-repeat;
 	height: 444px;
@@ -249,9 +248,13 @@ body {
     display: none !important;
   }
 }
+<<<<<<< HEAD
  
  
  
+=======
+
+>>>>>>> 2cdd154aa2e8edfe066672a379a3113de7ff043b
 /* 快速收件人 */
 .quick-add {
     margin-right: 17px;

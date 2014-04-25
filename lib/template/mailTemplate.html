@@ -61,7 +61,7 @@ strong{
 					<table width="100%">
 						<% for(var i=0; i<curWeek.length; i++) {%>
 							<tr >
-								<td width="83%" style="border-right:1px solid #ccc;"><%= curWeek[i].content %></td>
+								<td width="83%" style="border-right:1px solid #ccc;"><%= i+1 %>. <%= curWeek[i].content %></td>
 								<td width="16%" style="text-align:center;"><%= curWeek[i].status %></td>
 							</tr>
 						<% } %>
