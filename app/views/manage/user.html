@@ -1,27 +1,17 @@
 
 <div class="btn-wrap mtb20 clearfix" ng-init="isAdd=false">
 	<button class="ml-10 btn btn-purple glyphicon glyphicon-send pull-right"> Send</button>
-	<button ng-class="{true:'ml-10 btn btn-primary glyphicon glyphicon-floppy-disk pull-right', false:'hidden'}[isAdd]" ng-click="isAdd=false">Save</button>
+	<button ng-class="{true:'ml-10 btn btn-primary glyphicon glyphicon-floppy-disk pull-right', false:'hidden'}[isAdd]" ng-click="addAllUser($event)">Save</button>
 	<button ng-class="{true:'hidden', false:'ml-10 btn btn-success glyphicon glyphicon-plus pull-right'}[isAdd]" class="" ng-click="isAdd=true" > Add</button>
 </div>
 
-<div ng-class="{true:'form-wrap mtb20 clearfix', false:'hidden'}[isAdd]" style="text-align: right;">
-	<form class="form-inline">
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="name" required
-				ng-model="newUser.name"
-				>
-		</div>
-		<div class="form-group">
-			<input type="email" class="form-control" placeholder="email" required
-				ng-model="newUser.email"
-				>
-		</div>
-		<button class="btn btn-default thisWeek-ok" ng-click="addUserTem(event)"><i class="glyphicon  glyphicon-ok"></i></button>
-	</form>
+<div ng-class="{true:'form-wrap mtb20 clearfix', false:'hidden'}[isAdd]">
 
-	<div class="input-group col-lg-6 mtb20 pull-right">
-		<input type="text" class="form-control" name="addMoreUser" placeholder="批量添加用户，以逗号分隔，默认为邮箱后缀为cyou-inc.com" ng-model="volumeUser" >
+	<div class="input-group col-lg-6 pull-right">
+		<input type="text" class="form-control" name="addMoreUser" placeholder="批量添加用户，以逗号分隔，默认为邮箱后缀为cyou-inc.com, 回车自动添加"
+			ng-model="volumeUser"
+			ng-keydown="addAllUser($event)"
+			>
 		<div class="input-group-btn">
 			<input type="hidden" class="form-control" name="emailSuffix" ng-model="emailSuffix" >
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -33,7 +23,6 @@
 			</ul>
 		</div>
 		<div class="input-group-btn">
-			<button type="button" class="btn btn-default" ng-click="addAllUser()">批量添加</button>
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 			<span class="caret"></span>
 			</button>
@@ -42,6 +31,7 @@
 			</ul>
 		</div>
 	</div>
+
 </div>
 
 <table class="table table-hover">
@@ -73,13 +63,6 @@
 		<td ng-switch on="user.status">
 			<a href="javascript:void(0)" ng-click="send(user._id)" ng-switch-when="0">Resend</a>
 		</td>
-	</tr>
-
-	<tr ng-if="isAdd">
-		<td></td>
-		<td>{{newUser.name}}</td>
-		<td>{{newUser.email}}</td>
-		<td></td><td></td><td></td>
 	</tr>
 
 	<tr>

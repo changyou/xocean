@@ -13,15 +13,14 @@ angular.module('xoceanManage')
 					alert "发送邮件失败"
 			alert "发送邮件完成"
 
-
-		$scope.addUserTem = ()->
-			console.log $scope.newUser
-			return false
-
-		$scope.addAllUser = ()->
-			UserManage.addAllUser {nameList: $scope.volumeUser, emailSuffix: $scope.emailSuffix}, (result)->
-				if result.msg is "success"
-					$location.url("/index")
+		$scope.addAllUser = (e)->
+			if(e && e.keyCode is 13) or (e.type is 'click')
+				if $scope.volumeUser is ""
+					$scope.isAdd = false
+					return
+				UserManage.addAllUser {nameList: $scope.volumeUser, emailSuffix: $scope.emailSuffix}, (result)->
+					if result.msg is "success"
+						$location.url("/index")
 
 		$scope.addGroupUser = (userStr)->
 			$scope.volumeUser += userStr + ","
