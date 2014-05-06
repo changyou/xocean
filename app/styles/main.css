@@ -295,3 +295,15 @@ body {
 .save-info{
     color:#2b542c;
 }
+
+/*===============================*/
+/*main.css*/
+.m-user {
+    border-right: 1px solid #e7e7e7;
+    background: #f8f8f8;
+}
+.m-user .user-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
