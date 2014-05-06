@@ -3,14 +3,24 @@
 describe 'Directive: recipient', () ->
 
   # load the directive's module
-  beforeEach module 'xoceanApp',['components']
+  beforeEach module 'xoceanApp'
 
   scope = {}
+  element = null
 
-  beforeEach inject ($controller, $rootScope) ->
+
+  beforeEach inject ($rootScope,$compile,$templateCache,$httpBackend) ->
+    element = $templateCache.put('partials/recipients.html', '<div recipient ng-recp-data="foo"></div>');
     scope = $rootScope.$new()
-
-  it 'should have data`s model', inject ($compile) ->
-    element = angular.element '*[recipient]'
+    res = $httpBackend.when('GET','/api/users').respond(200,[{'name':'moe','email':'444984@qq.com'}])
     element = $compile(element) scope
-    should.exist(element.attr("ng-recp-data"));
+    scope.$digest()
+
+
+    return
+
+  it 'should have user`s list', inject ($compile) ->
+
+    spanEle = element.find('span')
+    expect(spanEle).not.tobe("")
+    return

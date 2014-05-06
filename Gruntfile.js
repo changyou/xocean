@@ -470,7 +470,7 @@ module.exports = function (grunt) {
       'bower-install',
       'concurrent:server',
       'autoprefixer',
-      'express:test',
+      'express:dev',
       'open',
       'watch'
     ]);
@@ -491,9 +491,7 @@ module.exports = function (grunt) {
 
     if (target === 'client') {
       return grunt.task.run([
-        'clean:server',
-        'concurrent:test',
-        'autoprefixer',
+        'express:dev',
         'karma'
       ]);
     }

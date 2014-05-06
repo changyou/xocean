@@ -5,12 +5,11 @@ angular.module('xoceanManage', [
   'ngResource',
   'ngSanitize',
   'ngRoute'
-])
-
-.config ($routeProvider, $locationProvider, $httpProvider)->
-	$routeProvider
-	.when '/',
-		templateUrl: 'manage/user'
-		controller: 'ManageUserCtrl'
-	.otherwise
-		redirectTo: '/'
+]).config ($routeProvider, $locationProvider, $httpProvider)->
+    $routeProvider
+      .when '/',
+          templateUrl: 'manage/user'
+          controller: 'ManageUserCtrl'
+      .otherwise
+          redirectTo: '/'
+    return
