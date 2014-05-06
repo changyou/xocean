@@ -470,7 +470,7 @@ module.exports = function (grunt) {
       'bower-install',
       'concurrent:server',
       'autoprefixer',
-      'express:test',
+      'express:dev',
       'open',
       'watch'
     ]);
