@@ -18,6 +18,7 @@
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="vendor/editor/themes/default/css/umeditor.css" />
     <!-- endbuild -->
   </head>
   <body ng-app="xoceanApp">
@@ -26,17 +27,18 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
+    <div class="app">
         <div ng-include="'partials/navbar.html'"></div>
 
-        <div ng-view=""></div>
+        <div class="container" ng-view=""></div>
 
     </div>
-    <div class="footer">
+
+    <!--<div class="footer">
       <div class="container">
         <p class="text-muted">CYNadFe</p>
       </div>
-    </div>
+    </div>-->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -65,6 +67,9 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <script type="text/javascript" src="vendor/editor/umeditor.config.js"></script>
+    <script type="text/javascript" src="vendor/editor/umeditor.js"></script>
+    <script type="text/javascript" src="vendor/editor/lang/zh-cn/zh-cn.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
@@ -73,14 +78,19 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/signup.js"></script>
         <script src="scripts/controllers/settings.js"></script>
+        <script src="scripts/controllers/article.js"></script>
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/user.js"></script>
+        <script src="scripts/services/article.js"></script>
         <script src="scripts/directives/mongooseError.js"></script>
-        <script src="scripts/controllers/Report.js"></script>
+        <script src="scripts/directives/mdeditor.js"></script>
+        <script src="scripts/directives/recipient.js"></script>
+        <script src="scripts/directives/ngbtnlist.js"></script>
         <script src="scripts/controllers/report.js"></script>
         <script src="scripts/services/report.js"></script>
         <script src="scripts/controllers/reportEditor.js"></script>
         <!-- endbuild -->
+
 </body>
 </html>
