@@ -233,6 +233,10 @@ module.exports = function (grunt) {
       html: ['<%= yeoman.app %>/views/index.html',
              '<%= yeoman.app %>/views/index.jade'],
       options: {
+        assetsDirs: [
+          '<%= yeoman.dist %>/public',
+          '<%= yeoman.dist %>/public/styles'
+        ],
         dest: '<%= yeoman.dist %>/public'
       }
     },
@@ -320,6 +324,7 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
+            'vendor/{,*/}*',
             'fonts/**/*'
           ]
         }, {
