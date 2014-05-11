@@ -54,11 +54,9 @@ angular.module('xoceanApp')
       if $scope.reportForm.$valid
         if not $scope.report._id
           $scope.report = new Report $scope.report
-          $scope.report.$create ->
-            NProgress.set(0.4)
+          $scope.report.$create()
         else
-          $scope.report.$save ->
-            NProgress.set(0.4) 
+          $scope.report.$save()
       else
         $scope.errorFlag = true
 

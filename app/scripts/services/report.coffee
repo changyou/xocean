@@ -7,10 +7,10 @@ angular.module('xoceanApp')
 		}, {
 			create: {
 				method: 'POST'
-			},
+			}
 			save: {
 				method: 'PUT'
-			},
+			}
 			get: {
 				method: 'GET'
 			}
@@ -18,3 +18,4 @@ angular.module('xoceanApp')
 				method: 'POST'
 			}
 		}
+	
