@@ -243,12 +243,16 @@ module.exports = function (grunt) {
              '<%= yeoman.dist %>/views/{,*/}*.jade'],
       css: ['<%= yeoman.dist %>/public/styles/{,*/}*.css'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>/public']
+        assetsDirs: [
+          '<%= yeoman.dist %>/public',
+          '<%= yeoman.dist %>/public/styles'
+        ]
       }
     },
 
     // The following *-min tasks produce minified files in the dist folder
     imagemin: {
+      options: { cache: false },
       dist: {
         files: [{
           expand: true,
@@ -320,6 +324,7 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
+            'vendor/**/*',
             'fonts/**/*'
           ]
         }, {

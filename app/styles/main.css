@@ -127,14 +127,14 @@ body {
     text-decoration: none;
 }
 
- 
+
 .input-action .fn-autoComplate .item-active {
     background-color: #999;
     color: #FFF;
     text-decoration: none;
 }
 
- 
+
 .page-line{
     height: 1px;
     border-top:1px dotted #CFCECE;
@@ -152,7 +152,7 @@ body {
 .thisWeek-item .thisWeek-add,.nextWeek-item .nextWeek-add{
     position: absolute;
     right: 10px;
-    top: 7px;   
+    top: 7px;
     color:#DFDFDF;
     cursor: pointer;
     -webkit-transition:all .2s ease;
@@ -160,7 +160,7 @@ body {
 .thisWeek-item .thisWeek-remove,.nextWeek-item .nextWeek-remove{
     position: absolute;
     right: 30px;
-    top: 7px;   
+    top: 7px;
     color:#DFDFDF;
     cursor: pointer;
     -webkit-transition:all .2s ease;
@@ -180,7 +180,7 @@ body {
     color:#CACACA;
     margin:0 -3px;
 }
- 
+
 .thisWeek-item .thisWeek-near{
     border-radius: 0;
 }
@@ -240,7 +240,7 @@ body {
     margin-top: 10px;
 }
 .login-aside{
-	background: url(../images/login-aside2.png) center bottom no-repeat;
+	background: url(/images/login-aside2.png) center bottom no-repeat;
 	height: 444px;
 	background-size: contain;
 }
@@ -285,7 +285,7 @@ body {
 }
 
 .report-btn .btn{
-   
+
     -moz-transition: all 0.2s linear;
     -webkit-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
