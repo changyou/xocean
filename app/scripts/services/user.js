@@ -22,6 +22,10 @@ angular.module('xoceanApp')
       findByCode:{
         method: 'GET',
         url:"/api/user/findByCode"
+      },
+      changeInfo:{
+        method: 'POST',
+        url:"api/user/changeInfo"
       }
 	  });
   });

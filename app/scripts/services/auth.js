@@ -143,5 +143,23 @@ angular.module('xoceanApp')
             return cb(err);
           });
       },
+      /**
+       * Change user info
+       *
+       * @param  {Object}   user     - user info
+       * @param  {Function} callback - optional
+       * @return {Promise}
+       */
+      changeInfo: function(user, callback) {
+        var cb = callback || angular.noop;
+        return User.changeInfo(user,
+          function(user) {
+            $rootScope.currentUser = user;
+            return cb(user);
+          },
+          function(err) {
+            return cb(err);
+          }).$promise;
+      }
     };
   });
