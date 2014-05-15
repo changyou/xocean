@@ -20,7 +20,8 @@ angular.module('xoceanApp')
           password: $scope.user.password,
           group: $scope.user.group,
           receivers: ($scope.user.receivers),
-          code: $scope.user.code
+          code: $scope.user.code,
+          jobNumber: $scope.user.jobNumber
         })
         .then( function() {
           // Account created, redirect to home

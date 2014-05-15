@@ -18,4 +18,23 @@ angular.module('xoceanApp')
         });
       }
 		};
+  }).controller('SetInfoCtrl', function ($scope, User, Auth) {
+    $scope.errors = {};
+    $scope.user = Auth.currentUser();
+
+    $scope.changeInfo = function(form) {
+      $scope.submitted = true;
+      if(form.$valid) {
+        Auth.changeInfo({
+          group: $scope.user.group,
+          receivers: ($scope.user.receivers),
+          jobNumber: $scope.user.jobNumber
+        })
+        .then( function() {
+          $scope.message = '修改成功';
+        })
+        .catch( function() {
+        });
+      }
+    };
   });
