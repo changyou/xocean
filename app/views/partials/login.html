@@ -8,18 +8,18 @@
     <div class="panel panel-default login-field">
       <div class="square-gradient-bar"></div>
       <div class="panel-body">
-        <form class="form" name="form" ng-submit="login(form)" novalidate>
+        <form class="form" name="form" ng-submit="login(form)">
 
           <div class="alert alert-danger" ng-show="errors.other.length">
             {{ errors.other }}
           </div>
           <div class="form-group input-group-lg">
             <label>Email</label>
-            <input type="text" name="email" class="form-control" ng-model="user.email" placeholder="Email">
+            <input type="text" name="email" class="form-control" ng-model="user.email" placeholder="Email" required>
           </div>
           <div class="form-group input-group-lg">
             <label>Password</label>
-            <input type="password" name="password" class="form-control" ng-model="user.password" placeholder="Password">
+            <input type="password" name="password" class="form-control" ng-model="user.password" placeholder="Password" required>
           </div>
 
           <button type="submit" class="btn btn-lg btn-block btn-primary"> 登 陆 </button>
