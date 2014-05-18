@@ -32,6 +32,8 @@ exports.update = (req, res, next)->
     Report.findById reportId, (err, report)->
         return res.json(400, err) if err
         Article.findById report.artId , (err, art)->
+            return res.json(400, err) if err
+            return "" if !art
             art.content = req.body.html
             art.contentTxt = req.body.cleanHtml
             art.save (err) ->
@@ -70,5 +72,19 @@ exports.sendEmail = (req, res, next)->
                 res.json {
                     success: true
                 }
-
+exports.preview = (req,res,next)->
+    console.log(req.body);
+    newReport = new Report(req.body)
+    newReport.userId = req.user._id
+    newReport.from = req.user.email
+    newReport.art = Article.create({
+            content : req.body.html
+            author: req.user.name
+            contentTxt: req.body.cleanHtml
+        })
+    newReport.html = req.body.html
+    newReport.updateAt = newReport.createAt = new Date()
+    preHtml = Emailer.previewHtml newReport
+    return res.json(500, err) if !preHtml
+    res.json {code:200,data:preHtml}
 

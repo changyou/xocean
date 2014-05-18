@@ -17,5 +17,9 @@ angular.module('xoceanApp')
 			postMail: {
 				method: 'POST'
 			}
+			preview:{
+				method: 'POST'
+				url:"/api/report/preview"
+			}
 		}
 	

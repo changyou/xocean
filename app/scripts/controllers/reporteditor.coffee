@@ -50,20 +50,24 @@ angular.module('xoceanApp')
       $scope.report.cc = reports
 
     $scope.errorFlag = false
-    $scope.save = ->
+    $scope.save = (cb) ->
+
       if $scope.reportForm.$valid
         if not $scope.report._id
           $scope.report = new Report $scope.report
-          $scope.report.$create()
+          $scope.report.$create ->
+            if cb then cb();
         else
-          $scope.report.$save()
+          $scope.report.$save ->
+            if cb then cb();
       else
         $scope.errorFlag = true
 
 
     $scope.send = ->
       NProgress.start()
-      $scope.report.$save ->
+      $scope.save ->
+        debugger;
         NProgress.set(0.6)  
         $scope.report.$postMail null, ->
             NProgress.done()
@@ -107,5 +111,16 @@ angular.module('xoceanApp')
       $(e.currentTarget).tooltip('show')
       return
 
+    $scope.preview = ()->
+      if not $scope.report._id
+        $scope.report = new Report $scope.report
+        $scope.report.$create ->
+          $scope.report.$preview (res)->
+              console.log(res.code)
+      else
+        $scope.report.$save ->
+          $scope.report.$preview (res)->
+              console.log(res.code)
 
+    
     return
