@@ -12,9 +12,9 @@ angular.module('xoceanApp')
     #自动生成邮件主题
     getSubject = () ->
       subjectStr = "【个人周报】"
-      curDate = new Date() 
+      curDate = new Date()
       #周五之前写的周报，工作周期都是上一周的工作
-      if curDate.getDay() < 5 and curDate.getDay() != 0 
+      if curDate.getDay() < 5 and curDate.getDay() != 0
         startOffset = (curDate.getDay()+ 2 + 4) * 60 * 60 * 24 * 1000
         endOffset = (curDate.getDay()+ 2) * 60 * 60 * 24 * 1000
       else
@@ -64,7 +64,7 @@ angular.module('xoceanApp')
     $scope.send = ->
       NProgress.start()
       $scope.report.$save ->
-        NProgress.set(0.6)  
+        NProgress.set(0.6)
         $scope.report.$postMail null, ->
             NProgress.done()
             $location.url("/report")
@@ -77,8 +77,8 @@ angular.module('xoceanApp')
 
     # 增加一条本周工作记录
     $scope.addCurWeek = (e) ->
-      if e&&e.keyCode == 13 
-        e.preventDefault() 
+      if e&&e.keyCode == 13
+        e.preventDefault()
         $scope.report.curWeek.push({ status: "none", content: ""})
       else if e.type=="click"
         $scope.report.curWeek.push({ status: "none", content: ""})
@@ -87,11 +87,11 @@ angular.module('xoceanApp')
     # 删除一条本周工作记录
     $scope.removeCurWeek = (index) ->
       if $scope.report.curWeek[index] then $scope.report.curWeek.splice(index,1)
-      return  
+      return
 
      # 增加一条下周工作记录
     $scope.addNextWeek = (e) ->
-      if e&&e.keyCode == 13 
+      if e&&e.keyCode == 13
         e.preventDefault()
         $scope.report.nextWeek.push({content: ""})
       else if e.type=="click"

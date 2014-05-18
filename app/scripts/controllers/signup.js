@@ -7,12 +7,12 @@ angular.module('xoceanApp')
     }else{
       $scope.user = {};
     }
-    
+
     $scope.errors = {};
 
     $scope.register = function(form) {
       $scope.submitted = true;
-  
+
       if(form.$valid) {
         Auth.activateUser({
           name: $scope.user.name,

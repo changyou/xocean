@@ -18,4 +18,4 @@ angular.module('xoceanApp')
 				method: 'POST'
 			}
 		}
-	
+

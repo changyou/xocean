@@ -16,14 +16,14 @@ angular.module('xoceanApp').directive('mdeditor', function() {
 	            'insertorderedlist insertunorderedlist  paragraph | fontfamily fontsize' ,
 	            '| justifyleft justifycenter justifyright justifyjustify |',
 	            'link unlink image removeformat',
-	            '| horizontal preview fullscreen' 
+	            '| horizontal preview fullscreen'
 	        ]
         };
 
         if(window.um) um.destroy();
  		window.um = UM.getEditor(attrs.name, opt);
 
-        scope.$watch("report", function(report){ 
+        scope.$watch("report", function(report){
             if(scope.report.html) um.setContent(scope.report.html);
         },true);
 
