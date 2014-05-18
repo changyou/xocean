@@ -77,6 +77,16 @@ exports.sendRegistEmail = (user, callback)->
         else
             callback(null, response)
 
+exports.sendNewPass = (user, newPass)->
+	mailOptions = {
+		from: "xocean <xocean@cyou-inc.com>"
+		to: user.email
+		subject: "XOcean密码重置邮件"
+		html: "新密码为：" + newPass + "<br/> 请及时修改您的密码。<br/>此邮件为系统邮件，请勿直接回复。"
+		forceEmbeddedImages: true
+	}
+	smtpTransport.sendMail mailOptions
+
 exports.previewHtml = (report)->
     html = convertDataToMail report 
     mailHtml =  ejs.render(str, html)

@@ -13,6 +13,13 @@ angular.module('xoceanManage')
 					alert "发送邮件失败"
 			alert "发送邮件完成"
 
+		$scope.resetStatus = (id)->
+			UserManage.changeStatus {userId: id}, (result)->
+				if result.msg is "error"
+					alert "修改用户状态失败"
+				if result.msg is "success"
+					$scope.list = UserManage.query()
+
 		$scope.addAllUser = (e)->
 			if(e && e.keyCode is 13) or (e.type is 'click')
 				if $scope.volumeUser is ""
@@ -20,7 +27,7 @@ angular.module('xoceanManage')
 					return
 				UserManage.addAllUser {nameList: $scope.volumeUser, emailSuffix: $scope.emailSuffix}, (result)->
 					if result.msg is "success"
-						$location.url("/index")
+						$scope.list = UserManage.query()
 
 		$scope.addGroupUser = (userStr)->
 			$scope.volumeUser += userStr + ","

@@ -26,6 +26,7 @@ angular.module('xoceanApp')
       $scope.submitted = true;
       if(form.$valid) {
         Auth.changeInfo({
+          name: $scope.user.name,
           group: $scope.user.group,
           receivers: ($scope.user.receivers),
           jobNumber: $scope.user.jobNumber

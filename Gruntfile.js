@@ -218,7 +218,18 @@ module.exports = function (grunt) {
         }]
       }
     },
-
+    // Compiles LESS to CSS
+    less: {
+      build: {
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/styles',
+          src: ['**/*.less'],
+          dest: '.tmp/styles',
+          ext: '.css'
+        }]
+      }
+    },
     // Renames files for browser caching purposes
     rev: {
       dist: {
@@ -366,10 +377,12 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'coffee:dist',
+        'less:build',
         'copy:styles'
       ],
       test: [
         'coffee',
+        'less:build',
         'copy:styles'
       ],
       debug: {
@@ -383,6 +396,7 @@ module.exports = function (grunt) {
       },
       dist: [
         'coffee',
+        'less:build',
         'copy:styles',
         'imagemin',
         'svgmin',

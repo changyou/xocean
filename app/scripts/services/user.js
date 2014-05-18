@@ -23,9 +23,17 @@ angular.module('xoceanApp')
 				method: 'GET',
 				url:"/api/user/findByCode"
 			},
-      changeInfo:{
-        method: 'POST',
-        url:"api/user/changeInfo"
-      }
+			findByEmail: {
+				method: 'GET',
+				url:"/api/user/findByEmail"
+			},
+			changeInfo:{
+				method: 'POST',
+				url:"api/user/changeInfo"
+			},
+			sendNewPwd:{
+				method: 'POST',
+				url:"api/user/sendNewPwd"
+			}
 		});
 	});

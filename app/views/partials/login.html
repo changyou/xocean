@@ -1,31 +1,34 @@
+  <div class="row login-container">
+    <aside class="login-aside col-sm-6 col-xs-12">
+    </aside>
+    <div class="col-sm-6 col-xs-12">
+      <h1>xOcean</h1>
+      <h4>让自己看到自身的成长！</h4>
+      <div class="panel panel-default login-field">
+        <div class="square-gradient-bar"></div>
+        <div class="panel-body">
+          <form class="form" name="form" ng-submit="login(form)" novalidate>
 
-<div class="row login-container">
-  <aside class="login-aside col-sm-6 col-xs-12">
-  </aside>
-  <div class="col-sm-6 col-xs-12">
-    <h1>Xocean</h1>
-    <h4>让自己看到自身的成长！</h4>
-    <div class="panel panel-default login-field">
-      <div class="square-gradient-bar"></div>
-      <div class="panel-body">
-        <form class="form" name="form" ng-submit="login(form)" novalidate>
-
-          <div class="alert alert-danger" ng-show="errors.other.length">
-            {{ errors.other }}
-          </div>
-          <div class="form-group input-group-lg">
-            <label>Email</label>
-            <input type="text" name="email" class="form-control" ng-model="user.email" placeholder="Email">
-          </div>
-          <div class="form-group input-group-lg">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" ng-model="user.password" placeholder="Password">
-          </div>
-
-          <button type="submit" class="btn btn-lg btn-block btn-primary"> 登 陆 </button>
-      </form>
+            <div class="alert alert-danger" ng-show="errors.other.length">
+              {{ errors.other }}
+            </div>
+            <div class="form-group input-group-lg">
+              <label>Email</label>
+              <input type="text" name="email" class="form-control" ng-model="user.email" placeholder="Email">
+            </div>
+            <div class="form-group input-group-lg">
+              <label>Password</label>
+              <input type="password" name="password" class="form-control" ng-model="user.password" placeholder="Password">
+            </div>
+            <div class="col-sm-6">
+              <button type="submit" class="btn btn-lg btn-block btn-primary"> 登 陆 </button>
+            </div>
+            <div class="col-sm-3 btn-lg">
+              <a href="javascript:void(0);" ng-click='forgetPwd()'>忘记密码</a>
+            </div>
+        </form>
+        </div>
+        <div class="panel-footer">welcome！</div>
       </div>
-      <div class="panel-footer">welcome！</div>
     </div>
   </div>
-</div>
