@@ -22,4 +22,4 @@ angular.module('xoceanApp')
 				url:"/api/report/preview"
 			}
 		}
-	
+

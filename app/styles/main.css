@@ -84,6 +84,7 @@ body {
     width: 100%;
     padding: 5px 0 0 15px;
     border: 1px solid #cccccc;
+    background: #fff;
     border-radius: 4px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -132,7 +133,7 @@ body {
     text-decoration: none;
 }
 
- 
+
 .page-line{
     height: 1px;
     border-top:1px dotted #CFCECE;
@@ -150,7 +151,7 @@ body {
 .thisWeek-item .thisWeek-add,.nextWeek-item .nextWeek-add{
     position: absolute;
     right: 10px;
-    top: 7px;   
+    top: 7px;
     color:#DFDFDF;
     cursor: pointer;
     -webkit-transition:all .2s ease;
@@ -158,7 +159,7 @@ body {
 .thisWeek-item .thisWeek-remove,.nextWeek-item .nextWeek-remove{
     position: absolute;
     right: 30px;
-    top: 7px;   
+    top: 7px;
     color:#DFDFDF;
     cursor: pointer;
     -webkit-transition:all .2s ease;
@@ -178,7 +179,7 @@ body {
     color:#CACACA;
     margin:0 -3px;
 }
- 
+
 .thisWeek-item .thisWeek-near{
     border-radius: 0;
 }
@@ -238,7 +239,7 @@ body {
     margin-top: 10px;
 }
 .login-aside{
-	background: url(../images/login-aside2.png) center bottom no-repeat;
+	background: url(/images/login-aside2.png) center bottom no-repeat;
 	height: 444px;
 	background-size: contain;
 }

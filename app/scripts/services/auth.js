@@ -2,7 +2,7 @@
 
 angular.module('xoceanApp')
   .factory('Auth', function Auth($location, $rootScope, Session, User, $cookieStore) {
-    
+
     // Get currentUser from cookie
     $rootScope.currentUser = $cookieStore.get('user') || null;
     $cookieStore.remove('user');
@@ -11,10 +11,10 @@ angular.module('xoceanApp')
 
       /**
        * Authenticate user
-       * 
+       *
        * @param  {Object}   user     - login info
        * @param  {Function} callback - optional
-       * @return {Promise}            
+       * @return {Promise}
        */
       login: function(user, callback) {
         var cb = callback || angular.noop;
@@ -32,9 +32,9 @@ angular.module('xoceanApp')
 
       /**
        * Unauthenticate user
-       * 
+       *
        * @param  {Function} callback - optional
-       * @return {Promise}           
+       * @return {Promise}
        */
       logout: function(callback) {
         var cb = callback || angular.noop;
@@ -50,10 +50,10 @@ angular.module('xoceanApp')
 
       /**
        * Create a new user
-       * 
+       *
        * @param  {Object}   user     - user info
        * @param  {Function} callback - optional
-       * @return {Promise}            
+       * @return {Promise}
        */
       createUser: function(user, callback) {
         var cb = callback || angular.noop;
@@ -70,11 +70,11 @@ angular.module('xoceanApp')
 
       /**
        * Change password
-       * 
-       * @param  {String}   oldPassword 
-       * @param  {String}   newPassword 
+       *
+       * @param  {String}   oldPassword
+       * @param  {String}   newPassword
        * @param  {Function} callback    - optional
-       * @return {Promise}              
+       * @return {Promise}
        */
       changePassword: function(oldPassword, newPassword, callback) {
         var cb = callback || angular.noop;
@@ -91,7 +91,7 @@ angular.module('xoceanApp')
 
       /**
        * Gets all available info on authenticated user
-       * 
+       *
        * @return {Object} user
        */
       currentUser: function() {
@@ -100,7 +100,7 @@ angular.module('xoceanApp')
 
       /**
        * Simple check to see if a user is logged in
-       * 
+       *
        * @return {Boolean}
        */
       isLoggedIn: function() {
@@ -109,7 +109,7 @@ angular.module('xoceanApp')
       },
       /**
        * Activate a user
-       * 
+       *
        * @param  {Object}   user     - user info
        * @param  {Function} callback - optional
        * @return {Promise}
@@ -127,7 +127,7 @@ angular.module('xoceanApp')
       },
       /**
        * check code before Activate a user
-       * 
+       *
        * @param  {String}   code     - unique code
        * @param  {Function} callback - optional
        * @return {Promise}
@@ -143,5 +143,23 @@ angular.module('xoceanApp')
             return cb(err);
           });
       },
+      /**
+       * Change user info
+       *
+       * @param  {Object}   user     - user info
+       * @param  {Function} callback - optional
+       * @return {Promise}
+       */
+      changeInfo: function(user, callback) {
+        var cb = callback || angular.noop;
+        return User.changeInfo(user,
+          function(user) {
+            $rootScope.currentUser = user;
+            return cb(user);
+          },
+          function(err) {
+            return cb(err);
+          }).$promise;
+      }
     };
   });

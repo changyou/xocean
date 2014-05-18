@@ -11,14 +11,14 @@ angular.module('xoceanApp')
     restrict: 'A'
     link: (scope, element, attrs) ->
          # 改变工作记录的状态
-        scope.curShow = scope.status 
+        scope.curShow = scope.status
         scope.cwToggleDone = (status,index) ->
           scope.status = status
           scope.showlist = false
-          scope.curShow = scope.status 
-          return 
+          scope.curShow = scope.status
+          return
 
     controller: ($scope) ->
-        
+
         $scope.showlist=false
   )

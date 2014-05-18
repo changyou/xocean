@@ -31,9 +31,14 @@ angular.module('xoceanApp', [
           }
         }
       })
-      .when('/settings', {
+      .when('/settings/password', {
         templateUrl: 'partials/settings',
         controller: 'SettingsCtrl',
+        authenticate: true
+      })
+      .when('/settings/info', {
+        templateUrl: 'partials/setinfo',
+        controller: 'SetInfoCtrl',
         authenticate: true
       })
       .when('/article/list', {
