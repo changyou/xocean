@@ -5,8 +5,9 @@ angular.module('xoceanApp')
 
     // Get currentUser from cookie
     $rootScope.currentUser = $cookieStore.get('user') || null;
-
-    $rootScope.currentUser.name = decodeURI($rootScope.currentUser.name);
+    if($rootScope.currentUser) {
+      $rootScope.currentUser.name = decodeURI($rootScope.currentUser.name);
+    }
     $cookieStore.remove('user');
 
     return {
