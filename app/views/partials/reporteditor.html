@@ -49,7 +49,7 @@
                                   ng-keydown="addCurWeek($event)">
                               <span 
                                   class="thisWeek-remove" 
-                                  ng-show="isFocus&&!$first"  
+                                  ng-show="!$first"  
                                   ng-click="removeCurWeek($index)" 
                                   data-placement="left" 
                                   ng-mouseover="showTip($event)"
@@ -58,7 +58,6 @@
                               </span> 
                               <span 
                                   class="thisWeek-add" 
-                                  ng-show="isFocus" 
                                   ng-click="addCurWeek($event)" 
                                   data-placement="left" 
                                   ng-mouseover="showTip($event)"
