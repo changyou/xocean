@@ -5,6 +5,17 @@
   <div class="col-sm-12">
     <form class="form" name="form" ng-submit="changeInfo(form)" novalidate>
 
+      <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                          'has-error': form.name.$invalid && submitted }">
+        <label>姓名</label>
+
+        <input type="text" name="name" class="form-control" ng-model="user.name"
+               required/>
+        <p class="help-block" ng-show="form.name.$error.required && submitted">
+          请填写您的姓名。
+        </p>
+      </div>
+
       <div class="form-group" ng-class="{ 'has-success': form.jobNumber.$valid && submitted,
                                           'has-error': form.jobNumber.$invalid && submitted }">
         <label>工号</label>
