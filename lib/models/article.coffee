@@ -14,6 +14,10 @@ ArticleSchema = new Schema({
 		type: Date
 		default: Date.now
 	}
+	hasSend : {
+		type : Boolean
+		default : false
+	}
 
 })
 
