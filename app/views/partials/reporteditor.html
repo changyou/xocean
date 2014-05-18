@@ -39,7 +39,7 @@
                                   type="text" 
                                   class="form-control" 
                                   name="curWeek"
-                                  required
+                                  ng-autofocus="$last&&!$first"
                                   ng-required="true"
                                   ng-init="isFocus=false"
                                   ng-focus="isFocus=true" 
