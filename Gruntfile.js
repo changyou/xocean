@@ -84,9 +84,9 @@ module.exports = function (grunt) {
       express: {
         files: [
           'server.js',
-          'lib/**/*.{js,json}'
+          'lib/**/*.{js,json,coffee}'
         ],
-        tasks: ['newer:jshint:server', 'express:test', 'wait'],
+        tasks: ['express:dev', 'wait'],
         options: {
           livereload: true,
           nospawn: true //Without this option specified express won't be reloaded
@@ -224,9 +224,9 @@ module.exports = function (grunt) {
       dist: {
         files: {
           src: [
-            '<%= yeoman.dist %>/public/scripts/{,*/}*.js',
-            '<%= yeoman.dist %>/public/styles/{,*/}*.css',
-            '<%= yeoman.dist %>/public/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+            '<%= yeoman.dist %>/public/scripts/{,**/}*.js',
+            '<%= yeoman.dist %>/public/styles/{,**/}*.css',
+            '<%= yeoman.dist %>/public/images/{,**/}*.{png,jpg,jpeg,gif,webp,svg}',
             '<%= yeoman.dist %>/public/styles/fonts/*'
           ]
         }
@@ -238,7 +238,7 @@ module.exports = function (grunt) {
     // additional tasks can operate on them
     useminPrepare: {
       html: ['<%= yeoman.app %>/views/index.html',
-             '<%= yeoman.app %>/views/index.jade'],
+             '<%= yeoman.app %>/views/manage/index.html'],
       options: {
         dest: '<%= yeoman.dist %>/public'
       }
@@ -246,9 +246,8 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/views/{,*/}*.html',
-             '<%= yeoman.dist %>/views/{,*/}*.jade'],
-      css: ['<%= yeoman.dist %>/public/styles/{,*/}*.css'],
+      html: ['<%= yeoman.dist %>/views/{,**/}*.html'],
+      css: ['<%= yeoman.dist %>/public/styles/{,**/}*.css'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>/public',
@@ -264,7 +263,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
+          src: '{,**/}*.{png,jpg,jpeg,gif}',
           dest: '<%= yeoman.dist %>/public/images'
         }]
       }
@@ -275,7 +274,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.svg',
+          src: '{,**/}*.svg',
           dest: '<%= yeoman.dist %>/public/images'
         }]
       }
@@ -339,7 +338,7 @@ module.exports = function (grunt) {
           dot: true,
           cwd: '<%= yeoman.app %>/views',
           dest: '<%= yeoman.dist %>/views',
-          src: '**/*.jade'
+          src: '**/*'
         }, {
           expand: true,
           cwd: '.tmp/images',

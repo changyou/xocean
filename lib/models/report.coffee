@@ -8,7 +8,7 @@ ReportSchema = new Schema({
   to: String
   cc: String
   subject: String
-  art: Schema.Types.Mixed
+  artId: String
   html: String
   name: String
   curWeek:[Schema.Types.Mixed]
