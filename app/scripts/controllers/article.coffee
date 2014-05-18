@@ -1,5 +1,6 @@
 'use strict'
 
 angular.module('xoceanApp')
-	.controller 'ArticleCtrl', ($scope, Article)->
-		$scope.list = Article.query()
+    .controller 'ArticleCtrl', ($scope, Article)->
+        Article.get (res)->
+            $scope.list = res.data
