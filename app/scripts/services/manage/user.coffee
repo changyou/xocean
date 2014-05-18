@@ -8,14 +8,17 @@ angular.module('xoceanManage')
 				create: {
 					method: 'POST'
 				}
-				save: {
-					method: 'PUT'
-				}
 				get: {
 					method: 'GET'
 				}
 				postMail: {
 					method: 'POST'
+				}
+				changeStatus: {
+					method: 'PUT'
+					params: {
+						id: 'changeStatus'
+					}
 				}
 				addAllUser: {
 					method: 'PUT'
