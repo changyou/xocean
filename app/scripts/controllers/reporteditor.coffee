@@ -67,7 +67,6 @@ angular.module('xoceanApp')
     $scope.send = ->
       NProgress.start()
       $scope.save ->
-        debugger;
         NProgress.set(0.6)  
         $scope.report.$postMail null, ->
             NProgress.done()

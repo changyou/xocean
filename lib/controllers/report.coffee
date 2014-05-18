@@ -7,21 +7,25 @@ exports.create = (req, res, next)->
     newReport = new Report(req.body)
     newReport.userId = req.user._id
     newReport.from = req.user.email
-    newReport.art = Article.create({
+    newReport.html = req.body.html
+    newReport.updateAt = newReport.createAt = new Date()
+
+    shareArticle =  new Article({
             content : req.body.html
             author: req.user.name
             contentTxt: req.body.cleanHtml
-        })
-    newReport.html = req.body.html
-    newReport.updateAt = newReport.createAt = new Date()
-    newReport.save (err)->
-        return res.json(400, err) if err
-        res.json newReport.toObject()
+            reportId: newReport.id
+    })
+
+    shareArticle.save (err) ->
+        newReport.artId = shareArticle.id
+        newReport.save (err)->
+            return res.json(400, err) if err
+            res.json newReport.toObject()
 
 
 exports.list = (req, res, next)->
     uid = req.user._id
-
     Report.find { userId: uid }, (err, result)->
         return res.json(400, err) if err
         res.json result
@@ -31,23 +35,28 @@ exports.update = (req, res, next)->
 
     Report.findById reportId, (err, report)->
         return res.json(400, err) if err
+        report.subject = req.body.subject
+        report.to = req.body.to
+        report.cc = req.body.cc
+        report.updateAt = new Date()
+        report.curWeek = req.body.curWeek
+        report.nextWeek = req.body.nextWeek
+        report.html = req.body.html
+
         Article.findById report.artId , (err, art)->
             return res.json(400, err) if err
-            return "" if !art
-            art.content = req.body.html
-            art.contentTxt = req.body.cleanHtml
-            art.save (err) ->
-                report.subject = req.body.subject
-                report.html = art.content
-                report.to = req.body.to
-                report.cc = req.body.cc
-                report.updateAt = new Date()
-                report.curWeek = req.body.curWeek
-                report.nextWeek = req.body.nextWeek
+            if !art
                 report.save (err)->
                     return res.json(400, err) if err
-
                     res.json report.toObject()  
+                return
+            else 
+                art.content = req.body.html
+                art.contentTxt = req.body.cleanHtml
+                art.save (err) ->
+                    report.save (err)->
+                        return res.json(400, err) if err
+                        res.json report.toObject()  
             return
 
         
@@ -65,15 +74,22 @@ exports.del = (req, res, next)->
 
 exports.sendEmail = (req, res, next)->
     reportId = req.params.id
+
     Report.findById reportId, (err, report)->
         Emailer.sendReport report, (err, response)->
             return res.json(500, err) if err
-            report.save ->
-                res.json {
-                    success: true
-                }
+            Article.findById report.artId, (err, art)->
+                return res.json(400, err) if err
+                art.hasSend = true
+                art.save (artErr)->
+                    return res.json(500, artErr) if artErr
+                    report.save ->
+                        res.json {
+                            success: true
+                        }
+            return
+            
 exports.preview = (req,res,next)->
-    console.log(req.body);
     newReport = new Report(req.body)
     newReport.userId = req.user._id
     newReport.from = req.user.email

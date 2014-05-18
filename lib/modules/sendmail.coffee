@@ -1,4 +1,5 @@
-
+mongoose = require 'mongoose'
+Article = mongoose.model 'Article'
 nodemailer = require 'nodemailer'
 
 config = require '../config/config'
@@ -39,12 +40,6 @@ mailOptions = {
     """
 }
 
-# smtpTransport.sendMail mailOptions, (err, response)->
-
-#   return console.log err if err
-
-#   console.log response.message
-
 exports.sendReport = (report, callback)->
     html = convertDataToMail report 
     mailHtml =  ejs.render(str, html)
@@ -60,14 +55,12 @@ exports.sendReport = (report, callback)->
     smtpTransport.sendMail mailOptions, (err, response)->
         if err
             report.status = 3
-            console.log err
             callback(err)
         else
             report.status = 1
-            report.art.hasSend = true
-            report.art.save()
             report.sendAt = new Date()
             callback(null, response)
+            return
 
 exports.sendRegistEmail = (user, callback)->
     mailOptions = {
