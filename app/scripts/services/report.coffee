@@ -7,14 +7,19 @@ angular.module('xoceanApp')
 		}, {
 			create: {
 				method: 'POST'
-			},
+			}
 			save: {
 				method: 'PUT'
-			},
+			}
 			get: {
 				method: 'GET'
 			}
 			postMail: {
 				method: 'POST'
 			}
+			preview:{
+				method: 'POST'
+				url:"/api/report/preview"
+			}
 		}
+	

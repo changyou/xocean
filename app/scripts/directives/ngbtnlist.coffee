@@ -7,7 +7,7 @@ angular.module('xoceanApp')
         index :"@ngItemIndex"
         data:"=ngItemData"
     }
-    templateUrl: '../../views/partials/btnlist.html'
+    templateUrl: 'partials/btnlist.html'
     restrict: 'A'
     link: (scope, element, attrs) ->
          # 改变工作记录的状态

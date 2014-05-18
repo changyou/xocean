@@ -1,6 +1,6 @@
 'use strict'
 
-describe 'Directive: ngBtnList', () ->
+describe 'Directive: ngArttab', () ->
 
   # load the directive's module
   beforeEach module 'xoceanApp'
@@ -11,6 +11,6 @@ describe 'Directive: ngBtnList', () ->
     scope = $rootScope.$new()
 
   it 'should make hidden element visible', inject ($compile) ->
-    # element = angular.element '<ng-btn-list></ng-btn-list>'
-    # element = $compile(element) scope
-    # expect(element.text()).toBe 'this is the ngBtnList directive'
+    element = angular.element '<ng-arttab></ng-arttab>'
+    element = $compile(element) scope
+    expect(element.text()).toBe 'this is the ngArttab directive'

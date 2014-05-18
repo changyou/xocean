@@ -29,6 +29,7 @@ angular.module('xoceanApp').directive('mdeditor', function() {
 
         um.addListener('contentChange',function(){
         	scope.report.html = um.getContent();
+            scope.report.cleanHtml = um.getContentTxt();
         });
 
     }
