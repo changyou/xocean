@@ -71,4 +71,23 @@ exports.sendEmail = (req, res, next)->
                     success: true
                 }
 
+exports.workList = (req, res, next)->
+    userId = req.user._id
+    currentReportId = req.param('reportId') or null
+
+    result = Report.find({
+        userId: userId
+    })
+    result.not({ _id: currentReportId }) if currentReportId
+
+    result.sort('-sendAt')
+    .limit(1)
+    .exec (err, lastReport)->
+        return next(err) if err
+        if lastReport?.length is 0
+            res.json {}
+        else
+
+            res.json lastReport
+
 

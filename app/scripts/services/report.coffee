@@ -17,5 +17,9 @@ angular.module('xoceanApp')
 			postMail: {
 				method: 'POST'
 			}
+			workList: {
+				method: 'GET'
+				url: '/api/report/lastest'
+			}
 		}
 
