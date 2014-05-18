@@ -2,9 +2,29 @@
 nodemailer = require 'nodemailer'
 
 config = require '../config/config'
-
-
+ejs = require 'ejs'
+fs = require 'fs'
+str = fs.readFileSync __dirname+'/../template/mailTemplate.html', 'utf8'
 smtpTransport = nodemailer.createTransport('smtp', config.smtp)
+
+convertDataToMail = (data) ->
+	temp = data 
+
+	for key in temp.curWeek
+		
+		switch key.status   
+			when "none" 
+				key.status = "未完成"
+			when "done" 
+				key.status = "已完成"
+			when "halfDone" 
+				key.status = "50%"
+			when "nearDone" 
+				key.status = "80%"
+		 
+	temp.submiteDate = new Date().getFullYear().toString() + "." + (new Date().getMonth()+1) + "." + (new Date().getDate())
+	temp.workDate = temp.subject.replace /^.*(\d{4}.*-.*\.\d{2}).*/,"$1"
+	return temp 
 
 mailOptions = {
 	from: "ijse <liyi_nad@cyou-inc.com>"
@@ -26,13 +46,15 @@ mailOptions = {
 # 	console.log response.message
 
 exports.sendReport = (report, callback)->
+	html = convertDataToMail report 
+	mailHtml =  ejs.render(str, html)
 	mailOptions = {
 		from: report.from
 		to: report.to
 		cc: report.cc
 		subject: report.subject
 		forceEmbeddedImages: true
-		html: report.html
+		html: mailHtml
 	}
 
 	smtpTransport.sendMail mailOptions, (err, response)->
@@ -59,3 +81,4 @@ exports.sendRegistEmail = (user, callback)->
 			callback(err)
 		else
 			callback(null, response)
+

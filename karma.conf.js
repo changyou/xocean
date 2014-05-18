@@ -11,6 +11,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      // 'app/bower_components/jquery/dist/jquery.js',
       'app/bower_components/angular/angular.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/bower_components/angular-resource/angular-resource.js',
@@ -20,7 +21,9 @@ module.exports = function(config) {
       'app/scripts/**/*.js',
       'app/scripts/*.coffee',
       'test/spec/**/*.js',
-      '.tmp/**/*.js'
+      'test/client/spec/directives/recipient.coffee',
+      '.tmp/**/*.js',
+      'app/views/**/*.html'
     ],
 
     // list of files / patterns to exclude
@@ -46,9 +49,37 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Firefox'],
+    browsers: ['PhantomJS'],
 
+    preprocessors : {
+      'app/views/*.html': ['ng-html2js'],
+      'app/views/**/*.html': ['ng-html2js'],
+      '**/*.coffee': ['coffee']
+    },
 
+    ngHtml2JsPreprocessor : {
+      moduleName: 'xoceanApp',
+
+      // Function that transforms the path to look exactly like 
+      // you have it in templateUrl in your Angular code
+      //
+      // Mine looks like this
+      cacheIdFromPath: function(filepath) {
+        return filepath.match(/views\/.*/)[0]
+      }
+    },
+
+    coffeePreprocessor: {
+      // options passed to the coffee compiler
+      options: {
+        bare: true,
+        sourceMap: false
+      },
+      // transforming the filenames
+      transformPath: function(path) {
+        return path.replace(/\.coffee$/, '.js');
+      }
+    },
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
     singleRun: false

@@ -39,6 +39,12 @@ module.exports = function (grunt) {
           script: 'dist/server.js',
           node_env: 'production'
         }
+      },
+      test: {
+        options: {
+          script: 'server.js',
+          node_env: 'test'
+        }
       }
     },
     open: {
@@ -48,7 +54,7 @@ module.exports = function (grunt) {
     },
     watch: {
       coffee: {
-        files: ['<%= yeoman.app %>/scripts/{,**/}*.{coffee,litcoffee,coffee.md}'],
+        files: ['<%= yeoman.app %>/scripts/{,**/}*.{coffee,litcoffee,coffee.md}', 'lib/**/{,**/}*.coffee'],
         tasks: ['newer:coffee:dist']
       },
       coffeeTest: {
@@ -67,6 +73,7 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/views/{,*//*}*.{html,jade}',
           '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
           '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
+          'lib/{,**/*}*.js',
           '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
         ],
 
@@ -79,7 +86,7 @@ module.exports = function (grunt) {
           'server.js',
           'lib/**/*.{js,json}'
         ],
-        tasks: ['newer:jshint:server', 'express:dev', 'wait'],
+        tasks: ['newer:jshint:server', 'express:test', 'wait'],
         options: {
           livereload: true,
           nospawn: true //Without this option specified express won't be reloaded
@@ -489,9 +496,7 @@ module.exports = function (grunt) {
 
     if (target === 'client') {
       return grunt.task.run([
-        'clean:server',
-        'concurrent:test',
-        'autoprefixer',
+        'express:dev',
         'karma'
       ]);
     }

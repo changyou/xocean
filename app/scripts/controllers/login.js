@@ -1,15 +1,21 @@
 'use strict';
 
 angular.module('xoceanApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $rootScope) {
     /*$scope.user = {
       email: 'test@test.com',
       password: 'test'
     };*/
+
+    if($rootScope.currentUser !== null){
+      $location.url('/');
+      return;
+    }
+
     $scope.errors = {};
 
     $scope.login = function(form) {
-      $scope.errors.other = "";
+      $scope.errors.other = '';
       $scope.submitted = true;
 
       if(form.$valid) {

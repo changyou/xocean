@@ -2,7 +2,7 @@
 
 angular.module('xoceanApp')
   .directive('recipient', () ->
-    templateUrl: '../../views/partials/recipients.html'
+    templateUrl: 'partials/recipients.html'
     restrict: 'AE'
     scope:{
         data : "=ngRecpData"

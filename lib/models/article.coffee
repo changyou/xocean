@@ -8,7 +8,8 @@ ArticleSchema = new Schema({
 	subject: String
 	tag: [String]
 	content: String
-
+	contentTxt: String
+	author: String
 	createAt: {
 		type: Date
 		default: Date.now
