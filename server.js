@@ -2,10 +2,7 @@
 // Support coffee-script modules
 require('coffee-script/register');
 
-var express = require('express'),
-    path = require('path'),
-    fs = require('fs'),
-    mongoose = require('mongoose');
+var express = require('express');
 
 /**
  * Main application file
@@ -20,7 +17,7 @@ var config = require('./lib/config/config');
 require('./lib/init_db');
 
 // Passport Configuration
-var passport = require('./lib/config/passport');
+require('./lib/config/passport');
 
 var app = express();
 
