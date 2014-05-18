@@ -18,8 +18,8 @@ angular.module('xoceanApp')
 				method: 'POST'
 			}
 			preview:{
-				method: 'POST'
-				url:"/api/report/preview"
+				method: 'GET'
+				url:'/api/report/:id/preview/'
 			}
 		}
 

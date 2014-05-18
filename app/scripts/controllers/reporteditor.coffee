@@ -111,15 +111,11 @@ angular.module('xoceanApp')
       return
 
     $scope.preview = ()->
-      if not $scope.report._id
-        $scope.report = new Report $scope.report
-        $scope.report.$create ->
-          $scope.report.$preview (res)->
-              console.log(res.code)
-      else
-        $scope.report.$save ->
-          $scope.report.$preview (res)->
-              console.log(res.code)
-
+        $scope.save ->
+          # console.log $scope.report.subject
+          # Report.preview {id:$scope.report._id}, (res)->
+          #     console.log $scope.report.subject
+          #     console.log(res.code)
+          window.open("/api/report/"+$scope.report._id+"/preview")
     
     return

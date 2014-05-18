@@ -2,7 +2,7 @@ mongoose = require 'mongoose'
 Report = mongoose.model 'Report'
 Article = mongoose.model 'Article'
 Emailer = require '../modules/sendmail'
-
+path = require('path')
 exports.create = (req, res, next)->
     newReport = new Report(req.body)
     newReport.userId = req.user._id
@@ -88,19 +88,15 @@ exports.sendEmail = (req, res, next)->
                             success: true
                         }
             return
-            
+
 exports.preview = (req,res,next)->
-    newReport = new Report(req.body)
-    newReport.userId = req.user._id
-    newReport.from = req.user.email
-    newReport.art = Article.create({
-            content : req.body.html
-            author: req.user.name
-            contentTxt: req.body.cleanHtml
-        })
-    newReport.html = req.body.html
-    newReport.updateAt = newReport.createAt = new Date()
-    preHtml = Emailer.previewHtml newReport
-    return res.json(500, err) if !preHtml
-    res.json {code:200,data:preHtml}
+    reportId = req.params.id
+    stripped = req.url.split('.')[0];
+    requestedView = path.join('./', stripped);
+
+    console.log requestedView
+    Report.findById reportId, (err,repo)->
+        return res.json(500,err) if err
+        preHtml = Emailer.previewHtml repo
+        res.render 'partials/reportPreview.html',{html:preHtml}
 
