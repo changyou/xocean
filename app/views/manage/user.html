@@ -62,6 +62,7 @@
 		</td>
 		<td ng-switch on="user.status">
 			<a href="javascript:void(0)" ng-click="send(user._id)" ng-switch-when="0">Resend</a>
+			<a href="javascript:void(0)" ng-click="resetStatus(user._id)" ng-switch-when="1">Reset</a>
 		</td>
 	</tr>
 

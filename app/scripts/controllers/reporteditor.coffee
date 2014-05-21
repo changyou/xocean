@@ -1,5 +1,12 @@
 angular.module('xoceanApp')
-  .controller 'ReporteditorCtrl', ($scope, $location, Report, User, id, $rootScope) ->
+  .controller 'ReporteditorCtrl', ($scope, $location, Report, User, id, $rootScope, Auth) ->
+
+    if not id
+      currentUser = Auth.currentUser()
+      currentUser.$promise.then (user) -> 
+        $scope.report.to = user.receivers.to
+        $scope.report.cc = user.receivers.cc
+        return
 
     $scope.report = if not id then {} else Report.get({id: id})
 

@@ -110,6 +110,19 @@ angular.module('xoceanApp')
         var user = $rootScope.currentUser;
         return !!user;
       },
+
+      /**
+       * check code before Activate a user
+       *
+       * @param  {String}   code     - unique code
+       * @param  {Function} callback - optional
+       * @return {Promise}
+       */
+      isUserEmail: function(email, callback) {
+        User.findByEmail(email, function(result) {
+          callback(result.msg);
+        });
+      },
       /**
        * Activate a user
        *
