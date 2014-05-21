@@ -93,10 +93,29 @@ exports.preview = (req,res,next)->
     reportId = req.params.id
     stripped = req.url.split('.')[0];
     requestedView = path.join('./', stripped);
-
     console.log requestedView
     Report.findById reportId, (err,repo)->
         return res.json(500,err) if err
         preHtml = Emailer.previewHtml repo
         res.render 'partials/reportPreview.html',{html:preHtml}
+
+exports.workList = (req, res, next)->
+    userId = req.user._id
+    currentReportId = req.param('reportId') or null
+
+    result = Report.find({
+        userId: userId
+    })
+    result.not({ _id: currentReportId }) if currentReportId
+
+    result.sort('-sendAt')
+    .limit(1)
+    .exec (err, lastReport)->
+        return next(err) if err
+        if lastReport?.length is 0
+            res.json {}
+        else
+
+            res.json lastReport
+
 

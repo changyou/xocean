@@ -21,5 +21,9 @@ angular.module('xoceanApp')
 				method: 'GET'
 				url:'/api/report/:id/preview/'
 			}
+			workList: {
+				method: 'GET'
+				url: '/api/report/lastest'
+			}
 		}
 

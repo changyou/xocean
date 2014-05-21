@@ -92,7 +92,7 @@ angular.module('xoceanApp')
       if $scope.report.curWeek[index] then $scope.report.curWeek.splice(index,1)
       return
 
-     # 增加一条下周工作记录
+    # 增加一条下周工作记录
     $scope.addNextWeek = (e) ->
       if e&&e.keyCode == 13
         e.preventDefault()
@@ -106,7 +106,10 @@ angular.module('xoceanApp')
       if $scope.report.nextWeek[index] then $scope.report.nextWeek.splice(index,1)
       return
 
-    $scope.showTip= (e)->
+    # 获取上周工作记录
+    $scope.lastestReport = Report.workList($scope.report._id)
+
+    $scope.showTip = (e)->
       $(e.currentTarget).tooltip('show')
       return
 
