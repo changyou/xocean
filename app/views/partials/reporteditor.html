@@ -154,6 +154,7 @@
                             <div class="col-sm-offset-2 col-sm-10 text-right report-btn">
                                 <span ng-if="report._id" class="save-info">于 <strong>{{report.updateAt | date:'MM月dd日 HH:mm'}}</strong> 保存成功！</span>
                                 <span class="text-danger" ng-if="!report._id">未保存</span>
+                                <button type="submit" class="btn btn-info" ng-disabled="reportForm.$invalid || !report.to" ng-click="preview()"><span class="glyphicon glyphicon-eye-open"></span> 预览</button>
                                 <button type="submit" class="btn btn-info" ng-disabled="reportForm.$invalid || !report.to" ng-click="save()"><span class="glyphicon glyphicon-floppy-disk"></span> 保存</button>
                                 <button type="submit" class="btn btn-success" ng-disabled="reportForm.$invalid || !report.to"  data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon-send"></span> 保存并发送</button>
                             </div>

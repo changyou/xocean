@@ -1,12 +1,22 @@
 
 <div class="g-main">
-  <div class="col-md-3 m-user">
-  	<img class="user-photo" src="{{ currentUser.avatar }}"/>
-  	<p>{{ currentUser.name }}</p>
+  <div class="col-md-2">
+	  <div class="form-block m-user row">
+		  <div class="user-photo-wrap">
+		  	<img class="user-photo" src="{{ currentUser.avatar }}"/>
+		  </div>
+	  	<div class="m-user-info">
+	  		<p class="m-user-name">{{ currentUser.name }}</p>
+	  		<p class="m-user-other">工　号：{{ currentUser.jobNumber }} </p>
+	  		<p class="m-user-other">职能组：{{ currentUser.group }}</p>
+	  	</div>
+	  	<div class="m-user-desc">
+	  		<span class="m-user-reportcount">已发表<span class="repoCount">{{ currentUser.reportCount||0 }}</span>篇周报</span>
+	  	</div>
+	  </div>
   </div>
-  <div class="col-md-9">
-  	<div>最新分享</div>
-  	<div>我的周报</div>
+  <div class="col-md-10">
+  本周工作
   </div>
 </div>
 

@@ -1,6 +1,7 @@
 mongoose = require 'mongoose'
 Report = mongoose.model 'Report'
 Article = mongoose.model 'Article'
+User = require './users'
 Emailer = require '../modules/sendmail'
 path = require('path')
 exports.create = (req, res, next)->
@@ -78,6 +79,7 @@ exports.sendEmail = (req, res, next)->
     Report.findById reportId, (err, report)->
         Emailer.sendReport report, (err, response)->
             return res.json(500, err) if err
+            User.addRepoCount(req)
             Article.findById report.artId, (err, art)->
                 return res.json(400, err) if err
                 art.hasSend = true
