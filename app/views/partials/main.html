@@ -1,18 +1,23 @@
 
 <div class="g-main">
   <div class="col-md-2">
-	  <div class="form-block m-user row">
+	  <div class="m-user row">
 		  <div class="user-photo-wrap">
-		  	<img class="user-photo" src="{{ currentUser.avatar }}"/>
+		  	<img class="user-photo" src="{{ currentUser.avatar }}" width="100" height="100" />
 		  </div>
 	  	<div class="m-user-info">
 	  		<p class="m-user-name">{{ currentUser.name }}</p>
-	  		<p class="m-user-other">工　号：{{ currentUser.jobNumber }} </p>
-	  		<p class="m-user-other">职能组：{{ currentUser.group }}</p>
+	  		<p class="m-user-other">{{ currentUser.jobNumber }} </p>
+	  		<p class="m-user-other">{{ currentUser.group }}</p>
 	  	</div>
 	  	<div class="m-user-desc">
-	  		<span class="m-user-reportcount">已发表<span class="repoCount">{{ currentUser.reportCount||0 }}</span>篇周报</span>
+	  		<span class="m-user-reportcount col-sm-9"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;已发周报</span>
+	  		<span class="repoCount col-sm-3"><span class="badge">{{ currentUser.reportCount||0 }}<span></span>
 	  	</div>
+	   	<div class="m-user-last" ng-if="currentUser.lastDate">
+	   		<p>上篇周报发送时间：</p>
+	   		<p>{{ currentUser.lastDate }}</p>
+	   	</div>
 	  </div>
   </div>
   <div class="col-md-10">
