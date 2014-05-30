@@ -117,7 +117,6 @@ exports.workList = (req, res, next)->
         if lastReport?.length is 0
             res.json {}
         else
-
-            res.json lastReport
+            res.json {data:lastReport}
 
 

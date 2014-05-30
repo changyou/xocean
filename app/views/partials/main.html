@@ -19,9 +19,50 @@
 	   		<p>{{ currentUser.lastDate }}</p>
 	   	</div>
 	  </div>
+	  <div class="m-curWeek row m-index-block">
+	  	<div class="m-curWeek-title"><i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;本周工作</div>
+	   
+	  	<ol class="m-curWeek-content">
+	  		<li ng-repeat="task in workList.nextWeek">
+	  			{{task.content}}
+	  		</li>
+	  	</ol>
+	  </div>
   </div>
   <div class="col-md-10">
-  本周工作
+  		<div class="m-share m-index-block">
+  			<div class="m-share-title">
+  				<span>来自大家的分享</span>
+  			</div>
+  			<div class="m-share-content">
+  				<ul>
+  					<li ng-repeat="news in newsList">
+  						<a href="/article/{{news._id}}/show">{{news.author}}:{{news.contentTxt}}</a>
+  			
+  					</li>
+  				</ul>
+  			</div>
+  			<div class="m-share-footer">
+  				<a href="###">更多>></a>
+  			</div>
+  		</div>
+
+  		<div class="m-repo m-index-block">
+  			<div class="m-repo-title">
+  				<span>我的周报</span>
+  			</div>
+  			<div class="m-repo-content">
+  				<ul>
+  					<li ng-repeat="repo in repoList">
+  						{{repo.subject}}
+  			
+  					</li>
+  				</ul>
+  			</div>
+  			<div class="m-repo-footer">
+  				<a href="###">更多>></a>
+  			</div>
+  		</div>
   </div>
 </div>
 

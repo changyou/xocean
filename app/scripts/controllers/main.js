@@ -1,7 +1,15 @@
 'use strict';
 
 angular.module('xoceanApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope,Article,Report) {
+  	Article.getNews(function(res){
+  		$scope.newsList = res.data;
+  	});
+
+  	$scope.repoList = Report.query();
+  	Report.workList(function(res){
+  		$scope.workList = res.data[0];
+  	});
   	$scope.$watch('currentUser.group' ,function(group){
   		switch (group){
   			case 1 :

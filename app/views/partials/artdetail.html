@@ -1,0 +1,19 @@
+<ol class="breadcrumb">
+    <li><a href="/article/list">分享列表</a></li>
+    <li class="active">分享内容</li>
+</ol>
+<div class="art-list">
+	<div class="art-content">
+		<div class="art-content-title" >
+			<div class="art-content-title-sub">
+				{{article.subject}}
+			</div>
+			<div class="art-content-title-auth">
+				<span>{{article.author}} {{article.createAt| date:"yyyy-MM-dd"}}</span>
+			</div>
+
+		</div>
+		<div class="art-content-main" ng-bind-html="article.content">
+		</div>
+	</div>
+</div>

@@ -1,7 +1,6 @@
 /* Space out content a bit */
-body {
-}
-
+@c-green: #4eaf7c;
+@c-red: #e75e3a;
 .footer {
   position: absolute;
   bottom: 0;
@@ -16,6 +15,27 @@ body {
 body {
     font-family: "Microsoft Yahei";
     background: #FAFAFA;
+}
+
+.navbar{
+    background: @c-green;
+
+    .active > a,.open > a{
+        background: none !important;
+    }
+
+    a{
+        color:white !important;
+    }
+
+    .dropdown-menu li a{
+        color:@c-green !important;
+
+        &:hover{
+            background: @c-green;
+            color:white !important;
+        }
+    }
 }
 .form-block {
     background: white;
@@ -32,7 +52,7 @@ body {
 }
 
 .form-block:hover{
-    border-top:3px solid #428bca;
+    border-top:3px solid @c-red;
 }
  
 /* 适配无圆角 */
@@ -316,7 +336,7 @@ body {
     .user-photo{
         margin: 15px 0;
         border-radius: 50%; 
-        border:5px solid #DFDFDF;
+        border:5px solid @c-green;
     }
     .user-photo-wrap{
         width: 100%;
@@ -331,7 +351,9 @@ body {
             margin: 0;
         }
     }
-
+    .m-user-name{
+        color:@c-green;
+    }
     .m-user-other{
         color:#A8A5A5;
         font-size: 12px;
@@ -347,7 +369,7 @@ body {
         font-weight: bold;
 
         .badge{
-            background: #4eaf7c;
+            background: @c-green;
         }
     }
 }
@@ -448,4 +470,75 @@ body {
 
 .art-content-close-tip a{
     color:#969696;
+}
+
+.m-index-block{
+    font-family: "微软雅黑";
+    color: #858585;
+    position: relative;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #e7e7e7;
+    box-shadow: 0 0 0 white;
+    transition: all .2s ease;
+    margin-bottom: 15px;
+    .m-share-title,.m-repo-title{
+        font-size: 16px;
+        font-weight: bold;
+        color:@c-red;
+        margin: 15px;
+    }
+    
+    .m-share-content,.m-repo-content{
+        margin: 0 15px;
+        ul{
+            padding-left: 15px;
+        }
+        ul>li{
+            list-style: none;
+        }
+    }
+    .m-share-footer,.m-repo-footer{
+        height: 30px;
+        line-height: 30px;
+        background: #F7F7F7;
+        text-align: right;  
+        border-top: 1px solid #DFDFDF;
+        a{
+            margin-right: 15px;
+            text-decoration: none;
+            color:@c-green;
+        }
+    }
+}
+.m-curWeek{
+    margin-top: 15px;
+}
+.m-curWeek-title{
+    height: 30px;
+    line-height: 30px;
+    background: @c-green;
+    color:white;
+    font-weight: bold;
+    text-align: left;
+    border-radius: 5px 5px 0 0 ;
+    padding-left: 17px;
+}
+
+.m-curWeek-content{
+    margin-top: 5px;
+    padding-left: 0;
+}
+
+.m-curWeek-content li{
+    font-size: 14px;
+    list-style:none;    
+    border-bottom: 1px dashed #dfdfdf;
+    padding: 5px 10px;
+    cursor: default;
+
+    &:hover{
+        background: #f5f0ec;
+        color:#908070;
+    }
 }

@@ -44,7 +44,8 @@ angular.module('xoceanApp', [
       .when('/article/list', {
         templateUrl: 'partials/article',
         controller: 'ArticleCtrl',
-        authenticate: true
+        authenticate: true,
+        resolve: { id: function() {} }
       })
       .when('/report', {
         templateUrl: 'partials/report',
@@ -60,6 +61,16 @@ angular.module('xoceanApp', [
       .when('/report/edit/:id', {
         templateUrl: 'partials/reporteditor',
         controller: 'ReporteditorCtrl',
+        authenticate: true,
+        resolve: {
+          id: function($route) {
+            return $route.current.params.id;
+          }
+        }
+      })
+      .when('/article/:id/show', {
+        templateUrl: 'partials/artdetail',
+        controller: 'ArticleCtrl',
         authenticate: true,
         resolve: {
           id: function($route) {

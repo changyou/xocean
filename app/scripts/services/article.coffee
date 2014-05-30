@@ -13,5 +13,13 @@ angular.module('xoceanApp')
 			},
 			get: {
 				method: 'GET'
+			},
+			getNews: {
+				method: 'GET'
+				url: '/api/article/getNews'
+			},
+			getOne: {
+				method: 'GET'
+				url: '/api/article/:id/show'
 			}
 		}
