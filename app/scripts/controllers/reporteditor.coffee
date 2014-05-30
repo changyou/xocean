@@ -105,7 +105,9 @@ angular.module('xoceanApp')
       return
 
     # 获取上周工作记录
-    $scope.lastestReport = Report.workList($scope.report._id)
+    
+    Report.workList (res)->
+      $scope.workList = res.data[0]
 
     $scope.showTip = (e)->
       $(e.currentTarget).tooltip('show')
