@@ -20,7 +20,7 @@
 	   	</div>
 	  </div>
 	  <div class="m-curWeek row m-index-block">
-	  	<div class="m-curWeek-title"><i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;本周工作</div>
+	  	<div class="m-curWeek-title"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;本周工作</div>
 	   
 	  	<ol class="m-curWeek-content">
 	  		<li ng-repeat="task in workList.nextWeek">
@@ -28,6 +28,9 @@
 	  		</li>
 	  	</ol>
 	  </div>
+    <div class="row">
+    <a href="###"><img src="/images/ad.jpg" alt=""></a>
+    </div>
   </div>
   <div class="col-md-10">
   		<div class="m-share m-index-block">
@@ -37,13 +40,20 @@
   			<div class="m-share-content">
   				<ul>
   					<li ng-repeat="news in newsList">
-  						<a href="/article/{{news._id}}/show">{{news.author}}:{{news.contentTxt}}</a>
-  			
+  						<a href="/article/{{news._id}}/show">{{news.author}}:&nbsp;&nbsp;{{news.contentTxt}}</a>
   					</li>
+            <li ng-repeat="news in newsList">
+              <a href="/article/{{news._id}}/show">{{news.author}}:&nbsp;&nbsp;{{news.contentTxt}}</a>
+            </li>
+            <li ng-repeat="news in newsList">
+              <a href="/article/{{news._id}}/show">{{news.author}}:&nbsp;&nbsp;{{news.contentTxt}}</a>
+            </li>
+        
+
   				</ul>
   			</div>
   			<div class="m-share-footer">
-  				<a href="###">更多>></a>
+  				<a href="/article/list">更多>></a>
   			</div>
   		</div>
 
@@ -54,14 +64,19 @@
   			<div class="m-repo-content">
   				<ul>
   					<li ng-repeat="repo in repoList">
-  						{{repo.subject}}
-  			
+  						<a href="/report/edit/{{repo._id}}">{{repo.subject}}</a>
+  			      <span ng-switch on="repo.status">
+                <span class="label label-default" ng-switch-when="0">未发送</span>
+                <span class="label label-success" ng-switch-when="1">已发送</span>
+                <span class="label label-danger" ng-switch-when="3">发送失败</span>
+              </span>
   					</li>
   				</ul>
   			</div>
   			<div class="m-repo-footer">
-  				<a href="###">更多>></a>
+          <span class="m-repo-create"><i class="glyphicon glyphicon-plus"></i>&nbsp;<a href="/report/edit">新建周报</a></span>
   			</div>
+       
   		</div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 /* Space out content a bit */
-@c-green: #4eaf7c;
+@c-green: #46B46D;
 @c-red: #e75e3a;
 .footer {
   position: absolute;
@@ -492,10 +492,36 @@ body {
     .m-share-content,.m-repo-content{
         margin: 0 15px;
         ul{
-            padding-left: 15px;
+            padding-left: 0;
+           
         }
         ul>li{
-            list-style: none;
+            line-height: 24px;
+            font-size: 14px;
+            list-style:none;    
+            border-bottom: 1px dashed #dfdfdf;
+            padding: 5px 10px;
+            cursor: pointer;
+            a{
+                color:#858585;
+            }
+            &:hover,a:hover{
+                background: #f5f0ec;
+                color:#908070;
+                text-decoration: none;
+            }
+        }
+
+    }
+
+    .m-repo-content{
+        ul{
+             columns:400px;
+        }
+
+        .label{
+            float: right;
+            margin-top: 3px;
         }
     }
     .m-share-footer,.m-repo-footer{
@@ -508,6 +534,9 @@ body {
             margin-right: 15px;
             text-decoration: none;
             color:@c-green;
+            &:hover{
+                color:@c-red;
+            }
         }
     }
 }
@@ -540,5 +569,13 @@ body {
     &:hover{
         background: #f5f0ec;
         color:#908070;
+    }
+}
+
+.m-repo-create{
+    font-size: 14px;
+    color:@c-green;
+    &:hover,a:hover{
+        color:@c-red;
     }
 }
