@@ -42,21 +42,6 @@
   					<li ng-repeat="news in newsList">
   						<a href="/article/{{news._id}}/show">{{news.author}}:&nbsp;&nbsp;{{news.contentTxt| limitTo : 60}}...</a>
   					</li>
-            <li ng-repeat="news in newsList">
-              <a href="/article/{{news._id}}/show">{{news.author}}:&nbsp;&nbsp;{{news.contentTxt| limitTo : 60}}...</a>
-            </li>
-            <li ng-repeat="news in newsList">
-              <a href="/article/{{news._id}}/show">{{news.author}}:&nbsp;&nbsp;{{news.contentTxt| limitTo : 60}}...</a>
-            </li>
-            <li ng-repeat="news in newsList">
-              <a href="/article/{{news._id}}/show">{{news.author}}:&nbsp;&nbsp;{{news.contentTxt| limitTo : 60}}...</a>
-            </li>
-            <li ng-repeat="news in newsList">
-              <a href="/article/{{news._id}}/show">{{news.author}}:&nbsp;&nbsp;{{news.contentTxt| limitTo : 60}}...</a>
-            </li>
-            <li ng-repeat="news in newsList">
-              <a href="/article/{{news._id}}/show">{{news.author}}:&nbsp;&nbsp;{{news.contentTxt| limitTo : 60}}...</a>
-            </li>
   				</ul>
   			</div>
   			<div class="m-share-footer">
@@ -79,38 +64,7 @@
                 <span class="label label-danger" ng-switch-when="3">发送失败</span>
               </span>
   					</li>
-            <li ng-repeat="repo in repoList">
-              <a href="/report/edit/{{repo._id}}">{{repo.subject}}</a>
-              <span ng-switch on="repo.status">
-                <span class="label label-default" ng-switch-when="0">未发送</span>
-                <span class="label label-success" ng-switch-when="1">已发送</span>
-                <span class="label label-danger" ng-switch-when="3">发送失败</span>
-              </span>
-            </li>
-            <li ng-repeat="repo in repoList">
-              <a href="/report/edit/{{repo._id}}">{{repo.subject}}</a>
-              <span ng-switch on="repo.status">
-                <span class="label label-default" ng-switch-when="0">未发送</span>
-                <span class="label label-success" ng-switch-when="1">已发送</span>
-                <span class="label label-danger" ng-switch-when="3">发送失败</span>
-              </span>
-            </li>
-            <li ng-repeat="repo in repoList">
-              <a href="/report/edit/{{repo._id}}">{{repo.subject}}</a>
-              <span ng-switch on="repo.status">
-                <span class="label label-default" ng-switch-when="0">未发送</span>
-                <span class="label label-success" ng-switch-when="1">已发送</span>
-                <span class="label label-danger" ng-switch-when="3">发送失败</span>
-              </span>
-            </li>
-            <li ng-repeat="repo in repoList">
-              <a href="/report/edit/{{repo._id}}">{{repo.subject}}</a>
-              <span ng-switch on="repo.status">
-                <span class="label label-default" ng-switch-when="0">未发送</span>
-                <span class="label label-success" ng-switch-when="1">已发送</span>
-                <span class="label label-danger" ng-switch-when="3">发送失败</span>
-              </span>
-            </li>
+            
   				</ul>
   			</div>
   			<div class="m-repo-footer">

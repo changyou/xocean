@@ -30,9 +30,9 @@
 	<!-- Add your site or application content here -->
 	<div class="app">
 		<div ng-include="'partials/navbar.html'"></div>
-
-		<div class="container" ng-view=""></div>
-
+		<div class="app-container-wrap">
+			<div class="container" ng-view=""></div>
+		</div>
 	</div>
 
 	<!--<div class="footer">
@@ -81,6 +81,7 @@
 		<script src="scripts/controllers/signup.js"></script>
 		<script src="scripts/controllers/settings.js"></script>
 		<script src="scripts/controllers/article.js"></script>
+		<script src="scripts/controllers/features.js"></script>
 		<script src="scripts/services/auth.js"></script>
 		<script src="scripts/services/session.js"></script>
 		<script src="scripts/services/user.js"></script>

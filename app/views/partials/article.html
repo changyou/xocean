@@ -11,7 +11,7 @@
 			<div class="art-summary row" ng-init="showContent=false" ng-if="!showContent" ng-click="triggerArt(true,null)" >
 				<span class="col-sm-1">{{$index + 1}}</span>
 				<span class="col-sm-3">{{article.author | limitTo : 10}}的分享</span>
-				<span class="col-sm-5">{{article.contentTxt | limitTo : 47}}...</span>
+				<span class="col-sm-5">{{article.contentTxt | limitTo : 40}}...</span>
 				<span class="col-sm-3">{{article.createAt | date:"yyyy-MM-dd"}}</span>
 			</div>
 
@@ -21,7 +21,7 @@
 						{{article.subject}}
 						<div ng-click="triggerArt(false,$event)" class="art-content-close"><i class="glyphicon glyphicon-chevron-up"></i></div>
 					</div>
-					<div class="art-content-title-auth">
+					 <div class="art-content-title-auth">
 						<span>{{article.author}} {{article.createAt| date:"yyyy-MM-dd"}}</span>
 					</div>
 

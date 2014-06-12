@@ -78,6 +78,10 @@ angular.module('xoceanApp', [
           }
         }
       })
+      .when('/features', {
+        templateUrl: 'partials/features',
+        controller: 'FeaturesCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
