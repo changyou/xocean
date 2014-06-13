@@ -1,4 +1,6 @@
 /* Space out content a bit */
+@import "./feature.less";
+
 @c-green: #46B46D;
 @c-red: #e75e3a;
 .footer {
@@ -57,7 +59,7 @@ body {
 .form-block:hover{
     border-top:3px solid @c-red;
 }
- 
+
 /* 适配无圆角 */
 .navbar.fix-topbar {
     border-radius: 0;
@@ -494,17 +496,17 @@ body {
         color:@c-red;
         margin: 15px;
     }
-    
+
     .m-share-content,.m-repo-content{
         margin: 0 15px;
         ul{
             padding-left: 0;
-           
+
         }
         ul>li{
             line-height: 24px;
             font-size: 14px;
-            list-style:none;    
+            list-style:none;
             border-bottom: 1px dashed #dfdfdf;
             padding: 5px 10px;
             cursor: pointer;
@@ -534,7 +536,7 @@ body {
         height: 30px;
         line-height: 30px;
         background: #F7F7F7;
-        text-align: right;  
+        text-align: right;
         border-top: 1px solid #DFDFDF;
         a{
             margin-right: 15px;
@@ -567,7 +569,7 @@ body {
 
 .m-curWeek-content li{
     font-size: 14px;
-    list-style:none;    
+    list-style:none;
     border-bottom: 1px dashed #dfdfdf;
     padding: 5px 10px;
     cursor: default;
@@ -584,16 +586,4 @@ body {
     &:hover,a:hover{
         color:@c-red;
     }
-}
-
-.m-features-wrap{
-    width: 100%;
-    position: absolute;
-    top: -20px;
-    left: 0;
-}
-.m-features{
-    position: relative;
-    width: 1277px;
-    margin: 0 auto;
 }

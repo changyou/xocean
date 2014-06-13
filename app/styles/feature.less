@@ -1,0 +1,38 @@
+@imgPath: "/images/feature";
+
+.m-features-wrap{
+    width: 100%;
+    position: absolute;
+    top: -20px;
+    left: 0;
+}
+
+.m-features {
+	text-align: center;
+	img {
+		width: 100%;
+		max-width: 1277px;
+	}
+}
+
+.features_main {
+	.btn-wrap {
+		position: relative;
+		height: 71px;
+	}
+	.btn-start {
+		width: 211px;
+		height: 71px;
+		background: url("@{imgPath}/btn.jpg") no-repeat 0 -1px;
+		&:hover {
+			background-position: 0 -72px;
+		}
+		&:active {
+			background-position: 0 -143px;
+		}
+	}
+}
+
+.feature_bottom {
+	background: #353434;
+}
