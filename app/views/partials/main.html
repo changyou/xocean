@@ -14,11 +14,10 @@
 	  		<span class="m-user-reportcount col-sm-9"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;已发周报</span>
 	  		<span class="repoCount col-sm-3"><span class="badge">{{ currentUser.reportCount||0 }}<span></span>
 	  	</div>
-	   	<div class="m-user-last" ng-if="currentUser.lastDate">
-	   		<p>上篇周报发送时间：</p>
-	   		<p>{{ currentUser.lastDate }}</p>
-	   	</div>
 	  </div>
+    <div class="m-newRepo row m-index-block">
+      <a href="/report/edit"><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;新建周报</a>
+    </div>
 	  <div class="m-curWeek row m-index-block">
 	  	<div class="m-curWeek-title"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;本周工作</div>
 	  	<ol class="m-curWeek-content">
