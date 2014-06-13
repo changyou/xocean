@@ -8,6 +8,8 @@ fs = require 'fs'
 str = fs.readFileSync __dirname+'/../template/mailTemplate.html', 'utf8'
 smtpTransport = nodemailer.createTransport('smtp', config.smtp)
 
+basePath = "http://www.xocean.ijser.cn/signup/"
+
 convertDataToMail = (data) ->
     temp = data 
 
@@ -63,11 +65,13 @@ exports.sendReport = (report, callback)->
             return
 
 exports.sendRegistEmail = (user, callback)->
+    #basePath = "http://localhost:9000/signup/"
+
     mailOptions = {
         from: "xocean <xocean@cyou-inc.com>"
         to: user.email
         subject: "XOcean注册邮件"
-        html: "请点击下面链接进行注册<br/> <a href='http://localhost:9000/signup/"+user.id+"'>点此注册</a><br/> 此邮件为系统邮件，请勿直接回复。"
+        html: "请点击下面链接进行注册<br/> <a href='#{basePath}"+user.id+"'>点此注册</a><br/> 此邮件为系统邮件，请勿直接回复。"
         forceEmbeddedImages: true
     }
 
