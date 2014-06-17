@@ -16,6 +16,12 @@ angular.module('xoceanApp')
             return
 
         scope.chooseSender = (e)->
+          #adapter the width of input tag
+          elem = $(e.target)
+          txt = elem.val().replace(/[\u4e00-\u9fa5]/g, "**")
+          autoWidth = if txt.length*8 > 95 then txt.length*8 else 95
+          elem.css({width: autoWidth})
+
           if e.keyCode == 13        #enter
              e.preventDefault()
              scope.addSender scope.currentSenders[scope.curindex].name if scope.currentSenders.length>0
