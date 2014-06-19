@@ -501,7 +501,6 @@ body {
         margin: 0 15px;
         ul{
             padding-left: 0;
-
         }
         ul>li{
             line-height: 24px;
@@ -523,10 +522,15 @@ body {
     }
 
     .m-repo-content{
-        ul{
-             columns:400px;
+        ul>li{
+            width: 49%;
+            float: left;
         }
-
+        ul:after{
+            content:'';
+            clear:both;
+            display: block;
+        }
         .label{
             float: right;
             margin-top: 3px;
@@ -605,4 +609,23 @@ body {
         background: #348F54;
         text-decoration: none;
     }
+}
+
+.nav-newFeature{
+    width: 50px;
+    height: 60px;
+    display: block;
+    position: absolute;
+    right:220px;
+    top: -10px;
+    background: url("/images/newFeature.png") no-repeat;
+    transition:top .2s;
+
+    &:hover{
+        top:-1px;
+    }
+}
+
+.navbar-collapse{
+    position: relative;
 }

@@ -8,6 +8,7 @@ angular.module('xoceanApp')
 
   	$scope.repoList = Report.query();
   	Report.workList(function(res){
+  		if(!res.data) return;
   		$scope.workList = res.data[0];
   	});
   	$scope.$watch('currentUser.group' ,function(group){

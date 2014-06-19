@@ -29,7 +29,7 @@ angular.module('xoceanApp')
         ]
       }
     ];
-
+    if(!localStorage.featureView) $scope.unView = true;
     $scope.logout = function() {
       Auth.logout()
       .then(function() {
@@ -40,4 +40,11 @@ angular.module('xoceanApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
+
+    $scope.toFeature = function(e){
+      e.preventDefault();
+      localStorage.featureView = true;
+      $scope.unView = false;
+      window.open("/features");
+    }
   });

@@ -18,7 +18,6 @@ describe('User Model', function() {
         password: 'password',
         status: '0'
       });
-      
       // Clear users before testing
       User.remove().exec(done);
     });
