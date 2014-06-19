@@ -9,7 +9,15 @@ angular.module('xoceanApp')
     }
 
     $scope.errors = {};
-
+    $scope.step = 1;
+    $scope.nextStep = function(form){
+      if(form.$valid){
+        $scope.step ++;
+      }
+    }
+    $scope.preStep = function(){
+      $scope.step --;
+    }
     $scope.register = function(form) {
       $scope.submitted = true;
 

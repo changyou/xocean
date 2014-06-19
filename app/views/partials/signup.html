@@ -1,89 +1,125 @@
 <div class="row" ng-if="user.email && user.status==0">
-  <div class="col-sm-12">
-    <h1>Hello,{{user.email}}!</h1>
-    <h3>请完善您的信息。</h3>
-  </div>
-  <div class="col-sm-12">
-    <form class="form" name="form" ng-submit="register(form)" novalidate>
-      
-      <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
-                                          'has-error': form.email.$invalid && submitted }">
-        <label>邮箱</label>
+  <div class="signup-wrap">
+    <div class="signup">
 
-        <input type="email" name="email" class="form-control" value="{{user.email}}" disabled="1"/>
-      </div>
-      <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                          'has-error': form.name.$invalid && submitted }">
-        <label>姓名</label>
+        <form class="form" name="form" ng-submit="register(form)" novalidate>
+          <div class="signup-step1" ng-if="step==1">
+              <div class="step-title">
+                  <!-- <img src="/images/signup-title1.jpg"> -->
+                  <h1>欢迎使用xOcean!</h1>
+                  <h3>请填写用户信息以完成注册。</h3>
+              </div>
+                <!-- 邮箱 -->
+                <div class="form-group form-email" ng-class="{ 'has-success': form.email.$valid && submitted,'has-error': form.email.$invalid && submitted }">
+                  <label><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;邮箱</label>
 
-        <input type="text" name="name" class="form-control" ng-model="user.name"
-               required/>
-        <p class="help-block" ng-show="form.name.$error.required && submitted">
-          请填写您的姓名。
-        </p>
-      </div>
+                  {{user.email}}
+                </div>
+                <!-- 真实姓名 -->
+                <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,'has-error': form.name.$invalid && submitted }">
+                  <label><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;真实姓名</label>
 
-      <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
-                                          'has-error': form.password.$invalid && submitted }">
-        <label>密码</label>
+                  <input type="text" name="name" class="form-control" ng-model="user.name" required/>
+                  <p class="help-block" ng-show="form.name.$error.required && submitted">
+                    请填写您的姓名。
+                  </p>
+                </div>
+                <!-- 密码 -->
+                <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,'has-error': form.password.$invalid && submitted }">
+                  <label><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;密码</label>
+                  <input type="password" 
+                         name="password" 
+                         class="form-control" 
+                         ng-model="user.password"
+                         ng-minlength="3"
+                         required
+                         mongoose-error/>
+
+                  <p class="help-block"
+                     ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+                    密码至少三位。
+                  </p>
+                  <p class="help-block" ng-show="form.password.$error.mongoose">
+                    {{ errors.password }}
+                  </p>
+                </div>
+                <!-- 确认密码 -->
+                <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,'has-error': form.password.$invalid && submitted }">
+                  <label><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;确认密码</label>
+                  <input type="password" 
+                         name="rePassword" 
+                         class="form-control" 
+                         ng-minlength="3"
+                         required
+                         />
+                         
+                  <p class="help-block"
+                     ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+                    两次输入密码不同！
+                  </p>
+                  <p class="help-block" ng-show="form.password.$error.mongoose">
+                    {{ errors.password }}
+                  </p>
+                </div>
+                <!-- 下一步按钮 -->
+                <button class="btn btn-lg btn-primary btn-block" type="button" ng-click="nextStep(form)">下一步</button>
+                <hr>
+          已经有账号了？ <a href="/login" class="text-center new-account">登陆 </a>
+          </div>
+          <!-- 表单第二页 -->
+          <div class="signup-step2" ng-if="step==2">
+
+                <!-- 工号 -->
+                <div class="form-group" ng-class="{ 'has-success': form.jobNumber.$valid && submitted,'has-error': form.jobNumber.$invalid && submitted }">
+                  <label>工号</label>
+
+                  <input type="text" name="jobNumber" class="form-control" ng-model="user.jobNumber"
+                         ng-pattern="/^(CY|SX)(\d{4})$/"
+                         required
+                         mongoose-error/>
+                  <p class="help-block"
+                     ng-show="(form.jobNumber.$error.pattern || form.jobNumber.$error.required) && submitted">
+                    请填写工号，格式为CYxxxx或SXxxxx。
+                  </p>
+                  <p class="help-block" ng-show="form.jobNumber.$error.mongoose">
+                    {{ errors.jobNumber }}
+                  </p>
+                </div>
+
+                <!-- 职能组选择 -->
+                <div class="form-group" ng-class="{ 'has-success': form.group.$valid && submitted,'has-error': form.group.$invalid && submitted }">
+                  <label>职能组</label>
+                  <select name="group" class="form-control" ng-model="user.group" ng-init="user.group=''" required mongoose-error>
+                    <option value="">-Select One-</option>
+                    <option value="1">技术-应用一组</option>
+                    <option value="2">技术-应用二组</option>
+                    <option value="3">技术-系统组</option>
+                    <option value="4">技术-前端组</option>
+                    <option value="5">技术-Android组</option>
+                    <option value="6">设计-WebUI</option>
+                    <option value="7">设计-FlashUI</option>
+                  </select>
+                </div>
+
+                <!-- 周报收件人 -->
+                <div class="form-group">
+                  <label>默认周报收件人</label>
+                  <div recipient ng-recp-data="user.receivers.to" ng-recp-style="label-success"></div>
+                </div>
+
+                <!-- 周报抄送人 -->
+                <div class="form-group">
+                  <label>默认周报抄送人</label>
+                  <div recipient ng-recp-data="user.receivers.cc" ng-recp-style="label-primary"></div>
+                </div>
+
+                <!-- 上一步按钮 -->
+                <button class="btn btn-lg btn-primary" type="button" ng-click="preStep()">上一步</button>
+                <button class="btn btn-lg btn-primary" type="submit">注 册</button>
+          </div>
         
-        <input type="password" name="password" class="form-control" ng-model="user.password"
-               ng-minlength="3"
-               required
-               mongoose-error/>
-        <p class="help-block"
-           ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
-          密码至少三位。
-        </p>
-        <p class="help-block" ng-show="form.password.$error.mongoose">
-          {{ errors.password }}
-        </p>
-      </div>
-
-      <div class="form-group" ng-class="{ 'has-success': form.jobNumber.$valid && submitted,
-                                          'has-error': form.jobNumber.$invalid && submitted }">
-        <label>工号</label>
-
-        <input type="text" name="jobNumber" class="form-control" ng-model="user.jobNumber"
-               ng-pattern="/^(CY|SX)(\d{4})$/"
-               required
-               mongoose-error/>
-        <p class="help-block"
-           ng-show="(form.jobNumber.$error.pattern || form.jobNumber.$error.required) && submitted">
-          请填写工号，格式为CYxxxx或SXxxxx。
-        </p>
-        <p class="help-block" ng-show="form.jobNumber.$error.mongoose">
-          {{ errors.jobNumber }}
-        </p>
-      </div>
-
-      <div class="form-group" ng-class="{ 'has-success': form.group.$valid && submitted,
-                                          'has-error': form.group.$invalid && submitted }">
-        <label>职能组</label>
-        <select name="group" class="form-control" ng-model="user.group" ng-init="user.group=''" required mongoose-error>
-          <option value="">-Select One-</option>
-          <option value="1">技术-应用一组</option>
-          <option value="2">技术-应用二组</option>
-          <option value="3">技术-系统组</option>
-          <option value="4">技术-前端组</option>
-          <option value="5">技术-Android组</option>
-          <option value="6">设计-WebUI</option>
-          <option value="7">设计-FlashUI</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>默认周报收件人</label>
-        <div recipient ng-recp-data="user.receivers.to" ng-recp-style="label-success"></div>
-      </div>
-
-      <div class="form-group">
-        <label>默认周报抄送人</label>
-        <div recipient ng-recp-data="user.receivers.cc" ng-recp-style="label-primary"></div>
-      </div>
-
-      <button class="btn btn-lg btn-primary" type="submit">注 册</button>
-    </form>
+        </form>
+    </div>
   </div>
 </div>
 <div ng-if="user.err || !user.email">
@@ -92,10 +128,4 @@
 <div ng-if="user.status==1">
   <h1>Sorry,{{user.email}},您已经注册了!</h1>
 </div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <hr>
-    已经有账号了？ <a href="/login" class="text-center new-account">登陆</a>
-  </div>
-</div>
+ 
