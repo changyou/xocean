@@ -7,10 +7,13 @@ angular.module('xoceanApp')
   	});
 
   	$scope.repoList = Report.query();
+    
   	Report.workList(function(res){
-  		$scope.workList = res.data[0];
+  		$scope.workList = res.data ? res.data[0] : [];
   	});
+
   	$scope.$watch('currentUser.group' ,function(group){
+      $scope.currentUser.avatar = "http://0.gravatar.com/avatar/"+ $scope.currentUser.id +"?s=100&d=identicon&r=G";
   		switch (group){
   			case 1 :
   				$scope.currentUser.group = "技术-应用一组";

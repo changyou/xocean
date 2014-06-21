@@ -28,11 +28,11 @@
 	  		</li>
 	  	</ol>
 	  </div>
-    <div class="row">
+    <div class="row fed-show">
     <a href="###"><img src="/images/ad.jpg" alt=""></a>
     </div>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-10 index-list">
   		<div class="m-share m-index-block">
   			<div class="m-share-title">
   				<span>来自大家的分享</span>
@@ -69,8 +69,8 @@
   				<span>我的周报</span>
   			</div>
   			<div class="m-repo-content">
+          <div class="fn-info-grey" ng-if="!repoList.length">还没有发过周报嘛，马上点击<a class="btn btn-success btn-xs fn-word-space" href="/report/edit">新建周报</a>体验吧！</div>
   				<ul>
-            <li ng-if="!repoList.length">暂无周报，点击下方新建周报。</li>
   					<li ng-repeat="repo in repoList">
   						<a href="/report/edit/{{repo._id}}">{{repo.subject}}</a>
   			      <span ng-switch on="repo.status">
@@ -116,7 +116,6 @@
   			<div class="m-repo-footer">
           <span class="m-repo-create"><i class="glyphicon glyphicon-plus"></i>&nbsp;<a href="/report/edit">新建周报</a></span>
   			</div>
-       
   		</div>
   </div>
 </div>

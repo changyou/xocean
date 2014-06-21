@@ -12,6 +12,12 @@
     padding: 20px;
 }
 
+.border-radius(@radius: 5px) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
 body {
     font-family: "Microsoft Yahei";
     background: #FAFAFA;
@@ -367,7 +373,9 @@ body {
         background: #F7F7F7;
         margin-top: 15px;
         font-weight: bold;
-
+        -webkit-border-radius: 0 0 5px 5px;
+        -moz-border-radius: 0 0 5px 5px;
+        border-radius: 0 0 5px 5px;
         .badge{
             background: @c-green;
         }
@@ -533,6 +541,9 @@ body {
         background: #F7F7F7;
         text-align: right;  
         border-top: 1px solid #DFDFDF;
+        -webkit-border-radius: 0 0 5px 5px;
+        -moz-border-radius: 0 0 5px 5px;
+        border-radius: 0 0 5px 5px;
         a{
             margin-right: 15px;
             text-decoration: none;
@@ -580,5 +591,22 @@ body {
     color:@c-green;
     &:hover,a:hover{
         color:@c-red;
+    }
+}
+
+.fn-info-grey {
+    color: #acacac;
+    font-size: 12px;
+}
+.fn-word-space {
+    margin: 0 5px 0;
+}
+
+@media (max-width: 990px) {
+    .index-list {
+        padding: 0;
+    }
+    .fed-show {
+        display: none;
     }
 }
