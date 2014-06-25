@@ -1,7 +1,11 @@
-<div class="row" ng-if="user.email && user.status==0">
-  <div class="signup-wrap">
-    <div class="signup">
+<style>
+  html{
+    overflow-y: hidden;
+  }
 
+</style>
+<div class="row" ng-if="user.email && user.status==0">
+    <div class="signup">
         <form class="form" name="form" ng-submit="register(form)" novalidate>
           <div class="signup-step1" ng-if="step==1">
               <div class="step-title">
@@ -10,22 +14,22 @@
                   <h3>请填写用户信息以完成注册。</h3>
               </div>
                 <!-- 邮箱 -->
-                <div class="form-group form-email" ng-class="{ 'has-success': form.email.$valid && submitted,'has-error': form.email.$invalid && submitted }">
+                <div class="form-group form-email" ng-class="{ 'has-success': form.email.$valid && firstSubmitted,'has-error': form.email.$invalid && firstSubmitted }">
                   <label><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;邮箱</label>
 
                   {{user.email}}
                 </div>
                 <!-- 真实姓名 -->
-                <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,'has-error': form.name.$invalid && submitted }">
+                <div class="form-group" ng-class="{ 'has-success': form.name.$valid && firstSubmitted,'has-error': form.name.$invalid && firstSubmitted }">
                   <label><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;真实姓名</label>
 
                   <input type="text" name="name" class="form-control" ng-model="user.name" required/>
-                  <p class="help-block" ng-show="form.name.$error.required && submitted">
+                  <p class="help-block" ng-show="form.name.$error.required && firstSubmitted">
                     请填写您的姓名。
                   </p>
                 </div>
                 <!-- 密码 -->
-                <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,'has-error': form.password.$invalid && submitted }">
+                <div class="form-group" ng-class="{ 'has-success': form.password.$valid && firstSubmitted,'has-error': form.password.$invalid && firstSubmitted }">
                   <label><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;密码</label>
                   <input type="password" 
                          name="password" 
@@ -36,7 +40,7 @@
                          mongoose-error/>
 
                   <p class="help-block"
-                     ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+                     ng-show="(form.password.$error.minlength || form.password.$error.required) && firstSubmitted">
                     密码至少三位。
                   </p>
                   <p class="help-block" ng-show="form.password.$error.mongoose">
@@ -44,18 +48,20 @@
                   </p>
                 </div>
                 <!-- 确认密码 -->
-                <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,'has-error': form.password.$invalid && submitted }">
+                <div class="form-group" ng-class="{ 'has-success': !form.rePassword.$error.dontMatch && firstSubmitted,'has-error': form.rePassword.$error.dontMatch && firstSubmitted }">
                   <label><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;确认密码</label>
                   <input type="password" 
                          name="rePassword" 
                          class="form-control" 
                          ng-minlength="3"
-                         required
+                         ng-required
+                         ng-model="user.rePassword" 
+                         ng-change="checkPassword(form)"
                          />
-                         
+
                   <p class="help-block"
-                     ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
-                    两次输入密码不同！
+                     ng-show="(form.rePassword.$error.dontMatch && firstSubmitted)">
+                    两次输入密码不同！ 
                   </p>
                   <p class="help-block" ng-show="form.password.$error.mongoose">
                     {{ errors.password }}
@@ -63,12 +69,18 @@
                 </div>
                 <!-- 下一步按钮 -->
                 <button class="btn btn-lg btn-primary btn-block" type="button" ng-click="nextStep(form)">下一步</button>
-                <hr>
-          已经有账号了？ <a href="/login" class="text-center new-account">登陆 </a>
+                <div class="form-group">
+                  <hr>
+                  已经有账号了？ <a href="/login" class="text-center new-account">登陆 </a>
+                </div>
           </div>
           <!-- 表单第二页 -->
           <div class="signup-step2" ng-if="step==2">
-
+                <div class="step-title">
+                  <!-- <img src="/images/signup-title1.jpg"> -->
+                  <h1>最后一步!</h1>
+                  <h3>填写详细资料以便于更加快捷的发送周报。</h3>
+                </div>
                 <!-- 工号 -->
                 <div class="form-group" ng-class="{ 'has-success': form.jobNumber.$valid && submitted,'has-error': form.jobNumber.$invalid && submitted }">
                   <label>工号</label>
@@ -114,13 +126,12 @@
                 </div>
 
                 <!-- 上一步按钮 -->
-                <button class="btn btn-lg btn-primary" type="button" ng-click="preStep()">上一步</button>
-                <button class="btn btn-lg btn-primary" type="submit">注 册</button>
+                <button class="btn btn-lg btn-block btn-primary" type="button" ng-click="preStep()">上一步</button>
+                <button class="btn btn-lg btn-block btn-primary" type="submit">注 册</button>
           </div>
         
         </form>
     </div>
-  </div>
 </div>
 <div ng-if="user.err || !user.email">
   <h1>Sorry,激活链接无效，请联系管理员!</h1>

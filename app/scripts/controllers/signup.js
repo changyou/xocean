@@ -13,6 +13,8 @@ angular.module('xoceanApp')
     $scope.nextStep = function(form){
       if(form.$valid){
         $scope.step ++;
+      }else{
+        $scope.firstSubmitted = true;
       }
     }
     $scope.preStep = function(){
@@ -46,5 +48,14 @@ angular.module('xoceanApp')
           });
         });
       }
+
     };
+    $scope.checkPassword = function(form) {
+        form.rePassword.$error.dontMatch = $scope.user.password !== $scope.user.rePassword;
+        if($scope.user.password !== $scope.user.rePassword){
+          form.$setValidity("dontMatch",false)
+        }else{
+          form.$setValidity("dontMatch",true)
+        }
+    }
   });
