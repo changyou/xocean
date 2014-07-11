@@ -172,11 +172,12 @@ body {
     border-top:1px dotted #CFCECE;
     margin: 15px 0;
 }
-
+.thisWeek{
+    transition:padding .2s ease;
+}
 .thisWeek-item,.nextWeek-item{
     position: relative;
-    margin-bottom: 15px;
-
+    margin-bottom: 15px;    
 }
 .thisWeek-item .input-group{
     width: 100%;
@@ -588,8 +589,8 @@ body {
     list-style:none;
     border-bottom: 1px dashed #dfdfdf;
     padding: 5px 10px;
-    cursor: default;
-
+    cursor: move;
+    
     &:hover{
         background: #f5f0ec;
         color:#908070;
@@ -690,4 +691,18 @@ body {
     .fed-show {
         display: none;
     }
+}
+
+.vis-hidden{
+    visibility: hidden;
+}
+
+.ondrag{
+    border-top: 3px solid @c-green;
+    border-bottom: 3px solid @c-green;
+    padding:10px 0 30px 0;
+}
+
+.beDraged{
+    opacity: .6;
 }

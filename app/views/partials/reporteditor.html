@@ -34,20 +34,30 @@
                <div class="m-index-block">
                   <div class="m-curWeek-title"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;本周工作小提示</div>
                  
-                  <ol class="m-curWeek-content">
-                    <li ng-repeat="task in workList.nextWeek">
+                  <ol 
+                  class="m-curWeek-content"
+                    ng-dragable 
+                    sourceindex="{{$index}}"
+                    ng-dragtarget="report.curWeek" 
+                    ng-dragtargetdom="thisWeek" 
+                    ng-dragsource="workList.nextWeek"
+                    ng-dragsourcedom="m-curWeek-content"
+                  >
+                    <li 
+                      ng-repeat="task in workList.nextWeek" 
+                      >
                       {{task.content}}
                     </li>
                   </ol>
                 </div>
       </div>
           <div class="col-md-10">
-                <div class="form-block">
+              <div class="form-block">
             <!-- 本周工作总结Start -->
               <div ng-class="{true:'form-group thisWeek',false:'form-group thisWeek has-error'}[!reportForm.curWeek.$valid||!errorFlag]">
                   <label for="subject" class="col-sm-12">本周工作总结<small class="label-tip">总结一下本周的工作吧！</small></label>
                   <div class="col-sm-12">
-                      <div class="thisWeek-item" ng-repeat="cwItem in report.curWeek">
+                      <div class="thisWeek-item" ng-repeat="cwItem in report.curWeek" >
                            <div class="input-group" >
                                <span class="input-group-btn doneBtn" >
                                   <div class="doneBtnList" ng-btn-list ng-item-status="cwItem.status" ng-item-data="report.curWeek" ng-item-index="{{$index}}"></div>
@@ -68,7 +78,7 @@
                                     ng-keydown="addCurWeek($event)">
                                 <span 
                                     class="thisWeek-remove" 
-                                    ng-show="isFocus&&!$first"  
+                                    ng-show="!$first"  
                                     ng-click="removeCurWeek($index)" 
                                     data-placement="left" 
                                     ng-mouseover="showTip($event)"
@@ -77,7 +87,6 @@
                                 </span> 
                                 <span 
                                     class="thisWeek-add" 
-                                    ng-show="isFocus" 
                                     ng-click="addCurWeek($event)" 
                                     data-placement="left" 
                                     ng-mouseover="showTip($event)"
