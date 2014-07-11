@@ -26,7 +26,7 @@ convertDataToMail = (data) ->
                 key.status = "80%"
          
     temp.submiteDate = new Date().getFullYear().toString() + "." + (new Date().getMonth()+1) + "." + (new Date().getDate())
-    temp.workDate = temp.subject.replace /^.*(\d{4}.*-.*\.\d)$/,"$1"
+    temp.workDate = temp.subject.replace /^.*(\d{4}.*-.*\.\d{1,2})$/,"$1"
     return temp 
 
 mailOptions = {

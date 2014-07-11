@@ -61,12 +61,24 @@ strong{
 					<table border="0" cellspacing="0" cellpadding="0" width="100%">
 						<% for(var i=0; i<curWeek.length; i++) {%>
 							<tr >
-								<td width="83%" style="font-family:'微软雅黑';font-size:13px;border-bottom:1px solid #000;border-right:1px solid #000;"><%= i+1 %>. <%= curWeek[i].content %></td>
-								<% if(curWeek[i].status=="已完成") {%>
-									<td width="16.6%" height="25" style="background:#9bbb59;color:#4f6228;font-family:'微软雅黑';font-size:13px;text-align:center;line-height:25px;border-bottom:1px solid #000;"><%= curWeek[i].status %></td>
+								
+								<% if(i==curWeek.length-1) {%>
+									<td width="83%" style="font-family:'微软雅黑';font-size:13px;border-right:1px solid #000;"><%= i+1 %>. <%= curWeek[i].content %></td>
+									<% if(curWeek[i].status=="已完成") {%>
+										<td width="16.6%" height="25" style="background:#9bbb59;color:#4f6228;font-family:'微软雅黑';font-size:13px;text-align:center;line-height:25px;"><%= curWeek[i].status %></td>
+									<% } else{%>
+										<td width="16.6%" height="25" style="background:#f79646;color:#984806;font-family:'微软雅黑';font-size:13px;text-align:center;line-height:25px;"><%= curWeek[i].status %></td>
+									<% } %>
 								<% } else{%>
-									<td width="16.6%" height="25" style="background:#f79646;color:#984806;font-family:'微软雅黑';font-size:13px;text-align:center;line-height:25px;border-bottom:1px solid #000;"><%= curWeek[i].status %></td>
+									<td width="83%" style="font-family:'微软雅黑';font-size:13px;border-bottom:1px solid #000;border-right:1px solid #000;"><%= i+1 %>. <%= curWeek[i].content %></td>
+									<% if(curWeek[i].status=="已完成") {%>
+										<td width="16.6%" height="25" style="background:#9bbb59;color:#4f6228;font-family:'微软雅黑';font-size:13px;text-align:center;line-height:25px;border-bottom:1px solid #000;"><%= curWeek[i].status %></td>
+									<% } else{%>
+										<td width="16.6%" height="25" style="background:#f79646;color:#984806;font-family:'微软雅黑';font-size:13px;text-align:center;line-height:25px;border-bottom:1px solid #000;"><%= curWeek[i].status %></td>
+									<% } %>
 								<% } %>
+
+								
 							</tr>
 						<% } %>
 						
@@ -114,7 +126,7 @@ strong{
 				<td style="font-weight:bold;font-family:'微软雅黑';font-size:13px;">三、分享</td>
 			</tr>
 			<tr width="100%" >
-				<td width="100%" style="border-top:1px solid #000;">
+				<td width="100%" style="border-top:1px solid #000;text-align:left;">
 					<%- html %>
 				</td>
 			</tr>
