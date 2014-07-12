@@ -107,7 +107,7 @@ angular.module('xoceanApp')
     # 获取上周工作记录
     
     Report.workList (res)->
-      $scope.workList = res.data[0]
+      $scope.workList = res.data[0] if res&&res.data.length
 
     $scope.showTip = (e)->
       $(e.currentTarget).tooltip('show')

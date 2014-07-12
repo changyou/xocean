@@ -11,6 +11,7 @@ angular.module('xoceanApp')
     link: (scope, element, attrs) ->
         sendersLength = 0
         scope.$watch "currentSenders", (senders)->
+            if !senders then return
             scope.curindex = 0
             sendersLength = senders.length
             return
@@ -49,6 +50,7 @@ angular.module('xoceanApp')
             $scope.senderArrTemp = queryUserByEmail(data.split(",")) if data
 
         $scope.$watchCollection "senderArrTemp", (senders) ->
+          if !senders then return
           arr = []
           for sender in senders
             arr.push sender.email

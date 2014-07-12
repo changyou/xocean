@@ -18,6 +18,7 @@ angular.module('xoceanApp')
           
 
         scope.$watch launcher, (senders)->
+            if !senders then return
             scope.curindex = 0
             sendersLength = senders.length
             return
