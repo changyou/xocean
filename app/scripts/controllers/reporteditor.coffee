@@ -3,7 +3,10 @@ angular.module('xoceanApp')
 
     if not id
       currentUser = Auth.currentUser()
-      currentUser.$promise.then (user) -> 
+      currentUser.$promise.then (user) ->
+        # 新用户没有receivers字段
+        user.receivers.to = {} if not user.receivers?.to
+        user.receivers.cc = {} if not user.receivers?.cc
         $scope.report.to = user.receivers.to
         $scope.report.cc = user.receivers.cc
         return
