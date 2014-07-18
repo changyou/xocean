@@ -26,9 +26,9 @@ angular.module('xoceanApp', [
         templateUrl: 'partials/signup',
         controller: 'SignupCtrl',
         resolve: {
-          id: function($route) {
+          id: ['$route', function($route) {
             return $route.current.params.id;
-          }
+          }]
         }
       })
       .when('/settings/password', {
@@ -63,9 +63,9 @@ angular.module('xoceanApp', [
         controller: 'ReporteditorCtrl',
         authenticate: true,
         resolve: {
-          id: function($route) {
+          id: [ '$route', function($route) {
             return $route.current.params.id;
-          }
+          }]
         }
       })
       .when('/article/:id/show', {
@@ -73,9 +73,9 @@ angular.module('xoceanApp', [
         controller: 'ArticleCtrl',
         authenticate: true,
         resolve: {
-          id: function($route) {
+          id: [ '$route', function($route) {
             return $route.current.params.id;
-          }
+          }]
         }
       })
       .when('/features', {
