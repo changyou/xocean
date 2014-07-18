@@ -21,12 +21,12 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<th>Id</th>
-			<th>name</th>
-			<th>Email</th>
-			<th>Status</th>
-			<th>role</th>
-			<th>Manage</th>
+			<th> </th>
+			<th>姓名</th>
+			<th>邮箱</th>
+			<th>注册状态</th>
+			<th>用户组</th>
+			<th>操作</th>
 		</tr>
 	</thead>
 	<tr ng-repeat="user in list">
@@ -45,8 +45,9 @@
 			{{user.role}}
 		</td>
 		<td ng-switch on="user.status">
-			<a href="javascript:void(0)" ng-click="send(user._id)" ng-switch-when="0">Resend</a>
-			<a href="javascript:void(0)" ng-click="resetStatus(user._id)" ng-switch-when="1">Reset</a>
+			<a href="javascript:void(0)" ng-click="send(user._id)" ng-switch-when="0">重新发送</a>
+			<a href="javascript:void(0)" ng-click="resetStatus(user._id)" ng-switch-when="1">重置状态</a>
+			<a href="javascript:void(0)" ng-click="removeUser(user._id)">删除用户</a>
 		</td>
 	</tr>
 

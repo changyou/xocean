@@ -39,6 +39,12 @@ angular.module('xoceanManage')
 						$scope.list = UserManage.query()
 						$scope.multipleUser = null
 
+		$scope.removeUser = (userStr)->
+			if userStr 
+				UserManage.remove {id: userStr}, (res)->
+					if res.$resolved
+						$scope.list = UserManage.query()
+
 		$scope.addGroupUser = (userStr)->
 			$scope.volumeUser += userStr + ","
 
