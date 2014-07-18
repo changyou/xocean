@@ -22,12 +22,22 @@ angular.module('xoceanManage')
 
 		$scope.addAllUser = (e)->
 			if(e && e.keyCode is 13) or (e.type is 'click')
-				if $scope.volumeUser is ""
-					$scope.isAdd = false
-					return
-				UserManage.addAllUser {nameList: $scope.volumeUser, emailSuffix: $scope.emailSuffix}, (result)->
+				userlist = $scope.multipleUser.toString().split ";"
+				regStr = /^ ?([\u4e00-\u9fa5].*) <(.*)>$/
+				personObj = []
+
+				for person,ind in userlist
+					name = person.replace regStr,(word,name,email)->
+						personObj.push {
+							name : name
+							email : email
+						}
+						return
+
+				UserManage.addAllUser {userlist:personObj}, (result)->
 					if result.msg is "success"
 						$scope.list = UserManage.query()
+						$scope.multipleUser = null
 
 		$scope.addGroupUser = (userStr)->
 			$scope.volumeUser += userStr + ","

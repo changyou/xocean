@@ -2,34 +2,18 @@
 <div class="btn-wrap mtb20 clearfix" ng-init="isAdd=false">
 	<button class="ml-10 btn btn-purple glyphicon glyphicon-send pull-right"> Send</button>
 	<button ng-class="{true:'ml-10 btn btn-primary glyphicon glyphicon-floppy-disk pull-right', false:'hidden'}[isAdd]" ng-click="addAllUser($event)">Save</button>
-	<button ng-class="{true:'hidden', false:'ml-10 btn btn-success glyphicon glyphicon-plus pull-right'}[isAdd]" class="" ng-click="isAdd=true" > Add</button>
 </div>
 
-<div ng-class="{true:'form-wrap mtb20 clearfix', false:'hidden'}[isAdd]">
-
-	<div class="input-group col-lg-6 pull-right">
-		<input type="text" class="form-control" name="addMoreUser" placeholder="批量添加用户，以逗号分隔，默认为邮箱后缀为cyou-inc.com, 回车自动添加"
-			ng-model="volumeUser"
-			ng-keydown="addAllUser($event)"
-			>
-		<div class="input-group-btn">
-			<input type="hidden" class="form-control" name="emailSuffix" ng-model="emailSuffix" >
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-			{{emailSuffix}}<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="email-suffix">
-			<li><a href="javascript:void(0)" ng-click="emailSuffix='@cyou-inc.com'">@cyou-inc.com</a></li>
-			<li><a href="javascript:void(0)" ng-click="emailSuffix='@126.com'">@126.com</a></li>
-			</ul>
-		</div>
-		<div class="input-group-btn">
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-			<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu pull-right" role="user-group">
-				<li ng-repeat="group in userGroup"><a href="javascript:void(0)" ng-click="addGroupUser(group.users)">{{group.name}}</a></li>
-			</ul>
-		</div>
+<div class="form-wrap mtb20 clearfix">
+	<div class="input-group col-lg-12 pull-right">
+		<input 
+			type="text" 
+			class="form-control" 
+			name="addMoreUser" 
+			placeholder="批量添加用户，请遵循'姓名 <xxx@xxx.com>'的格式添加，中间用半角分号间隔" 
+			ng-init="multipleUser=''"
+			ng-model="multipleUser"
+			ng-keyup="addAllUser($event)">
 	</div>
 
 </div>
