@@ -25,7 +25,10 @@ angular.module('xoceanApp')
 
           if e.keyCode == 13        #enter
              e.preventDefault()
-             scope.addSender scope.currentSenders[scope.curindex].name if scope.currentSenders.length>0
+             if scope.currentSenders.length>0
+              scope.addSender scope.currentSenders[scope.curindex].name 
+             else 
+              scope.addSender elem.val()
              scope.currentSender=""
           else if e.keyCode == 38 #up
              e.preventDefault()
@@ -46,8 +49,11 @@ angular.module('xoceanApp')
         allUser = []
         User.query (user) ->
           allUser = user
-          $scope.$watch "data", (data) ->
-            $scope.senderArrTemp = queryUserByEmail(data.split(",")) if data
+          dataWatcher = $scope.$watch "data", (data) ->
+            if data
+              $scope.senderArrTemp = queryUserByEmail(data.split(",")) 
+              dataWatcher()
+
 
         $scope.$watchCollection "senderArrTemp", (senders) ->
           if !senders then return
@@ -65,6 +71,14 @@ angular.module('xoceanApp')
           for user in allUser
             if name != "" && user.name == name && !isContainUser($scope.senderArrTemp, name)
               $scope.senderArrTemp.push user
+              $scope.currentSender = ""
+              $scope.autoComplateSender($scope.currentSender)
+              return;
+          $scope.senderArrTemp.push {
+            name: name
+            email: name
+          }
+
           $scope.currentSender = ""
           $scope.autoComplateSender($scope.currentSender)
 
@@ -95,8 +109,19 @@ angular.module('xoceanApp')
         queryUserByEmail = (emails) ->
           arr = []
           for email in emails
+            conti = false
             for user in allUser
-              if user.email == email then arr.push user
+              if user.email == email 
+                arr.push user
+                conti = true
+                continue;
+                
+            if conti then continue;
+
+            arr.push {
+              name: email
+              email: email
+            }
 
           return arr
 

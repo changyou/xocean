@@ -6,10 +6,11 @@ angular.module('xoceanApp')
       currentUser.$promise.then (user) ->
         # 新用户没有receivers字段
         user.receivers = {} if not user.receivers
-        user.receivers.to = {} if not user.receivers.to
-        user.receivers.cc = {} if not user.receivers.cc
+        user.receivers.to = "" if not user.receivers.to
+        user.receivers.cc = "" if not user.receivers.cc
+
         $scope.report.to = user.receivers.to
-        $scope.report.cc = user.receivers.cc
+        $scope.report.cc = user.receivers.cc+","+user.email
         return
 
     $scope.report = if not id then {} else Report.get({id: id})
@@ -111,7 +112,7 @@ angular.module('xoceanApp')
     # 获取上周工作记录
     
     Report.workList (res)->
-      $scope.workList = res.data[0] if res&&res.data.length
+      $scope.workList = res.data[0] if res.data
 
     $scope.showTip = (e)->
       $(e.currentTarget).tooltip('show')

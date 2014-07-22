@@ -23,7 +23,7 @@
                 <div class="form-group" ng-class="{ 'has-success': form.name.$valid && firstSubmitted,'has-error': form.name.$invalid && firstSubmitted }">
                   <label><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;真实姓名</label>
 
-                  <input type="text" name="name" class="form-control" ng-model="user.name" required/>
+                  <input type="text" name="name" class="form-control" ng-model="user.name" ng-bind="user.name" required/>
                   <p class="help-block" ng-show="form.name.$error.required && firstSubmitted">
                     请填写您的姓名。
                   </p>
