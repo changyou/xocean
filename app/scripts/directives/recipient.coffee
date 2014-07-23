@@ -107,19 +107,6 @@ angular.module('xoceanApp')
           return false
 
         queryUserByEmail = (emails) ->
-          # for email in emails
-          #   conti = false
-          #   for user in allUser
-          #     if user.email == email 
-          #       arr.push user
-          #       conti = true
-                    
-          #   if conti then continue;
-
-          #   arr.push {
-          #     name: email
-          #     email: email
-          #   }
 
           arr = emails.map (email)->
 
