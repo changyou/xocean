@@ -5,7 +5,7 @@ angular.module('xoceanApp')
       currentUser = Auth.currentUser()
       currentUser.$promise.then (user) ->
         # 新用户没有receivers字段
-        user.receivers = {} if not user.receivers
+        user.receivers    = {} if not user.receivers
         user.receivers.to = "" if not user.receivers.to
         user.receivers.cc = "" if not user.receivers.cc
 
@@ -24,9 +24,9 @@ angular.module('xoceanApp')
     #自动生成邮件主题
     getSubject = () ->
       subjectStr = "【个人周报】"
-      dataRange = Datecal.getDataRange()
-      startDate = dataRange.startDate
-      endDate = dataRange.endDate
+      dataRange  = Datecal.getDataRange()
+      startDate  = dataRange.startDate
+      endDate    = dataRange.endDate
       subjectStr += "-" + $rootScope.currentUser.name
       subjectStr += "-" +startDate.getFullYear() + "." + (startDate.getMonth()+1) + "." + startDate.getDate()
       subjectStr += "-" +endDate.getFullYear() + "." + (endDate.getMonth()+1) + "." + endDate.getDate()

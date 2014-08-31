@@ -6,5 +6,5 @@ angular.module('xoceanApp')
     link: (scope, element, attrs) ->
       scope.curIndex = -1
       scope.triggerArt = (lock,e)->
-        scope.showContent = lock
+        # scope.showContent = lock
   )
