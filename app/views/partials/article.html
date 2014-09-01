@@ -1,49 +1,52 @@
 <div class="row">
-	
-	<div class="art-hot col-sm-3 m-index-block">
-		<div class="m-share-title">
-			<span>大家在看</span>
+	<div class="col-sm-3">
+		<div class="art-hot m-index-block">
+			<div class="m-share-title">
+				<span>大家在看</span>
+			</div>
 		</div>
 	</div>
-	<div class="art-new col-sm-9 m-index-block">
-		
-		<div class="m-share-title">
-			<span>最新技术分享</span>
-		</div>
-		<div class="art-list">
-		 	
-			<ul>
-				<li ng-repeat="article in list" ng-arttab>
-					<div class="art-summary row" ng-init="showContent=false" ng-if="!showContent" ng-click="triggerArt(true,null)" >
-					 
-						<div class="col-sm-11">
-							<img src="{{article.avatar}}" alt="">
-							<h2 ><a href="###">{{article.author | limitTo : 10}}的分享</a></h2>
-							<span class="art-grey">{{article.contentTxt | limitTo : 100}}</span>
-							<span class="art-grey">{{article.createAt | date:"yyyy-MM-dd"}}</span>
-						</div>
-						<div class="col-sm-1"></div>
-					</div>
-
-					<div class="art-content row" ng-if="showContent" >
-						<div class="art-content-title col-sm-12" >
-							<div class="art-content-title-sub">
-								{{article.subject}}
-								<div ng-click="triggerArt(false,$event)" class="art-content-close"><i class="glyphicon glyphicon-chevron-up"></i></div>
+	<div class="col-sm-9">
+		<div class="art-new m-index-block">
+			
+			<div class="m-share-title">
+				<span>最新技术分享</span>
+			</div>
+			<div class="art-list">
+			 	
+				<ul>
+					<li ng-repeat="article in list" ng-arttab class="container">
+						<div class="art-summary row" ng-init="showContent=false" ng-if="!showContent" ng-click="triggerArt(true,null)" >
+						 
+							<div class="col-sm-8">
+								<img src="{{article.avatar}}" alt="">
+								<h2 ><a href="###">{{article.author | limitTo : 10}}的分享</a></h2>
+								<span class="art-grey">{{article.contentTxt | limitTo : 100}}</span>
+								<span class="art-grey">{{article.createAt | date:"yyyy-MM-dd"}}</span>
 							</div>
-							 <div class="art-content-title-auth">
-								<span>{{article.author}} {{article.createAt| date:"yyyy-MM-dd"}}</span>
-							</div>
+							<div class="col-sm-1"></div>
+						</div>
 
+						<div class="art-content row" ng-if="showContent" >
+							<div class="art-content-title col-sm-12" >
+								<div class="art-content-title-sub">
+									{{article.subject}}
+									<div ng-click="triggerArt(false,$event)" class="art-content-close"><i class="glyphicon glyphicon-chevron-up"></i></div>
+								</div>
+								 <div class="art-content-title-auth">
+									<span>{{article.author}} {{article.createAt| date:"yyyy-MM-dd"}}</span>
+								</div>
+
+							</div>
+							<div class="art-content-main col-sm-12" ng-bind-html="article.content">
+							</div>
+							<div class="art-content-close-tip col-sm-12" ng-click="triggerArt(false,$event)">
+								<a href="javascript:void(0)">收回内容</a>
+							</div>
 						</div>
-						<div class="art-content-main col-sm-12" ng-bind-html="article.content">
-						</div>
-						<div class="art-content-close-tip col-sm-12" ng-click="triggerArt(false,$event)">
-							<a href="javascript:void(0)">收回内容</a>
-						</div>
-					</div>
-				</li>
-			</ul>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
