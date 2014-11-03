@@ -1,4 +1,4 @@
-<span ng-mouseenter="showlist=true">
+<span ng-mouseenter="showlist=true" ng-mouseleave="showlist=false">
    <button  
     ng-class="{true:'btn btn-default thisWeek-btn thisWeek-isok',false:'btn btn-default thisWeek-btn thisWeek-ok'}[curShow=='done']" type="button" 
     ng-click="cwToggleDone('done',0)" 

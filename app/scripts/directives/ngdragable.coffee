@@ -12,16 +12,19 @@ angular.module('xoceanApp')
     }
     link: (scope, element, attrs) ->
         dragTarget = null
-        scope.$watch "source",(data)->
+        scope.$watchCollection "source",(data)->
             if data&&data.length > 0
                 element.find("li").each ()->
 
                     $(this).attr "draggable","true"
+                    $(this).on "drag", (e)->
+                      dragTarget = $(e.currentTarget).index()
+                      localStorage.setItem 'dragTarget', dragTarget
+                      return
 
                     $(this).on "dragstart", (e)->
                         $(this).addClass "beDraged"
-                        dragTarget = $(e.currentTarget).index();
-                        return 
+                      return
 
                     $(this).on "dragend", (e)->
                         e.preventDefault()
@@ -41,8 +44,12 @@ angular.module('xoceanApp')
         $("body").delegate "."+scope.targetDOM, "drop",(e)->
             e.preventDefault()
             $("."+scope.targetDOM).removeClass 'ondrag'
-            scope.target.push({ status: "none", content: scope.source[dragTarget].content})
-            dragTarget = null;
+            dragTarget = localStorage.getItem('dragTarget') || 0
+            if scope.target and !scope.target[0].content
+              scope.target[0]={ status: "none", content: scope.source[dragTarget].content}
+            else
+              scope.target.push({ status: "none", content: scope.source[dragTarget].content})
+            localStorage.removeItem 'dragTarget'
             $rootScope.$digest()
             return 
 
