@@ -39,7 +39,6 @@ angular.module('xoceanApp')
                    if scope.curindex < sendersLength-1 then ++scope.curindex
                else if e.keyCode == 8 
                	   if launcher == "currentSenders" then cur = scope.currentSender else cur = scope.currentCopyer
-                   console.log checkHandle.length
                    if (checkHandle.length > 0 && !cur)
                      checkHandle.pop()
                return
